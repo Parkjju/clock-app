@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE0299460CC00D20220 /* AlarmViewController.swift */; };
+		8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */; };
 		C932AB2B29939285006B3FFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2A29939285006B3FFB /* AppDelegate.swift */; };
 		C932AB2D29939285006B3FFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2C29939285006B3FFB /* SceneDelegate.swift */; };
-		C932AB2F29939285006B3FFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2E29939285006B3FFB /* ViewController.swift */; };
+		C932AB2F29939285006B3FFB /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2E29939285006B3FFB /* WorldClockViewController.swift */; };
 		C932AB3229939285006B3FFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C932AB3029939285006B3FFB /* Main.storyboard */; };
 		C932AB3529939285006B3FFB /* clock_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C932AB3329939285006B3FFB /* clock_app.xcdatamodeld */; };
 		C932AB3729939286006B3FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C932AB3629939286006B3FFB /* Assets.xcassets */; };
@@ -17,10 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8807FBE0299460CC00D20220 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectViewController.swift; sourceTree = "<group>"; };
 		C932AB2729939285006B3FFB /* clock-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "clock-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C932AB2A29939285006B3FFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C932AB2C29939285006B3FFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C932AB2E29939285006B3FFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C932AB2E29939285006B3FFB /* WorldClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
 		C932AB3129939285006B3FFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C932AB3429939285006B3FFB /* clock_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = clock_app.xcdatamodel; sourceTree = "<group>"; };
 		C932AB3629939286006B3FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8807FBE22994661500D20220 /* WorldClock */ = {
+			isa = PBXGroup;
+			children = (
+				C932AB2E29939285006B3FFB /* WorldClockViewController.swift */,
+				8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */,
+			);
+			path = WorldClock;
+			sourceTree = "<group>";
+		};
 		C932AB1E29939285006B3FFB = {
 			isa = PBXGroup;
 			children = (
@@ -74,7 +87,8 @@
 		C932AB41299392BE006B3FFB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C932AB2E29939285006B3FFB /* ViewController.swift */,
+				8807FBE22994661500D20220 /* WorldClock */,
+				8807FBE0299460CC00D20220 /* AlarmViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,10 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C932AB2F29939285006B3FFB /* ViewController.swift in Sources */,
+				C932AB2F29939285006B3FFB /* WorldClockViewController.swift in Sources */,
 				C932AB2B29939285006B3FFB /* AppDelegate.swift in Sources */,
+				8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */,
 				C932AB3529939285006B3FFB /* clock_app.xcdatamodeld in Sources */,
 				C932AB2D29939285006B3FFB /* SceneDelegate.swift in Sources */,
+				8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +327,7 @@
 		C932AB3F29939286006B3FFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -323,6 +340,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,6 +360,7 @@
 		C932AB4029939286006B3FFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -354,6 +373,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
