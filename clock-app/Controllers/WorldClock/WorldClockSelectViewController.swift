@@ -28,6 +28,28 @@ class WorldClockSelectViewController: UIViewController {
     @objc func rightBarButtonTapped(){
         print("hi")
         for tz in TimeZone.knownTimeZoneIdentifiers{
+            guard let timezone = TimeZone(identifier: tz) else {
+                continue
+            }
+            guard var worldName = timezone.localizedName(for: .shortGeneric, locale: Locale(identifier:"ko-KR")) else {
+                continue
+            }
+            
+            var data = worldName.split(separator: " ")
+            let _ = data.popLast()
+            
+            worldName = data.joined()
+            
+            let worldDate = Date()
+            var selectedWorld = Date.FormatStyle.dateTime
+            selectedWorld.timeZone = timezone
+            
+            print(worldName)
+            print(worldDate.formatted(selectedWorld))
+            
+            
+            
+            
             
         }
     }
