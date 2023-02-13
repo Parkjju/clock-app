@@ -31,11 +31,73 @@
                     <view key="view" contentMode="scaleToFill" id="ih8-n9-ygn">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockCell" rowHeight="140" id="Phh-Zj-Zug">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Phh-Zj-Zug" id="EcW-lz-C0D">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe6-s1-VCX">
+                                                    <rect key="frame" x="203.33333333333334" y="82" width="62.333333333333343" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="3:31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3B-o9-hcm">
+                                                    <rect key="frame" x="265.66666666666669" y="66.666666666666671" width="97.333333333333314" height="62.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rce-PT-P5m">
+                                                    <rect key="frame" x="29.999999999999996" y="86" width="55.666666666666657" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘, +0시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vch-sZ-8VC">
+                                                    <rect key="frame" x="30" y="66.666666666666671" width="84" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="q3B-o9-hcm" firstAttribute="top" secondItem="EcW-lz-C0D" secondAttribute="top" priority="250" constant="20" id="BJw-xk-Yc7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="q3B-o9-hcm" secondAttribute="bottom" id="Bzh-hk-TLx"/>
+                                                <constraint firstItem="vch-sZ-8VC" firstAttribute="leading" secondItem="Rce-PT-P5m" secondAttribute="leading" id="EJB-LJ-ikE"/>
+                                                <constraint firstItem="Xe6-s1-VCX" firstAttribute="firstBaseline" secondItem="q3B-o9-hcm" secondAttribute="firstBaseline" id="HfA-Zv-wYs"/>
+                                                <constraint firstItem="q3B-o9-hcm" firstAttribute="leading" secondItem="Xe6-s1-VCX" secondAttribute="trailing" id="WsG-Jh-PeQ"/>
+                                                <constraint firstItem="vch-sZ-8VC" firstAttribute="top" secondItem="q3B-o9-hcm" secondAttribute="top" id="c1g-xz-X3j"/>
+                                                <constraint firstItem="Rce-PT-P5m" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" constant="10" id="ctl-7p-mN5"/>
+                                                <constraint firstItem="vch-sZ-8VC" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" constant="10" id="u8a-M0-8gb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="q3B-o9-hcm" secondAttribute="trailing" constant="10" id="yTc-X7-5Yx"/>
+                                                <constraint firstItem="Rce-PT-P5m" firstAttribute="firstBaseline" secondItem="Xe6-s1-VCX" secondAttribute="firstBaseline" id="zOO-Fe-biQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="uOh-cp-rI0"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uOh-cp-rI0" firstAttribute="bottom" secondItem="fU3-i3-0md" secondAttribute="bottom" id="CyX-bY-sQd"/>
+                            <constraint firstItem="fU3-i3-0md" firstAttribute="leading" secondItem="uOh-cp-rI0" secondAttribute="leading" id="TLL-5n-jqC"/>
+                            <constraint firstItem="uOh-cp-rI0" firstAttribute="trailing" secondItem="fU3-i3-0md" secondAttribute="trailing" id="h4X-J9-7am"/>
+                            <constraint firstItem="fU3-i3-0md" firstAttribute="top" secondItem="uOh-cp-rI0" secondAttribute="top" id="ofd-bd-ktl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mhc-II-JQ6"/>
                     <connections>
+                        <outlet property="tableView" destination="fU3-i3-0md" id="lfk-FA-wSD"/>
                         <segue destination="I9n-Xu-s9k" kind="presentation" id="do6-oD-1Y1"/>
                     </connections>
                 </viewController>
@@ -50,15 +112,56 @@
                     <view key="view" contentMode="scaleToFill" id="3V2-OU-clU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-Vf-8lP">
+                                <rect key="frame" x="0.0" y="56" width="393" height="727"/>
+                                <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockSelectCell" id="xgu-Eo-Ch3" customClass="WorldClockSelectTableViewCell" customModule="clock_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xgu-Eo-Ch3" id="HEl-gq-1Ah">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkD-9t-JSV">
+                                                    <rect key="frame" x="10" y="12" width="28" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BkD-9t-JSV" firstAttribute="centerY" secondItem="HEl-gq-1Ah" secondAttribute="centerY" id="OUz-lt-EiX"/>
+                                                <constraint firstItem="BkD-9t-JSV" firstAttribute="leading" secondItem="HEl-gq-1Ah" secondAttribute="leading" constant="10" id="XgM-Ml-VPH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="mainLabel" destination="BkD-9t-JSV" id="Lak-ka-FLZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cXD-Pe-Qzz"/>
-                        <color key="backgroundColor" red="0.13408091659999999" green="0.1193883494" blue="0.14435440299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dS7-Vf-8lP" firstAttribute="leading" secondItem="cXD-Pe-Qzz" secondAttribute="leading" id="7p8-t1-abj"/>
+                            <constraint firstItem="dS7-Vf-8lP" firstAttribute="top" secondItem="cXD-Pe-Qzz" secondAttribute="top" id="PEs-nB-W3E"/>
+                            <constraint firstItem="cXD-Pe-Qzz" firstAttribute="bottom" secondItem="dS7-Vf-8lP" secondAttribute="bottom" id="Xh2-OS-ZZR"/>
+                            <constraint firstItem="cXD-Pe-Qzz" firstAttribute="trailing" secondItem="dS7-Vf-8lP" secondAttribute="trailing" id="tsm-Ds-Y3B"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7fr-Jq-JJ3"/>
+                    <connections>
+                        <outlet property="tableView" destination="dS7-Vf-8lP" id="eT3-JQ-QUF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wf-YF-M7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4335" y="4"/>
+            <point key="canvasLocation" x="4333.5877862595416" y="3.5211267605633805"/>
         </scene>
         <!--스톱워치-->
         <scene sceneID="dRR-CG-LR3">
@@ -164,24 +267,32 @@
             </objects>
             <point key="canvasLocation" x="1675.5725190839694" y="3.5211267605633805"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--World Clock Select Navigation View Controller-->
         <scene sceneID="jNE-VC-GBF">
             <objects>
-                <navigationController storyboardIdentifier="WorldClockSelectNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="I9n-Xu-s9k" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WorldClockSelectNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="I9n-Xu-s9k" customClass="WorldClockSelectNavigationViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p5D-ID-KfL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="mug-5J-n6m" kind="relationship" relationship="rootViewController" id="fHM-nj-nhk"/>
+                        <segue destination="mug-5J-n6m" kind="relationship" relationship="rootViewController" destinationCreationSelector="WorldClockSelectSegue" id="fHM-nj-nhk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6f-X3-4a1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
