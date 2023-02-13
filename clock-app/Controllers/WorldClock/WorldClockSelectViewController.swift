@@ -8,12 +8,17 @@
 import UIKit
 
 class WorldClockSelectViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var clockData: [(String, String)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
-        
+        setupController()
     }
     
     func setupNavigationBar(){
@@ -26,45 +31,31 @@ class WorldClockSelectViewController: UIViewController {
     }
     
     @objc func rightBarButtonTapped(){
-        print("hi")
-        for tz in TimeZone.knownTimeZoneIdentifiers{
-            guard let timezone = TimeZone(identifier: tz) else {
-                continue
-            }
-            guard var worldName = timezone.localizedName(for: .shortGeneric, locale: Locale(identifier:"ko-KR")) else {
-                continue
-            }
-            
-            var data = worldName.split(separator: " ")
-            let _ = data.popLast()
-            
-            worldName = data.joined()
-            
-            let worldDate = Date()
-            var selectedWorld = Date.FormatStyle.dateTime
-            selectedWorld.timeZone = timezone
-            
-            print(worldName)
-            print(worldDate.formatted(selectedWorld))
-            
-            
-            
-            
-            
-        }
+        self.dismiss(animated: true)
     }
-
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupController(){
+        tableView.dataSource = self
     }
-    */
+}
 
+extension WorldClockSelectViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.clockData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorldClockSelectCell", for: indexPath) as! WorldClockSelectTableViewCell
+        
+        cell.data = clockData[indexPath.row].0
+        
+        // 선택시 백그라운드 뷰 컬러 수정하는 부분
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(named: "CellSelectedColor")
+        cell.selectedBackgroundView = backgroundView
+        
+        return cell
+        
+    }
 }
