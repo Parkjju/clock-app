@@ -12,7 +12,9 @@ class WorldClockSelectViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var clockData: [(String, String)] = []
+    var clockData: [(String, TimeZone)] = []
+    
+    let worldClockManager = WorldClockManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +32,16 @@ class WorldClockSelectViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @objc func rightBarButtonTapped(){
+    @objc func rightBarButtonTapped(){    
         self.dismiss(animated: true)
     }
     
     func setupController(){
         tableView.dataSource = self
+        tableView.delegate = self
     }
+    
+    
 }
 
 extension WorldClockSelectViewController: UITableViewDataSource{
@@ -57,5 +62,15 @@ extension WorldClockSelectViewController: UITableViewDataSource{
         
         return cell
         
+    }
+}
+
+extension WorldClockSelectViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    
+        worldClockManager.saveWorldClockData(newRegion: clockData[indexPath.row].0, newTimezone: clockData[indexPath.row].1) {
+            self.dismiss(animated: true)
+        }
     }
 }
