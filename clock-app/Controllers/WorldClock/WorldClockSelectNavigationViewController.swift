@@ -9,13 +9,33 @@ import UIKit
 
 class WorldClockSelectNavigationViewController: UINavigationController {
     
-    var clockData: [(String, String)] = []
+    var clockData: [(String, TimeZone)] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
         setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let tabVC = self.presentingViewController as? UITabBarController else {
+            print("?")
+            return
+        }
+        guard let firstNavigationVC = tabVC.viewControllers?.first as? UINavigationController else {
+            print("??")
+            return
+        }
+        guard let firstVC = firstNavigationVC.viewControllers.first as? WorldClockViewController else {
+            print("???")
+            return
+        }
+        firstVC.tableView.reloadData()
+        
+        
+        
     }
     
     func setupData(){
@@ -36,18 +56,5 @@ class WorldClockSelectNavigationViewController: UINavigationController {
         self.navigationBar.standardAppearance = scrollAppearance
         
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
