@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockCell" rowHeight="140" id="Phh-Zj-Zug">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockCell" rowHeight="140" id="Phh-Zj-Zug" customClass="WorldClockTableViewCell" customModule="clock_app" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Phh-Zj-Zug" id="EcW-lz-C0D">
@@ -56,13 +56,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rce-PT-P5m">
-                                                    <rect key="frame" x="29.999999999999996" y="86" width="55.666666666666657" height="39"/>
+                                                    <rect key="frame" x="19.999999999999996" y="86" width="55.666666666666657" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘, +0시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vch-sZ-8VC">
-                                                    <rect key="frame" x="30" y="66.666666666666671" width="84" height="19.333333333333329"/>
+                                                    <rect key="frame" x="20" y="66.666666666666671" width="84" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -76,12 +76,18 @@
                                                 <constraint firstItem="Xe6-s1-VCX" firstAttribute="firstBaseline" secondItem="q3B-o9-hcm" secondAttribute="firstBaseline" id="HfA-Zv-wYs"/>
                                                 <constraint firstItem="q3B-o9-hcm" firstAttribute="leading" secondItem="Xe6-s1-VCX" secondAttribute="trailing" id="WsG-Jh-PeQ"/>
                                                 <constraint firstItem="vch-sZ-8VC" firstAttribute="top" secondItem="q3B-o9-hcm" secondAttribute="top" id="c1g-xz-X3j"/>
-                                                <constraint firstItem="Rce-PT-P5m" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" constant="10" id="ctl-7p-mN5"/>
-                                                <constraint firstItem="vch-sZ-8VC" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" constant="10" id="u8a-M0-8gb"/>
+                                                <constraint firstItem="Rce-PT-P5m" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" id="ctl-7p-mN5"/>
+                                                <constraint firstItem="vch-sZ-8VC" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" id="u8a-M0-8gb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="q3B-o9-hcm" secondAttribute="trailing" constant="10" id="yTc-X7-5Yx"/>
                                                 <constraint firstItem="Rce-PT-P5m" firstAttribute="firstBaseline" secondItem="Xe6-s1-VCX" secondAttribute="firstBaseline" id="zOO-Fe-biQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="noon" destination="Xe6-s1-VCX" id="BbI-v4-K0n"/>
+                                            <outlet property="offsetLabel" destination="vch-sZ-8VC" id="0zj-kG-nXc"/>
+                                            <outlet property="regionLabel" destination="Rce-PT-P5m" id="nME-QR-1Fr"/>
+                                            <outlet property="timeLabel" destination="q3B-o9-hcm" id="c93-c9-ANG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
