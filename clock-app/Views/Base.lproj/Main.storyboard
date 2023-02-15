@@ -43,20 +43,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe6-s1-VCX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="오후" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe6-s1-VCX">
                                                     <rect key="frame" x="203.33333333333334" y="82" width="62.333333333333343" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="3:31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3B-o9-hcm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" text="3:31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3B-o9-hcm">
                                                     <rect key="frame" x="265.66666666666669" y="66.666666666666671" width="97.333333333333314" height="62.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rce-PT-P5m">
-                                                    <rect key="frame" x="19.999999999999996" y="86" width="55.666666666666657" height="39"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rce-PT-P5m">
+                                                    <rect key="frame" x="20" y="86" width="183.33333333333334" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -77,6 +77,7 @@
                                                 <constraint firstItem="q3B-o9-hcm" firstAttribute="leading" secondItem="Xe6-s1-VCX" secondAttribute="trailing" id="WsG-Jh-PeQ"/>
                                                 <constraint firstItem="vch-sZ-8VC" firstAttribute="top" secondItem="q3B-o9-hcm" secondAttribute="top" id="c1g-xz-X3j"/>
                                                 <constraint firstItem="Rce-PT-P5m" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" id="ctl-7p-mN5"/>
+                                                <constraint firstItem="Xe6-s1-VCX" firstAttribute="leading" secondItem="Rce-PT-P5m" secondAttribute="trailing" id="qfA-x7-kaU"/>
                                                 <constraint firstItem="vch-sZ-8VC" firstAttribute="leading" secondItem="EcW-lz-C0D" secondAttribute="leadingMargin" id="u8a-M0-8gb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="q3B-o9-hcm" secondAttribute="trailing" constant="10" id="yTc-X7-5Yx"/>
                                                 <constraint firstItem="Rce-PT-P5m" firstAttribute="firstBaseline" secondItem="Xe6-s1-VCX" secondAttribute="firstBaseline" id="zOO-Fe-biQ"/>
@@ -251,7 +252,7 @@
         <!--세계 시계-->
         <scene sceneID="auQ-hp-YwF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCC-eH-9Zl" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCC-eH-9Zl" customClass="WorldClockNavigationViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="세계 시계" image="globe" catalog="system" id="e8A-J7-e5o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="PmT-Iq-Zad">

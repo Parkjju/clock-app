@@ -2,7 +2,7 @@
 //  WorldClockNavigationViewController.swift
 //  clock-app
 //
-//  Created by 박경준 on 2023/02/13.
+//  Created by 박경준 on 2023/02/15.
 //
 
 import UIKit
@@ -11,6 +11,8 @@ class WorldClockNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(self.definesPresentationContext)
+//        print(super.definesPresentationContext)
     }
     
 
