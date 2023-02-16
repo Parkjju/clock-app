@@ -1,17 +1,18 @@
 //
-//  WorldClockNavigationViewController.swift
+//  WorldClockTabBarViewController.swift
 //  clock-app
 //
-//  Created by 박경준 on 2023/02/15.
+//  Created by 박경준 on 2023/02/16.
 //
 
 import UIKit
 
-class WorldClockNavigationViewController: UINavigationController {
+class WorldClockTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Do any additional setup after loading the view.
     }
     
 
@@ -24,5 +25,4 @@ class WorldClockNavigationViewController: UINavigationController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE0299460CC00D20220 /* AlarmViewController.swift */; };
 		8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */; };
+		C92CBDB7299E02710000BF73 /* WorldClockTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */; };
 		C932AB2B29939285006B3FFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2A29939285006B3FFB /* AppDelegate.swift */; };
 		C932AB2D29939285006B3FFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2C29939285006B3FFB /* SceneDelegate.swift */; };
 		C932AB2F29939285006B3FFB /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932AB2E29939285006B3FFB /* WorldClockViewController.swift */; };
@@ -22,12 +23,12 @@
 		C95B475C299B453C002656CA /* WorldClockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B475B299B453C002656CA /* WorldClockManager.swift */; };
 		C95B4763299B4609002656CA /* WorldClockData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4761299B4609002656CA /* WorldClockData+CoreDataClass.swift */; };
 		C95B4764299B4609002656CA /* WorldClockData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4762299B4609002656CA /* WorldClockData+CoreDataProperties.swift */; };
-		C95B4772299CEB5C002656CA /* WorldClockNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4771299CEB5C002656CA /* WorldClockNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8807FBE0299460CC00D20220 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectViewController.swift; sourceTree = "<group>"; };
+		C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTabBarViewController.swift; sourceTree = "<group>"; };
 		C932AB2729939285006B3FFB /* clock-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "clock-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C932AB2A29939285006B3FFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C932AB2C29939285006B3FFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		C95B475B299B453C002656CA /* WorldClockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockManager.swift; sourceTree = "<group>"; };
 		C95B4761299B4609002656CA /* WorldClockData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WorldClockData+CoreDataClass.swift"; path = "../../../WorldClockData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C95B4762299B4609002656CA /* WorldClockData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WorldClockData+CoreDataProperties.swift"; path = "../../../WorldClockData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C95B4771299CEB5C002656CA /* WorldClockNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				C95B4749299A101B002656CA /* WorldClockTableViewCell.swift */,
 				C95B474B299A17F4002656CA /* WorldClockSelectTableViewCell.swift */,
 				C95B474F299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift */,
-				C95B4771299CEB5C002656CA /* WorldClockNavigationViewController.swift */,
+				C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */,
 			);
 			path = WorldClock;
 			sourceTree = "<group>";
@@ -210,7 +210,6 @@
 			files = (
 				C932AB2F29939285006B3FFB /* WorldClockViewController.swift in Sources */,
 				C932AB2B29939285006B3FFB /* AppDelegate.swift in Sources */,
-				C95B4772299CEB5C002656CA /* WorldClockNavigationViewController.swift in Sources */,
 				8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */,
 				C95B475C299B453C002656CA /* WorldClockManager.swift in Sources */,
 				C932AB3529939285006B3FFB /* clock_app.xcdatamodeld in Sources */,
@@ -220,6 +219,7 @@
 				C95B474A299A101B002656CA /* WorldClockTableViewCell.swift in Sources */,
 				C95B4763299B4609002656CA /* WorldClockData+CoreDataClass.swift in Sources */,
 				C95B4750299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift in Sources */,
+				C92CBDB7299E02710000BF73 /* WorldClockTabBarViewController.swift in Sources */,
 				C95B4764299B4609002656CA /* WorldClockData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

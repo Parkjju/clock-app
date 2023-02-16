@@ -21,6 +21,7 @@ class WorldClockSelectViewController: UIViewController {
 
         setupNavigationBar()
         setupController()
+        
     }
     
     func setupNavigationBar(){

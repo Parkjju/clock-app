@@ -198,7 +198,6 @@ class WorldClockManager{
         
         let date =  formattedString.split(separator: " ").first!
         var dateArray = date.split(separator: "/")
-        print(dateArray)
         
         // 2/13/2013중에 13일만 남기고 전체 삭제
         dateArray.removeFirst()
@@ -217,7 +216,52 @@ class WorldClockManager{
         }else{
             return "어제"
         }
+    }
     
+    func removeClock(deleteTarget: WorldClockData, completion: @escaping () -> Void){
+        guard let context = context else {
+            print("removeClock: context load error")
+            completion()
+            return
+        }
+        
+        guard let targetId = deleteTarget.date else {
+            print("removeClock: remove target id error")
+            completion()
+            return
+        }
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+        request.predicate = NSPredicate(format: "date = %@", targetId as CVarArg)
+        
+        do{
+            guard let fetchData = try context.fetch(request) as? [WorldClockData] else {
+                print("removeClock: fetch error")
+                completion()
+                return
+            }
+            
+            guard let data = fetchData.first else {
+                print("removeClock: data indexing error")
+                completion()
+                return
+            }
+            
+            context.delete(data)
+            
+            do{
+                try context.save()
+                completion()
+            }catch{
+                print("removeClock: context save error")
+                completion()
+            }
+            
+            
+        }catch {
+            
+        }
+        
         
         
         

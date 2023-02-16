@@ -69,6 +69,7 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="q3B-o9-hcm" firstAttribute="top" secondItem="EcW-lz-C0D" secondAttribute="top" priority="250" constant="20" id="BJw-xk-Yc7"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="q3B-o9-hcm" secondAttribute="bottom" id="Bzh-hk-TLx"/>
@@ -83,6 +84,7 @@
                                                 <constraint firstItem="Rce-PT-P5m" firstAttribute="firstBaseline" secondItem="Xe6-s1-VCX" secondAttribute="firstBaseline" id="zOO-Fe-biQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="noon" destination="Xe6-s1-VCX" id="BbI-v4-K0n"/>
                                             <outlet property="offsetLabel" destination="vch-sZ-8VC" id="0zj-kG-nXc"/>
@@ -105,7 +107,7 @@
                     <navigationItem key="navigationItem" id="mhc-II-JQ6"/>
                     <connections>
                         <outlet property="tableView" destination="fU3-i3-0md" id="lfk-FA-wSD"/>
-                        <segue destination="I9n-Xu-s9k" kind="presentation" id="do6-oD-1Y1"/>
+                        <segue destination="I9n-Xu-s9k" kind="presentation" identifier="WorldClockViewController" id="do6-oD-1Y1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXf-TA-drA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="1676" y="1387"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--World Clock Tab Bar View Controller-->
         <scene sceneID="tKN-Et-qMg">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jpw-Gh-vVY" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jpw-Gh-vVY" customClass="WorldClockTabBarViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="sii-WX-GIh">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -252,7 +254,7 @@
         <!--세계 시계-->
         <scene sceneID="auQ-hp-YwF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCC-eH-9Zl" customClass="WorldClockNavigationViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCC-eH-9Zl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="세계 시계" image="globe" catalog="system" id="e8A-J7-e5o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="PmT-Iq-Zad">

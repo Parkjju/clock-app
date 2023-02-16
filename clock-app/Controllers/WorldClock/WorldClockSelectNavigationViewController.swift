@@ -16,7 +16,6 @@ class WorldClockSelectNavigationViewController: UINavigationController {
         super.viewDidLoad()
         setupData()
         setupUI()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,24 +32,7 @@ class WorldClockSelectNavigationViewController: UINavigationController {
         guard let firstVC = firstNavigationVC.viewControllers.first as? WorldClockViewController else {
             return
         }
-
-        
-        // ====
-        
-        
-//        guard let navVC = self.presentingViewController as? UINavigationController else {
-//            print("???")
-//            return
-//        }
-//
-//        guard let firstVC = navVC.viewControllers.first as? WorldClockViewController else {
-//            print("?!")
-//            return
-//        }
         firstVC.tableView.reloadData()
-        
-        
-        
     }
     
     func setupData(){

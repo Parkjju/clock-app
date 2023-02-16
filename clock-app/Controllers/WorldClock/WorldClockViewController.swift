@@ -12,11 +12,17 @@ class WorldClockViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let clockDataManager = WorldClockManager.shared
+    var clockData: [WorldClockData]{
+        get {
+            return clockDataManager.getSavedWorldClock()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupController()
+        
     }
     
     func setupNavigationBar(){
@@ -34,7 +40,7 @@ class WorldClockViewController: UIViewController {
     }
     
     @objc func leftBarButtonTapped(){
-        print("hi")
+        setEditing(!tableView.isEditing, animated: true)
     }
     
     @objc func rightBarButtonTapped(){
@@ -42,13 +48,30 @@ class WorldClockViewController: UIViewController {
         
         selectNavigationVC.clockData = clockDataManager.getWorldClockData()
         
-        self.navigationController?.present(selectNavigationVC, animated: true)
+        self.performSegue(withIdentifier: "WorldClockViewController", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "WorldClockViewController"){
+            guard let destination = segue.destination as? WorldClockSelectNavigationViewController else {
+                return
+            }
+            destination.clockData = clockDataManager.getWorldClockData()
+        }
     }
 
     
     func setupController(){
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        tableView.setEditing(editing, animated: true)
     }
     
     
@@ -58,18 +81,44 @@ extension WorldClockViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorldClockCell", for: indexPath) as! WorldClockTableViewCell
         
-        cell.clockData = clockDataManager.getSavedWorldClock()[indexPath.row]
-        
+        cell.clockData = clockData[indexPath.row]
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clockDataManager.getSavedWorldClock().count
+        return clockData.count
     }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            clockDataManager.removeClock(deleteTarget: clockData[indexPath.row]) {
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
+    }
+    
 }
 
 extension WorldClockViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }    
+}
+// notification
+
+extension WorldClockViewController: UITableViewDragDelegate{
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragItem = UIDragItem(itemProvider: NSItemProvider())
+        dragItem.localObject = clockData[indexPath.row]
+        return [ dragItem ]
     }
 }
