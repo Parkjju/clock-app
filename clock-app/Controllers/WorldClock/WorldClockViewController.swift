@@ -64,16 +64,47 @@ class WorldClockViewController: UIViewController {
     func setupController(){
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.dragDelegate = self
-        tableView.dragInteractionEnabled = true
+        
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
         tableView.setEditing(editing, animated: true)
+        
+        let _ = tableView.visibleCells.map({ cell in
+            guard let cell = cell as? WorldClockTableViewCell else {
+                return
+            }
+            
+
+            
+            cell.timeLabel.isHidden = editing
+            cell.noon.isHidden = editing
+            cell.noon.constraints.first?.priority = .defaultLow
+            cell.timeLabel.constraints.first?.priority = .defaultLow
+            
+            if(editing){
+                cell.noon.widthAnchor.constraint(equalToConstant: 0).isActive = true
+                cell.timeLabel.widthAnchor.constraint(equalToConstant: 0).isActive = true
+                
+                guard let controller = cell.subviews.last else {
+                    return
+                }
+                guard let imageView = controller.subviews.last as? UIImageView else {
+                    return
+                }
+                imageView.image = UIImage(systemName: "line.3.horizontal")
+                imageView.tintColor = .white
+                
+            }else{
+                cell.noon.constraints.last?.isActive = false
+                cell.timeLabel.constraints.last?.isActive = false
+                
+            }
+        })
+        
     }
-    
     
 }
 
@@ -82,7 +113,7 @@ extension WorldClockViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorldClockCell", for: indexPath) as! WorldClockTableViewCell
         
         cell.clockData = clockData[indexPath.row]
-
+        
         return cell
     }
     
@@ -96,9 +127,11 @@ extension WorldClockViewController: UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
+            
             clockDataManager.removeClock(deleteTarget: clockData[indexPath.row]) {
                 tableView.reloadData()
             }
+            
         }
     }
     
@@ -106,19 +139,31 @@ extension WorldClockViewController: UITableViewDataSource{
         return "삭제"
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard let controller = tableView.visibleCells[destinationIndexPath.row].subviews.last else {
+            return
+        }
+        
+        guard let imageView = controller.subviews.last as? UIImageView else {
+            return
+        }
+        
+        imageView.image = UIImage(systemName: "line.3.horizontal")
+        imageView.tintColor = .white
+        
+        print("hi")
+        
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath:
+     IndexPath) -> Bool {
+        return true
+    }
+    
+    
 }
 
 extension WorldClockViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }    
-}
-// notification
-
-extension WorldClockViewController: UITableViewDragDelegate{
-    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        let dragItem = UIDragItem(itemProvider: NSItemProvider())
-        dragItem.localObject = clockData[indexPath.row]
-        return [ dragItem ]
-    }
 }
