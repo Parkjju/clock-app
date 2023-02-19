@@ -148,7 +148,9 @@ extension WorldClockViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         // row 움직이고 순서 변경하는 로직 추가
-        print("function called ")
+        clockDataManager.updateIndex(sourceData: clockData[sourceIndexPath.row], destinationData: clockData[destinationIndexPath.row]) {
+            print("END!")
+        }
         
         
         

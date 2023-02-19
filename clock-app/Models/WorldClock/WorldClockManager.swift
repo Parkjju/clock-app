@@ -37,8 +37,8 @@ class WorldClockManager{
         if let context = context {
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
             
-            let dateOrder = NSSortDescriptor(key: "date", ascending: true)
-            request.sortDescriptors = [dateOrder]
+            let indexOrder = NSSortDescriptor(key: "index", ascending: true)
+            request.sortDescriptors = [indexOrder]
             
             do{
                 if let fetchedClock = try context.fetch(request) as? [WorldClockData] {
@@ -76,6 +76,7 @@ class WorldClockManager{
         newWorldClock.timezone = newTimezone.identifier
         newWorldClock.region = newRegion
         newWorldClock.date = Date()
+        newWorldClock.index = Int64(getSavedWorldClock().count - 1)
         
         if(context.hasChanges){
             do{
@@ -188,7 +189,7 @@ class WorldClockManager{
         return 9 - result > 0 ? "\(isTodayString), -\(9 - result)시간" : "\(isTodayString), +\(result - 9)시간"
     }
     
-    func checkIsToday(timezone: TimeZone) -> String{
+    private func checkIsToday(timezone: TimeZone) -> String{
         let worldDate = Date()
         var selectedWorld = Date.FormatStyle.dateTime
         selectedWorld.timeZone = timezone
@@ -261,12 +262,16 @@ class WorldClockManager{
         }catch {
             
         }
-        
-        
-        
-        
     }
     
+    func updateIndex(sourceData: WorldClockData, destinationData: WorldClockData, completion: @escaping () -> Void){
+        print(sourceData.index)
+        // ArraySlice 활용
+        // 1. source 데이터 빼오기
+        // 2. destination index에 끼워넣기
+        // 3. 전체 Array 인덱스값 업데이트
+        // 4. 코어데이터 컨텍스트 저장
+    }
     
 }
 

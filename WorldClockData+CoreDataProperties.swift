@@ -2,7 +2,7 @@
 //  WorldClockData+CoreDataProperties.swift
 //  clock-app
 //
-//  Created by 박경준 on 2023/02/14.
+//  Created by 박경준 on 2023/02/19.
 //
 //
 
@@ -16,9 +16,10 @@ extension WorldClockData {
         return NSFetchRequest<WorldClockData>(entityName: "WorldClockData")
     }
 
-    @NSManaged public var timezone: String?
     @NSManaged public var date: Date?
     @NSManaged public var region: String?
+    @NSManaged public var timezone: String?
+    @NSManaged public var index: Int64
 
 }
 
