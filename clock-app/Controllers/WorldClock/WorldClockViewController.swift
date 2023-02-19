@@ -64,7 +64,6 @@ class WorldClockViewController: UIViewController {
     func setupController(){
         tableView.dataSource = self
         tableView.delegate = self
-        
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -77,27 +76,21 @@ class WorldClockViewController: UIViewController {
                 return
             }
             
-
+            
             
             cell.timeLabel.isHidden = editing
             cell.noon.isHidden = editing
             cell.noon.constraints.first?.priority = .defaultLow
             cell.timeLabel.constraints.first?.priority = .defaultLow
             
+            
+            // 기본이 햄버거 메뉴인데 이미지를 추가하면 tintColor 기준으로 색상이 적용됨.
             if(editing){
                 cell.noon.widthAnchor.constraint(equalToConstant: 0).isActive = true
                 cell.timeLabel.widthAnchor.constraint(equalToConstant: 0).isActive = true
                 
-                guard let controller = cell.subviews.last else {
-                    return
-                }
-                guard let imageView = controller.subviews.last as? UIImageView else {
-                    return
-                }
-                imageView.image = UIImage(systemName: "line.3.horizontal")
-                imageView.tintColor = .white
-                
             }else{
+                print("ended")
                 cell.noon.constraints.last?.isActive = false
                 cell.timeLabel.constraints.last?.isActive = false
                 
@@ -106,6 +99,9 @@ class WorldClockViewController: UIViewController {
         
     }
     
+    
+    
+    
 }
 
 extension WorldClockViewController: UITableViewDataSource{
@@ -113,6 +109,7 @@ extension WorldClockViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorldClockCell", for: indexPath) as! WorldClockTableViewCell
         
         cell.clockData = clockData[indexPath.row]
+        cell.overrideUserInterfaceStyle = .dark
         
         return cell
     }
@@ -138,22 +135,7 @@ extension WorldClockViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "삭제"
     }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard let controller = tableView.visibleCells[destinationIndexPath.row].subviews.last else {
-            return
-        }
-        
-        guard let imageView = controller.subviews.last as? UIImageView else {
-            return
-        }
-        
-        imageView.image = UIImage(systemName: "line.3.horizontal")
-        imageView.tintColor = .white
-        
-        print("hi")
-        
-    }
+
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath:
      IndexPath) -> Bool {
         return true
@@ -163,7 +145,17 @@ extension WorldClockViewController: UITableViewDataSource{
 }
 
 extension WorldClockViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        // row 움직이고 순서 변경하는 로직 추가
+        print("function called ")
+        
+        
+        
+        
+    }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }    
+    }
+    
 }
