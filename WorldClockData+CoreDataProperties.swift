@@ -20,7 +20,7 @@ extension WorldClockData {
     @NSManaged public var region: String?
     @NSManaged public var timezone: String?
     @NSManaged public var index: Int64
-
+    
 }
 
 extension WorldClockData : Identifiable {
