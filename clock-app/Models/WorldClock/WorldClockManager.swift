@@ -183,6 +183,7 @@ class WorldClockManager{
             return "오늘, +9시간"
         }
         
+        // TODO - 반례 +5:45, 분단위 GMT에러처리 필요.
         let result = Int(splitArray.last!)!
         
         // 오늘인지 어제인지 판단 여부를 알아야하는데 그건 타임존에서 가능하다
@@ -265,12 +266,63 @@ class WorldClockManager{
     }
     
     func updateIndex(sourceData: WorldClockData, destinationData: WorldClockData, completion: @escaping () -> Void){
-        print(sourceData.index)
+        let destinationIndex = destinationData.index
+        let sourceIndex = sourceData.index
         // ArraySlice 활용
         // 1. source 데이터 빼오기
         // 2. destination index에 끼워넣기
         // 3. 전체 Array 인덱스값 업데이트
         // 4. 코어데이터 컨텍스트 저장
+        guard let context = context else {
+            print("updateIndex: context load error")
+            return
+        }
+        
+        // 코어데이터는 순서에 대한 표기가 불가능하기 때문에 Index 프로퍼티를 가지고 표현해야한다.
+        // index 프로퍼티를 업데이트 하려면?
+        // 1. 전체 데이터를 fetch하고 데이터를 변경해준다
+        
+        let fetchAllRequest = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+        let indexOrder = NSSortDescriptor(key: "index", ascending: true)
+        fetchAllRequest.sortDescriptors = [indexOrder]
+        
+        do{
+            guard var fetchedData = try context.fetch(fetchAllRequest) as? [WorldClockData] else {
+                completion()
+                return
+            }
+            
+            // 데이터 추가 후 index ascending으로 fetch까지는 문제없이 됨.
+            // int64나 int나 대수비교에는 큰 차이 없음
+            if(sourceData.index < destinationData.index){
+                for idx in sourceIndex ..< destinationIndex + 1{
+                    if(idx == 0){
+                        continue
+                    }
+                    fetchedData[Int(idx)].index -= 1
+                }
+                fetchedData[Int(sourceIndex)].index = destinationIndex
+            }else{
+                for idx in destinationIndex ..< sourceIndex + 1 {
+                    fetchedData[Int(idx)].index += 1
+                }
+                fetchedData[Int(sourceIndex)].index = destinationIndex
+            }
+            
+            
+            print("=======최종!=======")
+            print(fetchedData)
+            do{
+                try context.save()
+                completion()
+            }catch{
+                print("updateIndex: context save error")
+                completion()
+            }
+        }catch{
+            print("ERROR in updateIndex")
+        }
+        
     }
     
 }
