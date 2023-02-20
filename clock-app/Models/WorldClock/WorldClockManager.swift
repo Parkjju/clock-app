@@ -78,6 +78,7 @@ class WorldClockManager{
         newWorldClock.date = Date()
         newWorldClock.index = Int64(getSavedWorldClock().count - 1)
         
+        
         if(context.hasChanges){
             do{
                 try context.save()
@@ -152,6 +153,7 @@ class WorldClockManager{
         guard let timezone = TimeZone(identifier: timezone) else {
             return ""
         }
+        
         let worldDate = Date()
         var selectedWorld = Date.FormatStyle.dateTime
         selectedWorld.timeZone = timezone
@@ -159,6 +161,10 @@ class WorldClockManager{
         var time = worldDate.formatted(selectedWorld).split(separator: " ")
         time.removeFirst()
         
+        if(time.last! == "AM" || time.last! == "PM"){
+            
+            return isNoon ? "\(time.last! == "AM" ? "오전" : "오후")" : "\(time.first!)"
+        }
         
         return isNoon ? "\(time.first!)" : "\(time.last!)"
     }
