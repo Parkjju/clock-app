@@ -38,7 +38,6 @@ class WorldClockTableViewCell: UITableViewCell {
             print("Clock data load error in worldClockTableViewCell")
             return
         }
-        print(clock)
         
         guard let tz = clock.timezone else {
             return
