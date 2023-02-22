@@ -39,7 +39,11 @@ class AlarmViewController: UIViewController {
     }
     
     @objc func rightBarButtonTapped(){
-        print("right")
+        let navigationVC = storyboard?.instantiateViewController(withIdentifier: "AlarmGenerateNavigationController") as! AlarmGenerateNavigationController
+        
+        // navigationVC에 데이터 전달, first 뷰 컨트롤러 세팅 완료 후 데이터 전달하는 로직 추가해야됨.
+        
+        self.performSegue(withIdentifier: "AlarmViewController", sender: self)
     }
     
     func setupController(){
@@ -83,3 +87,5 @@ extension AlarmViewController: UITableViewDataSource{
         return 2
     }
 }
+
+
