@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE0299460CC00D20220 /* AlarmViewController.swift */; };
 		8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */; };
+		8876F08C29A5826E003CB7D8 /* AlarmGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876F08B29A5826E003CB7D8 /* AlarmGenerateViewController.swift */; };
+		8876F08E29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876F08D29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift */; };
 		C92CBDB7299E02710000BF73 /* WorldClockTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */; };
 		C92CBDBC29A49AB50000BF73 /* AlarmNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CBDBB29A49AB50000BF73 /* AlarmNavigationViewController.swift */; };
 		C92CBDBE29A4A3C70000BF73 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CBDBD29A4A3C70000BF73 /* AlarmTableViewCell.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		8807FBE0299460CC00D20220 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectViewController.swift; sourceTree = "<group>"; };
+		8876F08B29A5826E003CB7D8 /* AlarmGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmGenerateViewController.swift; sourceTree = "<group>"; };
+		8876F08D29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmGenerateNavigationController.swift; sourceTree = "<group>"; };
 		C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTabBarViewController.swift; sourceTree = "<group>"; };
 		C92CBDBB29A49AB50000BF73 /* AlarmNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmNavigationViewController.swift; sourceTree = "<group>"; };
 		C92CBDBD29A4A3C70000BF73 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				8807FBE0299460CC00D20220 /* AlarmViewController.swift */,
 				C92CBDBB29A49AB50000BF73 /* AlarmNavigationViewController.swift */,
 				C92CBDBD29A4A3C70000BF73 /* AlarmTableViewCell.swift */,
+				8876F08B29A5826E003CB7D8 /* AlarmGenerateViewController.swift */,
+				8876F08D29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C932AB2F29939285006B3FFB /* WorldClockViewController.swift in Sources */,
+				8876F08C29A5826E003CB7D8 /* AlarmGenerateViewController.swift in Sources */,
 				C92CBDC029A4A54C0000BF73 /* AlarmData.swift in Sources */,
 				C932AB2B29939285006B3FFB /* AppDelegate.swift in Sources */,
 				8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */,
@@ -247,6 +254,7 @@
 				C932AB2D29939285006B3FFB /* SceneDelegate.swift in Sources */,
 				C95B474C299A17F4002656CA /* WorldClockSelectTableViewCell.swift in Sources */,
 				8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */,
+				8876F08E29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift in Sources */,
 				C95B474A299A101B002656CA /* WorldClockTableViewCell.swift in Sources */,
 				C95B4763299B4609002656CA /* WorldClockData+CoreDataClass.swift in Sources */,
 				C92CBDBC29A49AB50000BF73 /* AlarmNavigationViewController.swift in Sources */,
