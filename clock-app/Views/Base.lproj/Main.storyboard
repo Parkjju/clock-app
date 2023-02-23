@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -107,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
-                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,7 +212,7 @@
                                 </constraints>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlarmSettingRepeatTableViewCell" textLabel="UjP-3S-by7" detailTextLabel="fmt-xu-rhP" style="IBUITableViewCellStyleValue1" id="hvC-qT-ZfH" customClass="AlarmSettingRepeatTableViewCell" customModule="clock_app" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlarmSettingRepeatTableViewCell" textLabel="UjP-3S-by7" detailTextLabel="fmt-xu-rhP" style="IBUITableViewCellStyleValue1" id="hvC-qT-ZfH" customClass="AlarmSettingRepeatTableViewCell" customModule="clock_app" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hvC-qT-ZfH" id="jUk-sr-K6Y">
@@ -240,6 +241,7 @@
                                         <connections>
                                             <outlet property="choiceLabel" destination="fmt-xu-rhP" id="F4f-gr-4F5"/>
                                             <outlet property="titleLabel" destination="UjP-3S-by7" id="WTq-6l-hg6"/>
+                                            <segue destination="VU9-At-vUD" kind="show" id="xkA-DI-7AO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AlarmSettingLabelTableViewCell" id="TK0-8e-kNo" customClass="AlarmSettingLabelTableViewCell" customModule="clock_app" customModuleProvider="target">
@@ -365,6 +367,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w9c-eW-eg5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4333.5877862595416" y="-671.12676056338034"/>
+        </scene>
+        <!--Alarm Repeat Detail View Controller-->
+        <scene sceneID="1Jg-OZ-0iV">
+            <objects>
+                <viewController id="VU9-At-vUD" customClass="AlarmRepeatDetailViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rC0-Wc-Qne">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RNm-0F-iLG">
+                                <rect key="frame" x="20" y="106" width="353" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="YRu-Yy-YSo"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmRepeatDetailTableViewCell" id="4zM-0z-HWz" customClass="AlarmRepeatDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4zM-0z-HWz" id="igT-Jq-96x">
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월요일마다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-6W-XbR">
+                                                    <rect key="frame" x="40" y="12" width="70" height="20"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P0M-6W-XbR" firstAttribute="leading" secondItem="igT-Jq-96x" secondAttribute="leadingMargin" constant="20" id="nBD-jt-DFS"/>
+                                                <constraint firstItem="P0M-6W-XbR" firstAttribute="centerY" secondItem="igT-Jq-96x" secondAttribute="centerY" id="pw8-AQ-ch4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="choiceLabel" destination="P0M-6W-XbR" id="Mfc-gI-Tst"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T1I-SE-9nX"/>
+                        <color key="backgroundColor" name="ModalColor"/>
+                        <constraints>
+                            <constraint firstItem="T1I-SE-9nX" firstAttribute="trailing" secondItem="RNm-0F-iLG" secondAttribute="trailing" constant="20" id="EZO-ae-vfP"/>
+                            <constraint firstItem="RNm-0F-iLG" firstAttribute="leading" secondItem="T1I-SE-9nX" secondAttribute="leading" constant="20" id="Pdc-Sm-d8r"/>
+                            <constraint firstItem="RNm-0F-iLG" firstAttribute="centerX" secondItem="rC0-Wc-Qne" secondAttribute="centerX" id="cb9-xX-aQF"/>
+                            <constraint firstItem="RNm-0F-iLG" firstAttribute="top" secondItem="T1I-SE-9nX" secondAttribute="top" constant="50" id="paS-bF-qPg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="y7H-wI-ybz"/>
+                    <connections>
+                        <outlet property="tableView" destination="RNm-0F-iLG" id="jo8-zd-dCQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5U2-VP-gwq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5063" y="-671"/>
         </scene>
         <!--World Clock Select View Controller-->
         <scene sceneID="6vj-Fz-jWg">
@@ -588,6 +650,9 @@
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="123"/>
+        <namedColor name="ModalColor">
+            <color red="0.1289999932050705" green="0.12200000137090683" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
