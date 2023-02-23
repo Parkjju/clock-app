@@ -56,6 +56,10 @@ class AlarmGenerateViewController: UIViewController {
         tableView.layer.cornerRadius = 10
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     
 
     /*
@@ -71,19 +75,41 @@ class AlarmGenerateViewController: UIViewController {
 }
 
 extension AlarmGenerateViewController: UITableViewDataSource{
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmGenerateTableViewCell", for: indexPath) as? AlarmGenerateTableViewCell else {
+        
+        switch indexPath.row{
+        case 0:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmSettingRepeatTableViewCell", for: indexPath) as! AlarmSettingRepeatTableViewCell
+            cell.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmSettingLabelTableViewCell", for: indexPath) as! AlarmSettingLabelTableViewCell
+            cell.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmSettingSoundTableViewCell", for: indexPath) as! AlarmSettingSoundTableViewCell
+            cell.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmSettingAgainTableViewCell", for: indexPath) as! AlarmSettingAgainTableViewCell
+            cell.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
+            return cell
+        default:
+            print("?")
             return UITableViewCell()
+            
         }
         
-        cell.cellIndex = indexPath.row
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
+    
 }
 
 extension AlarmGenerateViewController: UITableViewDelegate{
