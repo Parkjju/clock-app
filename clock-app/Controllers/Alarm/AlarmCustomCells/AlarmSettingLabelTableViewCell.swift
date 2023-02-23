@@ -30,8 +30,14 @@ class AlarmSettingLabelTableViewCell: UITableViewCell {
             string: "알람",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         )
+        
+        textField.borderStyle = .none
     }
-
+    
 }
 
-
+extension AlarmSettingLabelTableViewCell: UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("hi")
+    }
+}
