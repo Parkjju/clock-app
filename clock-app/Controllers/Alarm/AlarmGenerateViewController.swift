@@ -12,6 +12,7 @@ class AlarmGenerateViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
     var newAlarmData: AlarmData?
     
     
@@ -47,6 +48,11 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     @objc func rightBarButtonTapped(){
+        // 최종 저장 시 newAlarmData time difference 계산 및 저장
+        newAlarmData?.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
+        
+        
+        
         
     }
     
@@ -56,17 +62,12 @@ class AlarmGenerateViewController: UIViewController {
         tableView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         tableView.layer.cornerRadius = 10
         
-        datePicker.addTarget(self, action: #selector(valueChangeHandler), for: .valueChanged)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func valueChangeHandler(sender: UIDatePicker){
-        // datePicker 밸류 달라짐에 따라 저장할 알람데이터 time 세팅
-        newAlarmData?.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
-    }
     
     
 
