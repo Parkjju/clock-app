@@ -11,6 +11,13 @@ class AlarmViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let alarmManager = AlarmManager.shared
+    var alarmData: [AlarmData]{
+        get {
+            return alarmManager.getSavedAlarm()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +46,7 @@ class AlarmViewController: UIViewController {
     }
     
     @objc func rightBarButtonTapped(){
-        let navigationVC = storyboard?.instantiateViewController(withIdentifier: "AlarmGenerateNavigationController") as! AlarmGenerateNavigationController
+        let _ = storyboard?.instantiateViewController(withIdentifier: "AlarmGenerateNavigationController") as! AlarmGenerateNavigationController
         
         // navigationVC에 데이터 전달, first 뷰 컨트롤러 세팅 완료 후 데이터 전달하는 로직 추가해야됨.
         
@@ -54,6 +61,10 @@ class AlarmViewController: UIViewController {
     func setupUI(){
         tableView.backgroundColor = .black
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touches begin")
+    }
 
 }
 
@@ -67,24 +78,14 @@ extension AlarmViewController: UITableViewDelegate{
 extension AlarmViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmTableViewCell", for: indexPath) as? AlarmTableViewCell else {
-            print("HI!")
             return UITableViewCell()
         }
-        // 하드코딩
-        let alarm = AlarmData()
-        alarm.isOn = true
-        alarm.noon = "오후"
-        alarm.time = "3:08"
-        alarm.description = "알람"
-        
-        cell.alarmData = alarm
-        
-        
+        cell.alarmData = alarmData[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return alarmData.count
     }
 }
 

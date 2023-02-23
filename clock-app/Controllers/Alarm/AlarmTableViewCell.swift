@@ -38,9 +38,10 @@ class AlarmTableViewCell: UITableViewCell {
         }
 
         
-        timeLabel.text = alarmData.time
-        noonLabel.text = alarmData.noon
-        descriptionLabel.text = alarmData.description
+        timeLabel.text = "\(alarmData.time)"
+        // 하드코딩
+        noonLabel.text = "오후"
+        descriptionLabel.text = alarmData.label
         switchButton.isOn = alarmData.isOn
         
         switchButton.backgroundColor = .darkGray
