@@ -13,7 +13,6 @@ class AlarmGenerateViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    let tableViewContents = [0,1,2,3]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +23,8 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     func setupController(){
-        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func setupNavigationBar(){
@@ -72,16 +72,22 @@ class AlarmGenerateViewController: UIViewController {
 
 extension AlarmGenerateViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmGenerateTableViewCell", for: indexPath) as? AlarmGenerateTableViewCell else {
+            return UITableViewCell()
+        }
         
-        
-        
-        
+        cell.cellIndex = indexPath.row
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
+    }
+}
+
+extension AlarmGenerateViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }
