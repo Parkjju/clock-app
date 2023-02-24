@@ -11,6 +11,18 @@ class AlarmRepeatDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: AlarmManagerDelegate?
+    
+    let dayList: [Int: String] = [
+        0: "일",
+        1: "월",
+        2: "화",
+        3: "수",
+        4: "목",
+        5: "금",
+        6: "토"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,9 +78,12 @@ extension AlarmRepeatDetailViewController: UITableViewDelegate{
         
         if(value == .checkmark){
             tableView.visibleCells[indexPath.row].accessoryType = .none
+            self.delegate?.repeatUpdate(index: indexPath.row)
         }else{
             tableView.visibleCells[indexPath.row].accessoryType = .checkmark
+            self.delegate?.repeatUpdate(index: indexPath.row)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }
