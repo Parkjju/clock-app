@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -310,6 +310,7 @@
                                         <connections>
                                             <outlet property="chosenLabel" destination="gjW-kc-YGt" id="6Fa-Xg-yDT"/>
                                             <outlet property="titleLabel" destination="eAn-Yr-AT0" id="UoV-cr-s1c"/>
+                                            <segue destination="sVA-hM-cRv" kind="show" id="DXa-wi-UHL"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AlarmSettingAgainTableViewCell" id="jXO-dw-T19" customClass="AlarmSettingAgainTableViewCell" customModule="clock_app" customModuleProvider="target">
@@ -426,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U2-VP-gwq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5063" y="-671"/>
+            <point key="canvasLocation" x="5147" y="-1144"/>
         </scene>
         <!--World Clock Select View Controller-->
         <scene sceneID="6vj-Fz-jWg">
@@ -485,6 +486,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wf-YF-M7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4333.5877862595416" y="3.5211267605633805"/>
+        </scene>
+        <!--Alarm Sound Detail View Controller-->
+        <scene sceneID="ses-7r-L8m">
+            <objects>
+                <viewController id="sVA-hM-cRv" customClass="AlarmSoundDetailViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HYH-hB-PRK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="XQd-6X-k7b"/>
+                        <color key="backgroundColor" name="ModalColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DHQ-0x-Ld8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yDf-K9-UWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5146" y="-470"/>
         </scene>
         <!--스톱워치-->
         <scene sceneID="dRR-CG-LR3">
