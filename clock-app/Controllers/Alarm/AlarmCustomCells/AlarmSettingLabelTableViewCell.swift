@@ -38,6 +38,6 @@ class AlarmSettingLabelTableViewCell: UITableViewCell {
 
 extension AlarmSettingLabelTableViewCell: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("hi")
+        
     }
 }

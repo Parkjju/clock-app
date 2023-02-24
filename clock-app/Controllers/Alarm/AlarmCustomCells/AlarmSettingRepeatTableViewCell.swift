@@ -26,7 +26,6 @@ class AlarmSettingRepeatTableViewCell: UITableViewCell {
     }
     
     func setupUI(){
-        print("hi")
         self.titleLabel.text = "반복"
         self.choiceLabel.text = "안 함"
         self.createCustomCellDisclosureIndicator(chevronColor: .lightGray)
