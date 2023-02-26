@@ -26,7 +26,7 @@ class AlarmSoundDetailViewController: UIViewController {
     
     func displaySoundsAlert() {
         let alert = UIAlertController(title: "Play Sound", message: nil, preferredStyle: UIAlertController.Style.alert)
-        for i in 1000...1010 {
+        for i in 1000..<1336 {
             alert.addAction(UIAlertAction(title: "\(i)", style: .default, handler: {_ in
                 AudioServicesPlayAlertSound(UInt32(i))
                 self.displaySoundsAlert()
