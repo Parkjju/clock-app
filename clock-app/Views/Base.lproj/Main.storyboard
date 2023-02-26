@@ -495,8 +495,22 @@
                     <view key="view" contentMode="scaleToFill" id="HYH-hB-PRK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-Y8-Thk">
+                                <rect key="frame" x="20" y="56" width="353" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="yRS-jT-9xc"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="XQd-6X-k7b"/>
                         <color key="backgroundColor" name="ModalColor"/>
+                        <constraints>
+                            <constraint firstItem="XQd-6X-k7b" firstAttribute="trailing" secondItem="bnj-Y8-Thk" secondAttribute="trailing" constant="20" id="Ia8-UB-xYm"/>
+                            <constraint firstItem="bnj-Y8-Thk" firstAttribute="top" secondItem="XQd-6X-k7b" secondAttribute="top" id="hhC-7U-3nO"/>
+                            <constraint firstItem="bnj-Y8-Thk" firstAttribute="leading" secondItem="XQd-6X-k7b" secondAttribute="leading" constant="20" id="ifg-5h-7wk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DHQ-0x-Ld8"/>
                 </viewController>

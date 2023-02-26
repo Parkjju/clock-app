@@ -101,9 +101,8 @@
 		88BC72F229A8254A00F6ADD2 /* AlarmSettings */ = {
 			isa = PBXGroup;
 			children = (
-				88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */,
-				88BC72F529A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift */,
-				C94A6D1029A899C500CF8720 /* AlarmSoundDetailViewController.swift */,
+				C94A6D1329AB05C800CF8720 /* AlarmRepeat */,
+				C94A6D1229AB05C000CF8720 /* AlarmSound */,
 			);
 			path = AlarmSettings;
 			sourceTree = "<group>";
@@ -188,6 +187,23 @@
 				C95B4753299B441A002656CA /* WorldClock */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C94A6D1229AB05C000CF8720 /* AlarmSound */ = {
+			isa = PBXGroup;
+			children = (
+				C94A6D1029A899C500CF8720 /* AlarmSoundDetailViewController.swift */,
+			);
+			path = AlarmSound;
+			sourceTree = "<group>";
+		};
+		C94A6D1329AB05C800CF8720 /* AlarmRepeat */ = {
+			isa = PBXGroup;
+			children = (
+				88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */,
+				88BC72F529A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift */,
+			);
+			path = AlarmRepeat;
 			sourceTree = "<group>";
 		};
 		C95B4753299B441A002656CA /* WorldClock */ = {

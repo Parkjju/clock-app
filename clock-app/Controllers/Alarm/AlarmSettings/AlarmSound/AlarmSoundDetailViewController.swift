@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AlarmSoundDetailViewController: UIViewController {
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
+        AudioServicesPlaySystemSound(SystemSoundID(1322))
     }
     
     func setupNavigationBar(){
