@@ -10,12 +10,11 @@ import AVFoundation
 
 class AlarmSoundDetailViewController: UIViewController {
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
-        AudioServicesPlaySystemSound(SystemSoundID(1322))
+        displaySoundsAlert()
     }
     
     func setupNavigationBar(){
@@ -23,6 +22,18 @@ class AlarmSoundDetailViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.title = "뒤로"
         self.navigationController?.navigationBar.tintColor = .systemOrange
         
+    }
+    
+    func displaySoundsAlert() {
+        let alert = UIAlertController(title: "Play Sound", message: nil, preferredStyle: UIAlertController.Style.alert)
+        for i in 1000...1010 {
+            alert.addAction(UIAlertAction(title: "\(i)", style: .default, handler: {_ in
+                AudioServicesPlayAlertSound(UInt32(i))
+                self.displaySoundsAlert()
+            }))
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 
