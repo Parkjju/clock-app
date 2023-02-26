@@ -96,6 +96,9 @@ class AlarmGenerateViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tableView.endEditing(true)
+    }
     
 
 
