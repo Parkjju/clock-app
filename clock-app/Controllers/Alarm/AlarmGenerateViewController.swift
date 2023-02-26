@@ -69,10 +69,6 @@ class AlarmGenerateViewController: UIViewController {
     @objc func rightBarButtonTapped(){
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
         newAlarmData?.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
-        
-        
-        
-        
     }
     
     func setupUI(){
@@ -87,18 +83,21 @@ class AlarmGenerateViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // 델리게이트 연결
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "AlarmDetailRepeat"){
+            guard let repeatVC = segue.destination as? AlarmRepeatDetailViewController else {
+                return
+            }
+            
+            repeatVC.delegate = self
+            
+            repeatVC.checkedDayList = self.checkedDayList
+        }
     }
-    */
+    
+    
+
 
 }
 
@@ -159,7 +158,7 @@ extension AlarmGenerateViewController: AlarmManagerDelegate{
         
         
         
-        repeatTableViewCell.titleLabel.text = ""
+        repeatTableViewCell.choiceLabel.text = ""
         
         // 1. 커스텀 델리게이트 패턴으로 체크마크 요일 목록을 받아온다
         // 2. 체크 목록을 Boolean 타입 값으로 딕셔너리 체킹을 하고
@@ -170,18 +169,21 @@ extension AlarmGenerateViewController: AlarmManagerDelegate{
             checkedDayList[index] = true
         }
         
+        
         for checkedDay in checkedDayList{
             if(checkedDay.value){
-                repeatTableViewCell.titleLabel.text?.append(contentsOf: "\(dict[checkedDay.key]!) ")
+                repeatTableViewCell.choiceLabel.text?.append(contentsOf: "\(dict[checkedDay.key]!) ")
             }
         }
         
         // 아무것도 체크되지 않았으면 안함 텍스트로 변경
-        if(repeatTableViewCell.titleLabel.text?.count == 0){
-            repeatTableViewCell.titleLabel.text = "안 함"
+        if(repeatTableViewCell.choiceLabel.text?.count == 0){
+            repeatTableViewCell.choiceLabel.text = "안 함"
         }
         
         tableView.reloadData()
+        
+        
     }
         
 }
