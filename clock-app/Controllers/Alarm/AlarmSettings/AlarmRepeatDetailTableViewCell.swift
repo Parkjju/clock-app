@@ -13,10 +13,14 @@ class AlarmRepeatDetailTableViewCell: UITableViewCell {
     
     var day: Int?{
         didSet{
-            setupUI()
+            setupDay()
         }
     }
-    var isCheck: Bool = false
+    var isCheck: Bool?{
+        didSet{
+            setupChecked()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +29,9 @@ class AlarmRepeatDetailTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    func setupUI(){
+    func setupDay(){
         switch day{
         case 0:
             choiceLabel.text = "일요일마다"
@@ -48,6 +51,12 @@ class AlarmRepeatDetailTableViewCell: UITableViewCell {
             break
         }
         
+    }
+    
+    func setupChecked(){
+        guard let isCheck = isCheck else {
+            return
+        }
         if(isCheck){
             self.accessoryType = .checkmark
         }else{
