@@ -258,7 +258,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="알람" textAlignment="right" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HBN-7I-w61">
-                                                    <rect key="frame" x="277" y="5" width="56" height="34"/>
+                                                    <rect key="frame" x="62" y="5" width="271" height="34"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -270,6 +270,7 @@
                                             <constraints>
                                                 <constraint firstItem="WcX-K5-Wk5" firstAttribute="centerY" secondItem="9Sk-i1-sB4" secondAttribute="centerY" id="JH7-Wz-Lx8"/>
                                                 <constraint firstItem="WcX-K5-Wk5" firstAttribute="leading" secondItem="9Sk-i1-sB4" secondAttribute="leadingMargin" id="ZJC-i3-Lhh"/>
+                                                <constraint firstItem="HBN-7I-w61" firstAttribute="leading" secondItem="WcX-K5-Wk5" secondAttribute="trailing" id="emR-CL-DaA"/>
                                                 <constraint firstItem="HBN-7I-w61" firstAttribute="centerY" secondItem="9Sk-i1-sB4" secondAttribute="centerY" id="hP3-qf-PBC"/>
                                                 <constraint firstAttribute="trailing" secondItem="HBN-7I-w61" secondAttribute="trailing" constant="20" id="l2I-3l-v02"/>
                                             </constraints>
