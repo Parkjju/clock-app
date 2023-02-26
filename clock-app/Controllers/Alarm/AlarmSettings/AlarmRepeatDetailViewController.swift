@@ -23,6 +23,16 @@ class AlarmRepeatDetailViewController: UIViewController {
         6: "토"
     ]
     
+    var checkedDayList: [Int: Bool] = [
+        0: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +65,7 @@ extension AlarmRepeatDetailViewController: UITableViewDataSource{
         }
         
         cell.day = indexPath.row
-        cell.isCheck = true
+        cell.isCheck = checkedDayList[indexPath.row]!
         cell.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         cell.tintColor = .systemOrange
         
