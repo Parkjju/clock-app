@@ -497,22 +497,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-Y8-Thk">
-                                <rect key="frame" x="20" y="56" width="353" height="400"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="20" y="116" width="353" height="200"/>
+                                <color key="backgroundColor" name="ModalSettingTableViewColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="yRS-jT-9xc"/>
+                                    <constraint firstAttribute="height" constant="200" id="yRS-jT-9xc"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="353" height="42.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="42.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
+                                                    <rect key="frame" x="19.999999999999996" y="11.000000000000002" width="41.666666666666657" height="20.666666666666671"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EKk-tv-ehs" secondAttribute="bottom" id="0G0-oF-2np"/>
+                                                <constraint firstItem="EKk-tv-ehs" firstAttribute="top" secondItem="SgW-xF-veb" secondAttribute="topMargin" id="3Qk-NK-6MK"/>
+                                                <constraint firstItem="EKk-tv-ehs" firstAttribute="leading" secondItem="SgW-xF-veb" secondAttribute="leadingMargin" id="6XN-by-ljX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <connections>
+                                            <outlet property="mainLabel" destination="EKk-tv-ehs" id="JkW-BW-WdM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XQd-6X-k7b"/>
                         <color key="backgroundColor" name="ModalColor"/>
                         <constraints>
                             <constraint firstItem="XQd-6X-k7b" firstAttribute="trailing" secondItem="bnj-Y8-Thk" secondAttribute="trailing" constant="20" id="Ia8-UB-xYm"/>
-                            <constraint firstItem="bnj-Y8-Thk" firstAttribute="top" secondItem="XQd-6X-k7b" secondAttribute="top" id="hhC-7U-3nO"/>
+                            <constraint firstItem="bnj-Y8-Thk" firstAttribute="top" secondItem="XQd-6X-k7b" secondAttribute="top" constant="60" id="hhC-7U-3nO"/>
                             <constraint firstItem="bnj-Y8-Thk" firstAttribute="leading" secondItem="XQd-6X-k7b" secondAttribute="leading" constant="20" id="ifg-5h-7wk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DHQ-0x-Ld8"/>
+                    <connections>
+                        <outlet property="tableView" destination="bnj-Y8-Thk" id="YCR-P3-Ywx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDf-K9-UWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -684,6 +716,9 @@
         <image name="timer" catalog="system" width="128" height="123"/>
         <namedColor name="ModalColor">
             <color red="0.1289999932050705" green="0.12200000137090683" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="ModalSettingTableViewColor">
+            <color red="0.20399999618530273" green="0.19599999487400055" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
