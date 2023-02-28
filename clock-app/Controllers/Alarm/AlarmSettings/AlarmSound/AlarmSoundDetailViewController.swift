@@ -13,7 +13,11 @@ class AlarmSoundDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: AlarmSoundDelegate?
+    
     let sounds: [String] = ["daydream", "green", "playTime", "sea"]
+    
+    var checkedIndex:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +29,8 @@ class AlarmSoundDetailViewController: UIViewController {
     
     func setupNavigationBar(){
         self.title = "사운드"
-        self.navigationItem.leftBarButtonItem?.title = "뒤로"
         self.navigationController?.navigationBar.tintColor = .systemOrange
+        self.navigationItem.leftBarButtonItem?.title = "뒤로"
     }
     
     func setupUI(){
@@ -61,6 +65,9 @@ class AlarmSoundDetailViewController: UIViewController {
             print("audio load error")
             print(error.localizedDescription)
         }
+    }
+    deinit {
+        audioPlayer.stop()
     }
 
 }
@@ -105,10 +112,17 @@ extension AlarmSoundDetailViewController: UITableViewDelegate{
             cell.accessoryType = .none
         }
         
+        // 사운드 선택 대상 커스텀 델리게이트로 인덱스 전달
+        self.delegate?.soundUpdate(index: indexPath.row)
+        
+        // 액세서리 타입 지정 로직
         tableView.visibleCells[indexPath.row].accessoryType = .checkmark
         
+        // 선택 후 바로 deselect하여 깜빡이는 효과 부여
         tableView.deselectRow(at: indexPath, animated: true)
         
+        // 노래재생
         playSound(fileName: sounds[indexPath.row])
     }
 }
+
