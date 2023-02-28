@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
             endingLineNumber = "69"
-            landmarkName = "didReceiveMemoryWarning()"
+            landmarkName = "rightBarButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
