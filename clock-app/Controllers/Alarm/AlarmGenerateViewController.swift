@@ -35,6 +35,10 @@ class AlarmGenerateViewController: UIViewController {
         6: false,
     ]
     
+    var checkedIndex = 0
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,8 +95,14 @@ class AlarmGenerateViewController: UIViewController {
             }
             
             repeatVC.delegate = self
-            
             repeatVC.checkedDayList = self.checkedDayList
+        }else if(segue.identifier == "AlarmSoundDetailViewController"){
+            guard let soundVC = segue.destination as? AlarmSoundDetailViewController else {
+                return
+            }
+            
+            soundVC.delegate = self
+            soundVC.checkedIndex = self.checkedIndex
         }
     }
     
@@ -191,4 +201,25 @@ extension AlarmGenerateViewController: AlarmManagerDelegate{
         
 }
     
-
+extension AlarmGenerateViewController: AlarmSoundDelegate{
+    func soundUpdate(index: Int) {
+        
+        self.checkedIndex = index
+        guard let cell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else{
+            return
+        }
+        
+        switch index{
+        case 0:
+            cell.chosenLabel.text = "공상음"
+        case 1:
+            cell.chosenLabel.text = "녹차"
+        case 2:
+            cell.chosenLabel.text = "놀이 시간"
+        case 3:
+            cell.chosenLabel.text = "물결"
+        default:
+            break
+        }
+    }
+}
