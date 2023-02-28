@@ -31,7 +31,7 @@
 		C94A6D1529ADD6B200CF8720 /* part2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 888C0A1D29AD96BA00711EA7 /* part2.m4a */; };
 		C94A6D1629ADD6B200CF8720 /* part3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 888C0A1B29AD96BA00711EA7 /* part3.m4a */; };
 		C94A6D1729ADD6B200CF8720 /* part4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 888C0A1A29AD96B900711EA7 /* part4.m4a */; };
-		C94A6D1C29ADD9A100CF8720 /* 놀이 시간.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1829ADD9A100CF8720 /* 놀이 시간.mp3 */; };
+		C94A6D1C29ADD9A100CF8720 /* 놀이시간.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1829ADD9A100CF8720 /* 놀이시간.mp3 */; };
 		C94A6D1D29ADD9A100CF8720 /* 공상음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1929ADD9A100CF8720 /* 공상음.mp3 */; };
 		C94A6D1E29ADD9A100CF8720 /* 녹차.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1A29ADD9A100CF8720 /* 녹차.mp3 */; };
 		C94A6D1F29ADD9A100CF8720 /* 물결.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1B29ADD9A100CF8720 /* 물결.mp3 */; };
@@ -75,7 +75,7 @@
 		C94A6D0929A73A8F00CF8720 /* AlarmData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AlarmData+CoreDataClass.swift"; path = "../../../AlarmData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C94A6D0D29A73E0400CF8720 /* AlarmData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AlarmData+CoreDataProperties.swift"; path = "../../../AlarmData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C94A6D1029A899C500CF8720 /* AlarmSoundDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSoundDetailViewController.swift; sourceTree = "<group>"; };
-		C94A6D1829ADD9A100CF8720 /* 놀이 시간.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "놀이 시간.mp3"; sourceTree = "<group>"; };
+		C94A6D1829ADD9A100CF8720 /* 놀이시간.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "놀이시간.mp3"; sourceTree = "<group>"; };
 		C94A6D1929ADD9A100CF8720 /* 공상음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "공상음.mp3"; sourceTree = "<group>"; };
 		C94A6D1A29ADD9A100CF8720 /* 녹차.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "녹차.mp3"; sourceTree = "<group>"; };
 		C94A6D1B29ADD9A100CF8720 /* 물결.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "물결.mp3"; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			children = (
 				C94A6D1929ADD9A100CF8720 /* 공상음.mp3 */,
 				C94A6D1A29ADD9A100CF8720 /* 녹차.mp3 */,
-				C94A6D1829ADD9A100CF8720 /* 놀이 시간.mp3 */,
+				C94A6D1829ADD9A100CF8720 /* 놀이시간.mp3 */,
 				C94A6D1B29ADD9A100CF8720 /* 물결.mp3 */,
 				888C0A1C29AD96BA00711EA7 /* part1.m4a */,
 				888C0A1D29AD96BA00711EA7 /* part2.m4a */,
@@ -321,7 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94A6D1429ADD6B200CF8720 /* part1.m4a in Resources */,
-				C94A6D1C29ADD9A100CF8720 /* 놀이 시간.mp3 in Resources */,
+				C94A6D1C29ADD9A100CF8720 /* 놀이시간.mp3 in Resources */,
 				C94A6D1529ADD6B200CF8720 /* part2.m4a in Resources */,
 				C94A6D1F29ADD9A100CF8720 /* 물결.mp3 in Resources */,
 				C94A6D1629ADD6B200CF8720 /* part3.m4a in Resources */,
