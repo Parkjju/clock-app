@@ -9,7 +9,9 @@ import UIKit
 import AVFoundation
 
 class AlarmSoundDetailViewController: UIViewController {
-
+    
+    var audioPlayer: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,15 +27,20 @@ class AlarmSoundDetailViewController: UIViewController {
     }
     
     func displaySoundsAlert() {
-        let alert = UIAlertController(title: "Play Sound", message: nil, preferredStyle: UIAlertController.Style.alert)
-        for i in 1000..<1336 {
-            alert.addAction(UIAlertAction(title: "\(i)", style: .default, handler: {_ in
-                AudioServicesPlayAlertSound(UInt32(i))
-                self.displaySoundsAlert()
-            }))
+        guard let path = Bundle.main.path(forResource: "part1", ofType: "m4a") else {
+            return
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        
+        let url  = URL(fileURLWithFileSystemRepresentation: <#T##UnsafePointer<Int8>#>, isDirectory: <#T##Bool#>, relativeTo: <#T##URL?#>)
+        
+        do{
+            let sound = try AVAudioPlayer(contentsOf: url)
+            
+            
+            sound.play()
+        }catch{
+            print("audio load error")
+        }
     }
     
 
