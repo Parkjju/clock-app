@@ -92,3 +92,7 @@ protocol AlarmManagerDelegate{
     // Repeat setting view controller에서 자신의 테이블 뷰 중 repeat label에 세팅하고, 코어데이터에도 추후 저장해야됨.
     func repeatUpdate(index: Int)
 }
+
+protocol AlarmSoundDelegate{
+    func soundUpdate(index: Int)
+}
