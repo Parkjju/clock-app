@@ -13,7 +13,7 @@ class AlarmSoundDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let sounds: [String] = ["공상음", "녹차", "놀이 시간", "물결"]
+    let sounds: [String] = ["daydream", "green", "playTime", "sea"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,7 @@ class AlarmSoundDetailViewController: UIViewController {
                 return
             }
             
+            // play atTime 
             player.prepareToPlay()
             player.play()
         }catch{
@@ -70,8 +71,19 @@ extension AlarmSoundDetailViewController: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmSoundDetailTableViewCell", for: indexPath) as? AlarmSoundDetailTableViewCell else {
             return UITableViewCell()
         }
-        cell.text = sounds[indexPath.row]
-        
+        switch sounds[indexPath.row]{
+        case sounds[0]:
+            cell.text = "공상음"
+        case sounds[1]:
+            cell.text = "녹차"
+        case sounds[2]:
+            cell.text = "놀이 시간"
+        case sounds[3]:
+            cell.text = "물결"
+        default:
+            break
+        }
+        cell.accessoryType = .none
         
         return cell
         
@@ -96,5 +108,7 @@ extension AlarmSoundDetailViewController: UITableViewDelegate{
         tableView.visibleCells[indexPath.row].accessoryType = .checkmark
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        playSound(fileName: sounds[indexPath.row])
     }
 }
