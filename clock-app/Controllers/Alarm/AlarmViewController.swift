@@ -112,8 +112,23 @@ extension AlarmViewController: UITableViewDelegate{
     
     // MARK: - 인스턴스 생성 서치필요
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+
+        self.performSegue(withIdentifier: "AlarmViewController", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AlarmViewController", let indexPath = tableView.indexPathForSelectedRow{
+            
+            guard let destinationNavigationVC = segue.destination as? AlarmGenerateNavigationController else {
+                return
+            }
+            
+            guard let destinationVC = destinationNavigationVC.viewControllers.first as? AlarmGenerateViewController else {
+                return
+            }
+            
+            destinationVC.alarmData = alarmData[indexPath.row]
+        }
     }
     
 }

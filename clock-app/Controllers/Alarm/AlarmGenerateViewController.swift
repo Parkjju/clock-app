@@ -10,6 +10,8 @@ import UIKit
 class AlarmGenerateViewController: UIViewController {
 
     let alarmManager = AlarmManager.shared
+    var alarmData: AlarmData?
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -129,7 +131,10 @@ class AlarmGenerateViewController: UIViewController {
         tableView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         tableView.layer.cornerRadius = 10
         
+  
+        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -158,6 +163,52 @@ class AlarmGenerateViewController: UIViewController {
         tableView.endEditing(true)
     }
     
+    // 데이터 전달받고 셀 세팅하는 로직
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let _ = alarmData else {
+            return
+        }
+        setupRepeatCell()
+        setupLabelCell()
+        setupSoundCell()
+        setupAgainCell()
+    }
+    
+
+    func setupRepeatCell(){
+        guard let cell = tableView.visibleCells[0] as? AlarmSettingRepeatTableViewCell else {
+            return
+        }
+        
+        cell.choiceLabel.text = alarmData?.repeatDays
+    }
+    
+    func setupLabelCell(){
+        guard let cell = tableView.visibleCells[1] as? AlarmSettingLabelTableViewCell else {
+            return
+        }
+        
+        cell.textField.text = alarmData?.label
+    }
+    
+    func setupSoundCell(){
+        guard let cell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else {
+            return
+        }
+        
+        cell.chosenLabel.text = alarmData?.sound
+    }
+    
+    func setupAgainCell(){
+        guard let cell = tableView.visibleCells[3] as? AlarmSettingAgainTableViewCell else {
+            return
+        }
+        guard let isOn = alarmData?.isOn else {
+            return
+        }
+        cell.settingSwitch.isOn = isOn
+    }
 
 
 }
