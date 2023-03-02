@@ -49,7 +49,7 @@ class AlarmManager{
     }
     
     // 2. 코어데이터에 알람정보 저장하기
-    func saveAlarm(newData: AlarmData, completion: @escaping () -> Void){
+    func saveAlarm(isOn: Bool, time: Date, label: String, isAgain: Bool, repeatDays: String, sound: String , completion: @escaping () -> Void){
         guard let context = context else {
             print("saveAlarm: context load error")
             return
@@ -64,12 +64,12 @@ class AlarmManager{
             return
         }
         
-        newAlarm.isOn = newData.isOn
-        newAlarm.time = newData.time
-        newAlarm.label = newData.label
-        newAlarm.isAgain = newData.isAgain
-        newAlarm.repeatDays = newData.repeatDays
-        newAlarm.sound = newData.sound
+        newAlarm.isOn = isOn
+        newAlarm.time = time
+        newAlarm.label = label
+        newAlarm.isAgain = isAgain
+        newAlarm.repeatDays = repeatDays
+        newAlarm.sound = sound
         
         if(context.hasChanges){
             do{

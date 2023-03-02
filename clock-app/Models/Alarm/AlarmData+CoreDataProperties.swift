@@ -17,7 +17,7 @@ extension AlarmData {
     }
 
     @NSManaged public var isAgain: Bool
-    @NSManaged public var time: Int64
+    @NSManaged public var time: Date?
     @NSManaged public var sound: String?
     @NSManaged public var repeatDays: String?
     @NSManaged public var label: String?
