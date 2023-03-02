@@ -2,7 +2,7 @@
 //  WorldClockData+CoreDataClass.swift
 //  clock-app
 //
-//  Created by 박경준 on 2023/02/14.
+//  Created by 박경준 on 2023/03/02.
 //
 //
 

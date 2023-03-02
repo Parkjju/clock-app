@@ -2,7 +2,7 @@
 //  AlarmData+CoreDataClass.swift
 //  clock-app
 //
-//  Created by Jun on 2023/03/02.
+//  Created by 박경준 on 2023/03/02.
 //
 //
 
