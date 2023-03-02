@@ -110,6 +110,12 @@ extension AlarmViewController: UITableViewDelegate{
         return "삭제"
     }
     
+    // MARK: - 인스턴스 생성 서치필요
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
+    
 }
 
 extension AlarmViewController: UITableViewDataSource{
