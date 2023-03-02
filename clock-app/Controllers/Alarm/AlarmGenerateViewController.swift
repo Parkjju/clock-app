@@ -72,7 +72,7 @@ class AlarmGenerateViewController: UIViewController {
     // isOn - 알람 활성화 또는 비활성화
     // isAgain - 10분 있다가 다시 알림
     @objc func rightBarButtonTapped(){
-        var newAlarmData: AlarmData = AlarmData()
+        let newAlarmData: AlarmData = AlarmData()
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
         newAlarmData.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
         newAlarmData.repeatDays = getRepeatDays()
@@ -86,14 +86,11 @@ class AlarmGenerateViewController: UIViewController {
         }
     }
     
-    func getRepeatDays() -> [String]?{
+    func getRepeatDays() -> String?{
         let repeatCell = tableView.visibleCells[0] as! AlarmSettingRepeatTableViewCell
         
         if let text = repeatCell.choiceLabel.text, text != "안 함"{
-            let choiceArray = text.split(separator: " ").map { str in
-                String(str)
-            }
-            return choiceArray
+            return text
         }
 
         return nil
