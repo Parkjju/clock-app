@@ -9,11 +9,10 @@ import UIKit
 
 class AlarmGenerateViewController: UIViewController {
 
+    let alarmManager = AlarmManager.shared
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
-    var newAlarmData: AlarmData?
     
     let dict: [Int: String] = [
         0: "일",
@@ -70,9 +69,51 @@ class AlarmGenerateViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
+    // isOn - 알람 활성화 또는 비활성화
+    // isAgain - 10분 있다가 다시 알림
     @objc func rightBarButtonTapped(){
+        var newAlarmData: AlarmData = AlarmData()
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
-        newAlarmData?.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
+        newAlarmData.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
+        newAlarmData.repeatDays = getRepeatDays()
+        newAlarmData.label = getLabel()
+        newAlarmData.sound = getRingTone()
+        newAlarmData.isAgain = getIsAgain()
+        newAlarmData.isOn = true
+        
+        alarmManager.saveAlarm(newData: newAlarmData) {
+            self.dismiss(animated: true)
+        }
+    }
+    
+    func getRepeatDays() -> [String]?{
+        let repeatCell = tableView.visibleCells[0] as! AlarmSettingRepeatTableViewCell
+        
+        if let text = repeatCell.choiceLabel.text, text != "안 함"{
+            let choiceArray = text.split(separator: " ").map { str in
+                String(str)
+            }
+            return choiceArray
+        }
+
+        return nil
+    }
+    
+    func getLabel() -> String?{
+        let labelCell = tableView.visibleCells[1] as! AlarmSettingLabelTableViewCell
+        
+        return labelCell.textField.text
+    }
+    func getRingTone() -> String?{
+        let soundCell = tableView.visibleCells[2] as! AlarmSettingSoundTableViewCell
+        
+        return soundCell.chosenLabel.text
+    }
+    
+    func getIsAgain() -> Bool{
+        let againCell = tableView.visibleCells[3] as! AlarmSettingAgainTableViewCell
+        
+        return againCell.settingSwitch.isOn
     }
     
     func setupUI(){
