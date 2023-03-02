@@ -68,7 +68,7 @@ class AlarmManager{
         newAlarm.time = newData.time
         newAlarm.label = newData.label
         newAlarm.isAgain = newData.isAgain
-        newAlarm.isRepeat = newData.isRepeat
+        newAlarm.repeatDays = newData.repeatDays
         newAlarm.sound = newData.sound
         
         if(context.hasChanges){
