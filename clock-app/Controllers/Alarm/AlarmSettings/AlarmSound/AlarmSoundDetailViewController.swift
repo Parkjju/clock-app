@@ -67,7 +67,8 @@ class AlarmSoundDetailViewController: UIViewController {
         }
     }
     deinit {
-        audioPlayer.stop()
+        // 플레이어가 실행중이지 않으면 stop 메서드가 nil이다.
+        audioPlayer?.stop()
     }
 
 }
