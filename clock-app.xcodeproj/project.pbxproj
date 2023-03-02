@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE0299460CC00D20220 /* AlarmViewController.swift */; };
 		8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */; };
-		8873569729B01A2600726489 /* AlarmData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873569529B01A2600726489 /* AlarmData+CoreDataClass.swift */; };
-		8873569829B01A2600726489 /* AlarmData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873569629B01A2600726489 /* AlarmData+CoreDataProperties.swift */; };
 		8876F08C29A5826E003CB7D8 /* AlarmGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876F08B29A5826E003CB7D8 /* AlarmGenerateViewController.swift */; };
 		8876F08E29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876F08D29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift */; };
 		88BC72F429A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */; };
@@ -36,12 +34,15 @@
 		C94A6D1E29ADD9A100CF8720 /* green.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1A29ADD9A100CF8720 /* green.mp3 */; };
 		C94A6D1F29ADD9A100CF8720 /* sea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C94A6D1B29ADD9A100CF8720 /* sea.mp3 */; };
 		C94A6D2129ADDEF900CF8720 /* AlarmSoundDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D2029ADDEF900CF8720 /* AlarmSoundDetailTableViewCell.swift */; };
+		C94A6D4529B039C800CF8720 /* alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D4329B039C800CF8720 /* alarm.xcdatamodeld */; };
+		C94A6D4A29B03AC000CF8720 /* WorldClockData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D4629B03AC000CF8720 /* WorldClockData+CoreDataClass.swift */; };
+		C94A6D4B29B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D4729B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift */; };
+		C94A6D5429B03D6C00CF8720 /* AlarmData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D5229B03D6C00CF8720 /* AlarmData+CoreDataClass.swift */; };
+		C94A6D5529B03D6C00CF8720 /* AlarmData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D5329B03D6C00CF8720 /* AlarmData+CoreDataProperties.swift */; };
 		C95B474A299A101B002656CA /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4749299A101B002656CA /* WorldClockTableViewCell.swift */; };
 		C95B474C299A17F4002656CA /* WorldClockSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B474B299A17F4002656CA /* WorldClockSelectTableViewCell.swift */; };
 		C95B4750299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B474F299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift */; };
 		C95B475C299B453C002656CA /* WorldClockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B475B299B453C002656CA /* WorldClockManager.swift */; };
-		C95B4763299B4609002656CA /* WorldClockData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4761299B4609002656CA /* WorldClockData+CoreDataClass.swift */; };
-		C95B4764299B4609002656CA /* WorldClockData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4762299B4609002656CA /* WorldClockData+CoreDataProperties.swift */; };
 		C9C4E58A29A6FD25002E99B0 /* AlarmSettingRepeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4E58929A6FD25002E99B0 /* AlarmSettingRepeatTableViewCell.swift */; };
 		C9C4E58C29A6FD5E002E99B0 /* AlarmSettingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4E58B29A6FD5E002E99B0 /* AlarmSettingLabelTableViewCell.swift */; };
 		C9C4E58E29A6FD71002E99B0 /* AlarmSettingSoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4E58D29A6FD71002E99B0 /* AlarmSettingSoundTableViewCell.swift */; };
@@ -51,8 +52,6 @@
 /* Begin PBXFileReference section */
 		8807FBE0299460CC00D20220 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectViewController.swift; sourceTree = "<group>"; };
-		8873569529B01A2600726489 /* AlarmData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8873569629B01A2600726489 /* AlarmData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8876F08B29A5826E003CB7D8 /* AlarmGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmGenerateViewController.swift; sourceTree = "<group>"; };
 		8876F08D29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmGenerateNavigationController.swift; sourceTree = "<group>"; };
 		888C0A1A29AD96B900711EA7 /* part4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = part4.m4a; sourceTree = "<group>"; };
@@ -80,12 +79,15 @@
 		C94A6D1A29ADD9A100CF8720 /* green.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = green.mp3; sourceTree = "<group>"; };
 		C94A6D1B29ADD9A100CF8720 /* sea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sea.mp3; sourceTree = "<group>"; };
 		C94A6D2029ADDEF900CF8720 /* AlarmSoundDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSoundDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C94A6D4429B039C800CF8720 /* alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = alarm.xcdatamodel; sourceTree = "<group>"; };
+		C94A6D4629B03AC000CF8720 /* WorldClockData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorldClockData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C94A6D4729B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorldClockData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C94A6D5229B03D6C00CF8720 /* AlarmData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C94A6D5329B03D6C00CF8720 /* AlarmData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C95B4749299A101B002656CA /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
 		C95B474B299A17F4002656CA /* WorldClockSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectTableViewCell.swift; sourceTree = "<group>"; };
 		C95B474F299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectNavigationViewController.swift; sourceTree = "<group>"; };
 		C95B475B299B453C002656CA /* WorldClockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockManager.swift; sourceTree = "<group>"; };
-		C95B4761299B4609002656CA /* WorldClockData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WorldClockData+CoreDataClass.swift"; path = "../../../WorldClockData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C95B4762299B4609002656CA /* WorldClockData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WorldClockData+CoreDataProperties.swift"; path = "../../../WorldClockData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9C4E58929A6FD25002E99B0 /* AlarmSettingRepeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingRepeatTableViewCell.swift; sourceTree = "<group>"; };
 		C9C4E58B29A6FD5E002E99B0 /* AlarmSettingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		C9C4E58D29A6FD71002E99B0 /* AlarmSettingSoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingSoundTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,8 +159,8 @@
 		C92CBDC129A4A59A0000BF73 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				8873569629B01A2600726489 /* AlarmData+CoreDataProperties.swift */,
-				8873569529B01A2600726489 /* AlarmData+CoreDataClass.swift */,
+				C94A6D5229B03D6C00CF8720 /* AlarmData+CoreDataClass.swift */,
+				C94A6D5329B03D6C00CF8720 /* AlarmData+CoreDataProperties.swift */,
 				C92CBDC229A4A5AA0000BF73 /* AlarmManager.swift */,
 			);
 			path = Alarm;
@@ -193,6 +195,7 @@
 				C932AB3829939286006B3FFB /* LaunchScreen.storyboard */,
 				C932AB3B29939286006B3FFB /* Info.plist */,
 				C932AB3329939285006B3FFB /* clock_app.xcdatamodeld */,
+				C94A6D4329B039C800CF8720 /* alarm.xcdatamodeld */,
 			);
 			path = "clock-app";
 			sourceTree = "<group>";
@@ -244,8 +247,8 @@
 		C95B4753299B441A002656CA /* WorldClock */ = {
 			isa = PBXGroup;
 			children = (
-				C95B4761299B4609002656CA /* WorldClockData+CoreDataClass.swift */,
-				C95B4762299B4609002656CA /* WorldClockData+CoreDataProperties.swift */,
+				C94A6D4629B03AC000CF8720 /* WorldClockData+CoreDataClass.swift */,
+				C94A6D4729B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift */,
 				C95B475B299B453C002656CA /* WorldClockManager.swift */,
 			);
 			path = WorldClock;
@@ -346,29 +349,30 @@
 				C932AB2F29939285006B3FFB /* WorldClockViewController.swift in Sources */,
 				8876F08C29A5826E003CB7D8 /* AlarmGenerateViewController.swift in Sources */,
 				C9C4E59029A6FD90002E99B0 /* AlarmSettingAgainTableViewCell.swift in Sources */,
+				C94A6D4A29B03AC000CF8720 /* WorldClockData+CoreDataClass.swift in Sources */,
 				C932AB2B29939285006B3FFB /* AppDelegate.swift in Sources */,
 				8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */,
 				C95B475C299B453C002656CA /* WorldClockManager.swift in Sources */,
 				C932AB3529939285006B3FFB /* clock_app.xcdatamodeld in Sources */,
 				C92CBDBE29A4A3C70000BF73 /* AlarmTableViewCell.swift in Sources */,
+				C94A6D5429B03D6C00CF8720 /* AlarmData+CoreDataClass.swift in Sources */,
 				C9C4E58E29A6FD71002E99B0 /* AlarmSettingSoundTableViewCell.swift in Sources */,
 				C92CBDC329A4A5AA0000BF73 /* AlarmManager.swift in Sources */,
 				C932AB2D29939285006B3FFB /* SceneDelegate.swift in Sources */,
+				C94A6D4B29B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift in Sources */,
 				C95B474C299A17F4002656CA /* WorldClockSelectTableViewCell.swift in Sources */,
 				88BC72F629A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift in Sources */,
 				8807FBE1299460CC00D20220 /* AlarmViewController.swift in Sources */,
 				8876F08E29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift in Sources */,
 				C95B474A299A101B002656CA /* WorldClockTableViewCell.swift in Sources */,
-				C95B4763299B4609002656CA /* WorldClockData+CoreDataClass.swift in Sources */,
 				C92CBDBC29A49AB50000BF73 /* AlarmNavigationViewController.swift in Sources */,
-				8873569729B01A2600726489 /* AlarmData+CoreDataClass.swift in Sources */,
 				C95B4750299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift in Sources */,
 				C94A6D2129ADDEF900CF8720 /* AlarmSoundDetailTableViewCell.swift in Sources */,
-				8873569829B01A2600726489 /* AlarmData+CoreDataProperties.swift in Sources */,
+				C94A6D5529B03D6C00CF8720 /* AlarmData+CoreDataProperties.swift in Sources */,
 				88BC72F429A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift in Sources */,
 				C92CBDB7299E02710000BF73 /* WorldClockTabBarViewController.swift in Sources */,
-				C95B4764299B4609002656CA /* WorldClockData+CoreDataProperties.swift in Sources */,
 				C94A6D1129A899C500CF8720 /* AlarmSoundDetailViewController.swift in Sources */,
+				C94A6D4529B039C800CF8720 /* alarm.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +609,16 @@
 			);
 			currentVersion = C932AB3429939285006B3FFB /* clock_app.xcdatamodel */;
 			path = clock_app.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		C94A6D4329B039C800CF8720 /* alarm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C94A6D4429B039C800CF8720 /* alarm.xcdatamodel */,
+			);
+			currentVersion = C94A6D4429B039C800CF8720 /* alarm.xcdatamodel */;
+			path = alarm.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
