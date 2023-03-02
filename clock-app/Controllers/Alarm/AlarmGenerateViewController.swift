@@ -72,39 +72,49 @@ class AlarmGenerateViewController: UIViewController {
     // isOn - 알람 활성화 또는 비활성화
     // isAgain - 10분 있다가 다시 알림
     @objc func rightBarButtonTapped(){
-        let newAlarmData: AlarmData = AlarmData()
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
-        newAlarmData.time = Int64(datePicker.date.timeIntervalSince1970 - Date().timeIntervalSince1970)
-        newAlarmData.repeatDays = getRepeatDays()
-        newAlarmData.label = getLabel()
-        newAlarmData.sound = getRingTone()
-        newAlarmData.isAgain = getIsAgain()
-        newAlarmData.isOn = true
         
-        alarmManager.saveAlarm(newData: newAlarmData) {
+        
+        alarmManager.saveAlarm(isOn: true, time: datePicker.date, label: getLabel(), isAgain: getIsAgain(), repeatDays: getRepeatDays(), sound: getRingTone()) {
+            guard let tabVC = self.presentingViewController as? UITabBarController else{
+                return
+            }
+
+
+            guard let firstNavigationVC = tabVC.viewControllers![1] as? AlarmNavigationViewController else {
+                return
+            }
+
+            guard let firstVC = firstNavigationVC.viewControllers.first as? AlarmViewController else {
+                return
+            }
+            firstVC.tableView.reloadData()
+
             self.dismiss(animated: true)
         }
+        
+     
     }
     
-    func getRepeatDays() -> String?{
+    func getRepeatDays() -> String{
         let repeatCell = tableView.visibleCells[0] as! AlarmSettingRepeatTableViewCell
         
         if let text = repeatCell.choiceLabel.text, text != "안 함"{
             return text
         }
 
-        return nil
+        return ""
     }
     
-    func getLabel() -> String?{
+    func getLabel() -> String{
         let labelCell = tableView.visibleCells[1] as! AlarmSettingLabelTableViewCell
         
-        return labelCell.textField.text
+        return labelCell.textField.text ?? ""
     }
-    func getRingTone() -> String?{
+    func getRingTone() -> String{
         let soundCell = tableView.visibleCells[2] as! AlarmSettingSoundTableViewCell
         
-        return soundCell.chosenLabel.text
+        return soundCell.chosenLabel.text ?? ""
     }
     
     func getIsAgain() -> Bool{
