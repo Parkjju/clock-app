@@ -42,7 +42,7 @@ class AlarmViewController: UIViewController {
     }
     
     @objc func leftBarButtonTapped(){
-        print("left")
+        setEditing(!tableView.isEditing, animated: true)
     }
     
     @objc func rightBarButtonTapped(){
@@ -65,12 +65,47 @@ class AlarmViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touches begin")
     }
-
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        tableView.setEditing(editing, animated: true)
+        
+        let _ = tableView.visibleCells.map { cell in
+            guard let cell = cell as? AlarmTableViewCell else {
+                return
+            }
+            
+            
+            
+            if(editing){
+                cell.switchButton.isHidden = true
+            }else{
+                UIView.transition(with: cell.switchButton,duration: 0.5, options: .transitionCrossDissolve) {
+                    cell.switchButton.isHidden = false
+                }
+            }
+        }
+    }
 }
 
 extension AlarmViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
     }
     
 }
