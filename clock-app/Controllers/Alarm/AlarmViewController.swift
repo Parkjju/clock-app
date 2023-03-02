@@ -96,7 +96,9 @@ extension AlarmViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
-            
+            alarmManager.removeAlarm(deleteTarget: alarmData[indexPath.row]) {
+                tableView.reloadData()
+            }
         }
     }
     

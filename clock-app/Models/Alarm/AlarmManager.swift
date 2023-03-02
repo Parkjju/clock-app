@@ -83,6 +83,50 @@ class AlarmManager{
         
     }
     
+    func removeAlarm(deleteTarget: AlarmData, completion: @escaping () -> Void){
+        guard let context = context else {
+            print("removeAlarm: context load error")
+            completion()
+            return
+        }
+        
+        guard let targetId = deleteTarget.time else {
+            print("removeAlarm: remove target id error")
+            completion()
+            return
+        }
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+        request.predicate = NSPredicate(format: "time = %@", targetId as CVarArg)
+        
+        do{
+            guard let fetchData = try context.fetch(request) as? [AlarmData] else {
+                print("removeAlarm: fetch error")
+                completion()
+                return
+            }
+            guard let data = fetchData.first else {
+                print("removeAlarm: data indexing error")
+                completion()
+                return
+            }
+            context.delete(data)
+            
+            do{
+                try context.save()
+                completion()
+                
+            }catch{
+                print("removeAlarm: context save error")
+                completion()
+            }
+        } catch{
+            print("removeAlarm: some error")
+        }
+        
+        
+    }
+    
 }
 
 // 커스텀 델리게이트 패턴 정의
