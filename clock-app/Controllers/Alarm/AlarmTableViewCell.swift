@@ -36,11 +36,16 @@ class AlarmTableViewCell: UITableViewCell {
             print("?")
             return
         }
-
         
-        timeLabel.text = "\(alarmData.time)"
-        // 하드코딩
-        noonLabel.text = "오후"
+        // 시간 숫자 세팅
+        guard let time = alarmData.time else {
+            return
+        }
+        timeLabel.text = "\(setupTimeString(time: time).0)"
+        
+        // 오전오후 세팅
+        noonLabel.text = setupTimeString(time: time).1
+        
         descriptionLabel.text = alarmData.label
         switchButton.isOn = alarmData.isOn
         
@@ -60,6 +65,25 @@ class AlarmTableViewCell: UITableViewCell {
         
         
         
+    }
+    
+    func setupTimeString(time: Date) -> (String, String){
+        var isNoon = false
+        let timeString = "\(time)".split(separator: " ")[1]
+        var timeArray = timeString.split(separator: ":").map { str in
+            String(str)
+        }
+        
+        if(Int(timeArray[0])! > 12){
+            timeArray[0] = String(Int(timeArray[0])! - 12)
+            isNoon = true
+        }
+        
+        let _ = timeArray.popLast()
+        
+        let timeJoinedString = timeArray.joined(separator: ":")
+        
+        return (timeJoinedString, isNoon ? "오후" : "오전")
     }
 
     @IBAction func switchButtonTapped(_ sender: UISwitch) {
