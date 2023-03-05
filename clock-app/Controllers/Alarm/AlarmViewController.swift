@@ -112,9 +112,11 @@ extension AlarmViewController: UITableViewDelegate{
     
     // MARK: - 인스턴스 생성 서치필요
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
 
         self.performSegue(withIdentifier: "AlarmViewController", sender: self)
+        
+        // deselectRow 메서드 순서 변경
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,8 +131,51 @@ extension AlarmViewController: UITableViewDelegate{
             }
             
             destinationVC.alarmData = alarmData[indexPath.row]
+            destinationVC.loadViewIfNeeded()
+            
+            destinationVC.datePicker.setDate(alarmData[indexPath.row].time!, animated: false)
+            
+            destinationVC.tableView.reloadData()
+            
+            setupRepeatCell(generateTableView: destinationVC.tableView, alarm: alarmData[indexPath.row])
+            setupLabelCell(generateTableView: destinationVC.tableView, alarm: alarmData[indexPath.row])
+            setupSoundCell(generateTableView: destinationVC.tableView, alarm: alarmData[indexPath.row])
+            setupAgainCell(generateTableView: destinationVC.tableView, alarm: alarmData[indexPath.row])
         }
     }
+    
+    func setupRepeatCell(generateTableView: UITableView, alarm: AlarmData){
+        guard let cell = generateTableView.visibleCells[0] as? AlarmSettingRepeatTableViewCell else {
+            return
+        }
+        
+        cell.choiceLabel.text = alarm.repeatDays
+    }
+    
+    func setupLabelCell(generateTableView: UITableView, alarm: AlarmData){
+        guard let cell = generateTableView.visibleCells[1] as? AlarmSettingLabelTableViewCell else {
+            return
+        }
+        
+        cell.textField.text = alarm.label
+    }
+    
+    func setupSoundCell(generateTableView: UITableView, alarm: AlarmData){
+        guard let cell = generateTableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else {
+            return
+        }
+        
+        cell.chosenLabel.text = alarm.sound
+    }
+    
+    func setupAgainCell(generateTableView: UITableView, alarm: AlarmData){
+        guard let cell = generateTableView.visibleCells[3] as? AlarmSettingAgainTableViewCell else {
+            return
+        }
+        
+        cell.settingSwitch.isOn = alarm.isOn
+    }
+    
     
 }
 
