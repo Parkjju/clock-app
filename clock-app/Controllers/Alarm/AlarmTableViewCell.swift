@@ -69,7 +69,16 @@ class AlarmTableViewCell: UITableViewCell {
     
     func setupTimeString(time: Date) -> (String, String){
         var isNoon = false
-        let timeString = "\(time)".split(separator: " ")[1]
+        
+        // 코어데이터에 저장된 UTC를 KST로 변환하는 로직
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "HH:mm"
+        
+        // timeString 반환 로직
+        let timeString = dateFormatter.string(from: time)
+        
         var timeArray = timeString.split(separator: ":").map { str in
             String(str)
         }
@@ -79,11 +88,9 @@ class AlarmTableViewCell: UITableViewCell {
             isNoon = true
         }
         
-        let _ = timeArray.popLast()
         
-        let timeJoinedString = timeArray.joined(separator: ":")
         
-        return (timeJoinedString, isNoon ? "오후" : "오전")
+        return (timeString, isNoon ? "오후" : "오전")
     }
 
     @IBAction func switchButtonTapped(_ sender: UISwitch) {
