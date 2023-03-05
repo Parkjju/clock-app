@@ -75,6 +75,7 @@ class AlarmGenerateViewController: UIViewController {
     // isAgain - 10분 있다가 다시 알림
     @objc func rightBarButtonTapped(){
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
+
         
         alarmManager.saveAlarm(isOn: true, time: datePicker.date, label: getLabel(), isAgain: getIsAgain(), repeatDays: getRepeatDays(), sound: getRingTone()) {
             guard let tabVC = self.presentingViewController as? UITabBarController else{

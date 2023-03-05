@@ -90,7 +90,7 @@ class AlarmTableViewCell: UITableViewCell {
         
         
         
-        return (timeString, isNoon ? "오후" : "오전")
+        return (timeArray.joined(separator: ":"), isNoon ? "오후" : "오전")
     }
 
     @IBAction func switchButtonTapped(_ sender: UISwitch) {
