@@ -112,6 +112,7 @@ extension AlarmViewController: UITableViewDelegate{
     
     // MARK: - 인스턴스 생성 서치필요
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
 
         self.performSegue(withIdentifier: "AlarmViewController", sender: self)
     }
