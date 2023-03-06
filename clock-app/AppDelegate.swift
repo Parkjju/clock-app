@@ -7,15 +7,17 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
 
 
-
+    // 앱 런치스크린 띄운 뒤 푸시알람 권한 요청
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         sleep(2)
+        registerForPushNotifications()
         return true
     }
 
@@ -87,3 +89,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    // 푸시알람 권한요청 함수
+    func registerForPushNotifications() {
+          UNUserNotificationCenter.current().delegate = self
+          UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+              (granted, error) in
+              print("Permission granted: \(granted)")
+              // 1. Check if permission granted
+              guard granted else { return }
+              // 2. Attempt registration for remote notifications on the main thread
+              DispatchQueue.main.async {
+                  UIApplication.shared.registerForRemoteNotifications()
+              }
+          }
+      }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications with error: \(error)")
+    }
+
+}
