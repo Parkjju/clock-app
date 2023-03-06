@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import AVFAudio
+// audioPlayer는 전역적으로 선언되어 있음
 
 class AlarmGenerateViewController: UIViewController {
+    private var workItem: DispatchWorkItem?
 
     let alarmManager = AlarmManager.shared
     var alarmData: AlarmData?
@@ -74,7 +77,6 @@ class AlarmGenerateViewController: UIViewController {
     // isAgain - 10분 있다가 다시 알림
     @objc func rightBarButtonTapped(){
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
-
         
         alarmManager.saveAlarm(isOn: true, time: datePicker.date, label: getLabel(), isAgain: getIsAgain(), repeatDays: getRepeatDays(), sound: getRingTone()) {
             guard let tabVC = self.presentingViewController as? UITabBarController else{
@@ -94,7 +96,41 @@ class AlarmGenerateViewController: UIViewController {
             self.dismiss(animated: true)
         }
         
-     
+        // 타이머 설정
+        // 워크 아이템에 사운드 플레이어 객체 실행
+        // 메모리 누수 체크 필요
+        
+        // 벨소리 셀 불러오기
+        guard let soundCell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else {
+            return
+        }
+        
+        let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
+        
+        // 레이블에 접근해서 텍스트 뿌려주면 번들에러 발생
+        workItem = DispatchWorkItem(block: {
+            self.playSound(fileName: sound)
+            print("playing sound....!!!")
+        })
+        
+        // alarmData 없을때는 datePicker로 알람설정 하면 됨
+        // 1분 빼줘야 할수도 있음. 체감상 너무 늦게 함수가 실행된다
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(datePicker.date.timeIntervalSinceNow)) , execute: workItem!)
+    }
+    
+    func translateSoundName(text: String) -> String{
+        switch text{
+        case "공상음":
+            return "daydream"
+        case "녹차":
+            return "green"
+        case "놀이 시간":
+            return "playTime"
+        case "물결":
+            return "sea"
+        default:
+            return ""
+        }
     }
     
     func getRepeatDays() -> String{
@@ -162,12 +198,38 @@ class AlarmGenerateViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tableView.endEditing(true)
     }
+    
+    func playSound(fileName: String) {
+        if(fileName == ""){
+            return
+        }
+        guard let path = Bundle.main.path(forResource: fileName, ofType:"mp3") else {
+                print("bundle error")
+                return
+            
+        }
+            let url = URL(fileURLWithPath: path)
+        
+        do{
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            
+            guard let player = audioPlayer else {
+                print("player load error")
+                return
+            }
+            
+            // play atTime
+            player.prepareToPlay()
+            player.play()
+        }catch{
+            print("audio load error")
+            print(error.localizedDescription)
+        }
+    }
 
 }
 
 extension AlarmGenerateViewController: UITableViewDataSource{
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -192,7 +254,6 @@ extension AlarmGenerateViewController: UITableViewDataSource{
         default:
             print("?")
             return UITableViewCell()
-            
         }
         
     }
