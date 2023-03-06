@@ -84,6 +84,7 @@
 		C94A6D4729B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorldClockData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C94A6D5629B0690500CF8720 /* AlarmData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C94A6D5729B0690500CF8720 /* AlarmData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C94A6D5A29B6A7D100CF8720 /* clock-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "clock-app.entitlements"; sourceTree = "<group>"; };
 		C95B4749299A101B002656CA /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
 		C95B474B299A17F4002656CA /* WorldClockSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectTableViewCell.swift; sourceTree = "<group>"; };
 		C95B474F299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectNavigationViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 		C932AB2929939285006B3FFB /* clock-app */ = {
 			isa = PBXGroup;
 			children = (
+				C94A6D5A29B6A7D100CF8720 /* clock-app.entitlements */,
 				888C0A1329AD8ED900711EA7 /* SoundFiles */,
 				C932AB2A29939285006B3FFB /* AppDelegate.swift */,
 				C932AB2C29939285006B3FFB /* SceneDelegate.swift */,
@@ -518,6 +520,7 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "clock-app/clock-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5JQS3FU5R6;
@@ -551,6 +554,7 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "clock-app/clock-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5JQS3FU5R6;
