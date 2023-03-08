@@ -9,8 +9,9 @@ import Foundation
 import UserNotifications
 
 class NotificationService: NSObject{
-    private override init(){}
     
+    // 싱클톤 클래스
+    private override init(){}
     static let sharedInstance = NotificationService()
     
     let UNCurrentCenter = UNUserNotificationCenter.current()
@@ -18,7 +19,7 @@ class NotificationService: NSObject{
     func authorizeNotification(){
         let options: UNAuthorizationOptions = [.alert, .badge, .sound]
         
-        UNCurrentCenter.requestAuthorization(options: options){ granted, error in
+        UNCurrentCenter.requestAuthorization(options: options){ (granted, error) in
             print(error ?? "No UNAuthorize error")
             
             guard granted else {
