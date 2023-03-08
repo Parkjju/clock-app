@@ -11,6 +11,10 @@
 		8807FBE52994664600D20220 /* WorldClockSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807FBE42994664600D20220 /* WorldClockSelectViewController.swift */; };
 		8876F08C29A5826E003CB7D8 /* AlarmGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876F08B29A5826E003CB7D8 /* AlarmGenerateViewController.swift */; };
 		8876F08E29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876F08D29A582FE003CB7D8 /* AlarmGenerateNavigationController.swift */; };
+		8893412929B7FCE60078431E /* daydream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8893412529B7FCE50078431E /* daydream.wav */; };
+		8893412A29B7FCE60078431E /* green.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8893412629B7FCE60078431E /* green.wav */; };
+		8893412B29B7FCE60078431E /* sea.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8893412729B7FCE60078431E /* sea.wav */; };
+		8893412C29B7FCE60078431E /* playTime.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8893412829B7FCE60078431E /* playTime.wav */; };
 		88BC72F429A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */; };
 		88BC72F629A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC72F529A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift */; };
 		C92CBDB7299E02710000BF73 /* WorldClockTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */; };
@@ -59,6 +63,10 @@
 		888C0A1B29AD96BA00711EA7 /* part3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = part3.m4a; sourceTree = "<group>"; };
 		888C0A1C29AD96BA00711EA7 /* part1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = part1.m4a; sourceTree = "<group>"; };
 		888C0A1D29AD96BA00711EA7 /* part2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = part2.m4a; sourceTree = "<group>"; };
+		8893412529B7FCE50078431E /* daydream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = daydream.wav; sourceTree = "<group>"; };
+		8893412629B7FCE60078431E /* green.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = green.wav; sourceTree = "<group>"; };
+		8893412729B7FCE60078431E /* sea.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sea.wav; sourceTree = "<group>"; };
+		8893412829B7FCE60078431E /* playTime.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playTime.wav; sourceTree = "<group>"; };
 		88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepeatDetailViewController.swift; sourceTree = "<group>"; };
 		88BC72F529A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepeatDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTabBarViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +136,10 @@
 				C94A6D1A29ADD9A100CF8720 /* green.mp3 */,
 				C94A6D1829ADD9A100CF8720 /* playTime.mp3 */,
 				C94A6D1B29ADD9A100CF8720 /* sea.mp3 */,
+				8893412529B7FCE50078431E /* daydream.wav */,
+				8893412629B7FCE60078431E /* green.wav */,
+				8893412829B7FCE60078431E /* playTime.wav */,
+				8893412729B7FCE60078431E /* sea.wav */,
 				888C0A1C29AD96BA00711EA7 /* part1.m4a */,
 				888C0A1D29AD96BA00711EA7 /* part2.m4a */,
 				888C0A1B29AD96BA00711EA7 /* part3.m4a */,
@@ -333,7 +345,11 @@
 				C94A6D1529ADD6B200CF8720 /* part2.m4a in Resources */,
 				C94A6D1F29ADD9A100CF8720 /* sea.mp3 in Resources */,
 				C94A6D1629ADD6B200CF8720 /* part3.m4a in Resources */,
+				8893412929B7FCE60078431E /* daydream.wav in Resources */,
 				C94A6D1E29ADD9A100CF8720 /* green.mp3 in Resources */,
+				8893412A29B7FCE60078431E /* green.wav in Resources */,
+				8893412C29B7FCE60078431E /* playTime.wav in Resources */,
+				8893412B29B7FCE60078431E /* sea.wav in Resources */,
 				C94A6D1729ADD6B200CF8720 /* part4.m4a in Resources */,
 				C94A6D1D29ADD9A100CF8720 /* daydream.mp3 in Resources */,
 				C932AB3A29939286006B3FFB /* LaunchScreen.storyboard in Resources */,
