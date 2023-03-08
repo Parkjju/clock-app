@@ -8,11 +8,17 @@
 import UIKit
 
 class WorldClockSelectViewController: UIViewController {
-    
-    
+
     @IBOutlet weak var tableView: UITableView!
     
-    var clockData: [(String, TimeZone)] = []
+    let sectionTitles = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ".map(String.init)
+    
+    var clockData: [(String, TimeZone)] = []{
+        didSet{
+            setClockDataSection()
+        }
+    }
+    lazy var clockDataWithSection: [String: [String]] = [:]
     
     let worldClockManager = WorldClockManager.shared
     
@@ -22,6 +28,32 @@ class WorldClockSelectViewController: UIViewController {
         setupNavigationBar()
         setupController()
         
+    }
+    
+    func setClockDataSection(){
+        let _ = clockData.map { (region, _) in
+            
+            // 초성 얻어내기
+            guard let initialConsonant = getInitialConsonant(text: region) else {
+                return
+            }
+            
+            // 초성 기준으로 섹션 데이터 만들기
+            if let _ = clockDataWithSection[initialConsonant] {
+//                print("OK")
+            }else{
+                clockDataWithSection[initialConsonant] = []
+            }
+            clockDataWithSection[initialConsonant]?.append(region)
+        }
+    }
+    
+    func getInitialConsonant(text: String) -> String? {
+        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
+
+        let value = ((firstChar - 0xAC00) / 28 ) / 21
+
+        return String(format:"%C", value + 0x1100)
     }
     
     func setupNavigationBar(){
@@ -49,9 +81,29 @@ class WorldClockSelectViewController: UIViewController {
 }
 
 extension WorldClockSelectViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sectionTitles
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
+    }
+    
+    // numberOfSection 로직 수정 필요
+    func numberOfSections(in tableView: UITableView) -> Int {
         
-        return self.clockData.count
+        return sectionTitles.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let char = sectionTitles[section]
+        print(char)
+        print(clockDataWithSection[char])
+        return clockData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
