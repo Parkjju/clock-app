@@ -23,6 +23,7 @@ class WorldClockViewController: UIViewController {
         setupNavigationBar()
         setupController()
         
+        NotificationService.sharedInstance.authorizeNotification()
     }
     
     func setupNavigationBar(){
