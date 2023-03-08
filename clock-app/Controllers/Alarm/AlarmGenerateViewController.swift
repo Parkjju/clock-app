@@ -108,14 +108,46 @@ class AlarmGenerateViewController: UIViewController {
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
         
         // 레이블에 접근해서 텍스트 뿌려주면 번들에러 발생
-        workItem = DispatchWorkItem(block: {
-            self.playSound(fileName: sound)
-            print("playing sound....!!!")
-        })
+//        workItem = DispatchWorkItem(block: {
+//            self.playSound(fileName: sound)
+//            print("playing sound....!!!")
+//        })
         
         // alarmData 없을때는 datePicker로 알람설정 하면 됨
         // 1분 빼줘야 할수도 있음. 체감상 너무 늦게 함수가 실행된다
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(datePicker.date.timeIntervalSinceNow)) , execute: workItem!)
+        // dispatchQueue 말고 notification API 내에 커스텀 사운드 포함
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(datePicker.date.timeIntervalSinceNow)) , execute: workItem!)
+        
+        requestAlarmNotification(withInterval: datePicker.date.timeIntervalSinceNow, notificationId: "\(datePicker.date)")
+    }
+    
+    func requestAlarmNotification(repeatedly:Bool = false, withInterval interval: TimeInterval, notificationId: String){
+        let content = UNMutableNotificationContent()
+        content.title = "시계"
+        content.subtitle = "알람"
+        
+        // 알람소리 번들 로드
+        guard let soundCell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else {
+            return
+        }
+        
+        let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
+        
+        guard let path = Bundle.main.path(forResource: sound, ofType:"wav") else {
+                print("bundle error")
+                return
+        }
+        
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: path))
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: repeatedly)
+        
+        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+        
+        // remove All peding notification requests
+        NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
+        
+        NotificationService.sharedInstance.UNCurrentCenter.add(request)
     }
     
     func translateSoundName(text: String) -> String{
@@ -206,7 +238,6 @@ class AlarmGenerateViewController: UIViewController {
         guard let path = Bundle.main.path(forResource: fileName, ofType:"mp3") else {
                 print("bundle error")
                 return
-            
         }
             let url = URL(fileURLWithPath: path)
         
