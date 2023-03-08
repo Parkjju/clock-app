@@ -11,6 +11,7 @@ class WorldClockViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    
     let clockDataManager = WorldClockManager.shared
     var clockData: [WorldClockData]{
         get {
@@ -106,6 +107,7 @@ class WorldClockViewController: UIViewController {
 }
 
 extension WorldClockViewController: UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorldClockCell", for: indexPath) as! WorldClockTableViewCell
         

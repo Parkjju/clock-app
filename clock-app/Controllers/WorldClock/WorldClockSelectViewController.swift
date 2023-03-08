@@ -16,6 +16,7 @@ class WorldClockSelectViewController: UIViewController {
     var clockData: [(String, TimeZone)] = []{
         didSet{
             setClockDataSection()
+            
         }
     }
     lazy var clockDataWithSection: [String: [String]] = [:]
@@ -100,9 +101,9 @@ extension WorldClockSelectViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let char = sectionTitles[section]
-        print(char)
-        print(clockDataWithSection[char])
+        clockDataWithSection.map { (key: String, value: [String]) in
+            print(key == sectionTitles[section])
+        }
         return clockData.count
     }
     
