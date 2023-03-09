@@ -13,6 +13,10 @@ class WorldClockSelectViewController: UIViewController {
     
     let sectionTitles = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ".map(String.init)
     
+    // 배열로 제작해야됨 -> 조합형 유니코드 주의해서 배열로 각각 만들어야됨
+    // 1102 유니코드들을 담기 ->
+    // parsingSectionTitle -> rs
+    
     var clockData: [(String, TimeZone)] = []{
         didSet{
             setClockDataSection()
@@ -49,11 +53,17 @@ class WorldClockSelectViewController: UIViewController {
         }
     }
     
+    // 알파벳 -> 나열형태
+    // 한글 -> 조합형 ㄱ ㅏ  - 1 + 2
+    // 조합형 가 자체를 무언가로 관리
+    // 조합형 가의 ㄱ 과 ㄱ 자체의 코드가 다를 수 있다
+    // 0xAC00 -> ㄱㄴㄷㄹㅁㅂㅅ 자체 코드
     func getInitialConsonant(text: String) -> String? {
         guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
 
         let value = ((firstChar - 0xAC00) / 28 ) / 21
-
+        
+//        print(UnicodeScalar(String(format:"%C", value + 0x1100))!.utf16)
         return String(format:"%C", value + 0x1100)
     }
     
@@ -101,10 +111,17 @@ extension WorldClockSelectViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        clockDataWithSection.map { (key: String, value: [String]) in
-            print(key == sectionTitles[section])
-        }
+        
+        // 빨리 해결하고싶다 ->
+        // UTF가 다르게 나옴
+        
+        print(UnicodeScalar(sectionTitles[section])!.utf16)
+//        print(clockDataWithSection)
+//        return clockDataWithSection[sectionTitles[section]]
         return clockData.count
+
+        // parsingsectiontitle[section] -> ㄱ -> u1101
+//        return clockDataWithSection[sectionTitles[section]]!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
