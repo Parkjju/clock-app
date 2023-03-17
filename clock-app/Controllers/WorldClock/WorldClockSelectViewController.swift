@@ -11,6 +11,8 @@ class WorldClockSelectViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    lazy var searchBar = UISearchBar()
+    
     let sectionTitles = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
     
     // 배열로 제작해야됨 -> 조합형 유니코드 주의해서 배열로 각각 만들어야됨
@@ -36,6 +38,30 @@ class WorldClockSelectViewController: UIViewController {
     }
     func setupUI(){
         tableView.sectionIndexColor = .systemOrange
+        
+        setupSearchBar()
+    }
+    
+    func setupSearchBar(){
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = "검색"
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        
+        
+        
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.textColor = .white // 변경하고자 하는 색상으로 변경해주세요
+        }
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.attributedPlaceholder = NSAttributedString(string: "검색", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+
+        
+        navigationItem.titleView = searchBar
+        
     }
     
     func setClockDataSection(){
@@ -99,7 +125,7 @@ extension WorldClockSelectViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textColor = .lightGray
-            headerView.contentView.backgroundColor = UIColor(named: "")
+            headerView.contentView.backgroundColor = UIColor(named: "ModalColor")
          }
     }
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -148,5 +174,11 @@ extension WorldClockSelectViewController: UITableViewDelegate{
         worldClockManager.saveWorldClockData(newRegion: clockData[indexPath.row].0, newTimezone: clockData[indexPath.row].1) {
             self.dismiss(animated: true)
         }
+    }
+}
+
+extension WorldClockSelectViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("hi")
     }
 }

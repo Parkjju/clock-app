@@ -51,6 +51,7 @@ class WorldClockSelectNavigationViewController: UINavigationController {
         scrollAppearance.backgroundColor = UIColor(named: "ModalWithScrollColor")
         
         self.navigationBar.standardAppearance = scrollAppearance
+        self.navigationBar.compactAppearance = scrollAppearance
         
     }
 
