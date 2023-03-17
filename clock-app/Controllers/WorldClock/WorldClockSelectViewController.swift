@@ -13,6 +13,8 @@ class WorldClockSelectViewController: UIViewController {
     
     lazy var searchBar = UISearchBar()
     
+    var filteredData: [(String, TimeZone)] = []
+    
     let sectionTitles = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
     
     // 배열로 제작해야됨 -> 조합형 유니코드 주의해서 배열로 각각 만들어야됨
@@ -24,6 +26,7 @@ class WorldClockSelectViewController: UIViewController {
             setClockDataSection()
         }
     }
+    
     lazy var clockDataWithSection: [String: [String]] = [:]
     
     let worldClockManager = WorldClockManager.shared
@@ -129,18 +132,30 @@ extension WorldClockSelectViewController: UITableViewDataSource{
          }
     }
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if(filteredData.count != 0){
+            return nil
+        }
         return sectionTitles
     }
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        if(filteredData.count != 0){
+            return 0
+        }
         return index
     }
     
     // numberOfSection 로직 수정 필요
     func numberOfSections(in tableView: UITableView) -> Int {
+        if(filteredData.count != 0){
+            return 1
+        }
         return sectionTitles.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(filteredData.count != 0){
+            return nil
+        }
         return sectionTitles[section]
     }
     
@@ -148,7 +163,13 @@ extension WorldClockSelectViewController: UITableViewDataSource{
         guard let clockDataWithSectionArray = clockDataWithSection[sectionTitles[section]] else {
             return 0
         }
-        return clockDataWithSectionArray.count
+        
+        if(filteredData.count > 0){
+            return filteredData.count
+        }else{
+            return clockDataWithSectionArray.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,7 +178,13 @@ extension WorldClockSelectViewController: UITableViewDataSource{
         guard let clockDataWithSectionArray = clockDataWithSection[sectionTitles[indexPath.section]] else {
             return UITableViewCell()
         }
-        cell.data = clockDataWithSectionArray[indexPath.row]
+        if(filteredData.count == 0){
+            cell.data = clockDataWithSectionArray[indexPath.row]
+        }else{
+            
+            cell.data = filteredData[indexPath.row].0
+        }
+//        cell.data = clockDataWithSectionArray[indexPath.row]
         
         // 선택시 백그라운드 뷰 컬러 수정하는 부분
         let backgroundView = UIView()
@@ -171,14 +198,24 @@ extension WorldClockSelectViewController: UITableViewDataSource{
 
 extension WorldClockSelectViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        worldClockManager.saveWorldClockData(newRegion: clockData[indexPath.row].0, newTimezone: clockData[indexPath.row].1) {
-            self.dismiss(animated: true)
+        if(filteredData.count > 0){
+            worldClockManager.saveWorldClockData(newRegion: filteredData[indexPath.row].0, newTimezone: filteredData[indexPath.row].1) {
+                self.dismiss(animated: true)
+            }
+        }else{
+            worldClockManager.saveWorldClockData(newRegion: clockData[indexPath.row].0, newTimezone: clockData[indexPath.row].1) {
+                self.dismiss(animated: true)
+            }
         }
     }
 }
 
 extension WorldClockSelectViewController: UISearchBarDelegate{
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("hi")
+        filteredData = searchText.isEmpty ? clockData : clockData.filter({ tuple -> Bool in
+            return tuple.0.range(of: searchText, options:[.caseInsensitive]) != nil
+        })
+        tableView.reloadData()
     }
 }
