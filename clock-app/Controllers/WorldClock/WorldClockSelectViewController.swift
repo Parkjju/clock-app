@@ -11,7 +11,7 @@ class WorldClockSelectViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let sectionTitles = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ".map(String.init)
+    let sectionTitles = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
     
     // 배열로 제작해야됨 -> 조합형 유니코드 주의해서 배열로 각각 만들어야됨
     // 1102 유니코드들을 담기 ->
@@ -20,7 +20,6 @@ class WorldClockSelectViewController: UIViewController {
     var clockData: [(String, TimeZone)] = []{
         didSet{
             setClockDataSection()
-            
         }
     }
     lazy var clockDataWithSection: [String: [String]] = [:]
@@ -39,9 +38,11 @@ class WorldClockSelectViewController: UIViewController {
         let _ = clockData.map { (region, _) in
             
             // 초성 얻어내기
-            guard let initialConsonant = getInitialConsonant(text: region) else {
+            guard var initialConsonant = getInitialConsonant(text: region) else {
                 return
             }
+            
+            initialConsonant = convertJamoToChosung(jamo: initialConsonant)
             
             // 초성 기준으로 섹션 데이터 만들기
             if let _ = clockDataWithSection[initialConsonant] {
@@ -62,8 +63,7 @@ class WorldClockSelectViewController: UIViewController {
         guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
 
         let value = ((firstChar - 0xAC00) / 28 ) / 21
-        
-//        print(UnicodeScalar(String(format:"%C", value + 0x1100))!.utf16)
+    
         return String(format:"%C", value + 0x1100)
     }
     
@@ -103,7 +103,6 @@ extension WorldClockSelectViewController: UITableViewDataSource{
     
     // numberOfSection 로직 수정 필요
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return sectionTitles.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -111,23 +110,19 @@ extension WorldClockSelectViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // 빨리 해결하고싶다 ->
-        // UTF가 다르게 나옴
-        
-        print(UnicodeScalar(sectionTitles[section])!.utf16)
-//        print(clockDataWithSection)
-//        return clockDataWithSection[sectionTitles[section]]
-        return clockData.count
-
-        // parsingsectiontitle[section] -> ㄱ -> u1101
-//        return clockDataWithSection[sectionTitles[section]]!.count
+        guard let clockDataWithSectionArray = clockDataWithSection[sectionTitles[section]] else {
+            return 0
+        }
+        return clockDataWithSectionArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorldClockSelectCell", for: indexPath) as! WorldClockSelectTableViewCell
         
-        cell.data = clockData[indexPath.row].0
+        guard let clockDataWithSectionArray = clockDataWithSection[sectionTitles[indexPath.section]] else {
+            return UITableViewCell()
+        }
+        cell.data = clockDataWithSectionArray[indexPath.row]
         
         // 선택시 백그라운드 뷰 컬러 수정하는 부분
         let backgroundView = UIView()
