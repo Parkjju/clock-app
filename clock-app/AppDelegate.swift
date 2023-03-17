@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     // 앱 런치스크린 띄운 뒤 푸시알람 권한 요청
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        sleep(2)
         return true
     }
     
