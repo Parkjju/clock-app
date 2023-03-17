@@ -438,9 +438,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-Vf-8lP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-Vf-8lP">
                                 <rect key="frame" x="0.0" y="56" width="393" height="727"/>
                                 <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="separatorColor" name="CellSelectedColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockSelectCell" id="xgu-Eo-Ch3" customClass="WorldClockSelectTableViewCell" customModule="clock_app" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
@@ -450,7 +451,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkD-9t-JSV">
-                                                    <rect key="frame" x="10" y="12" width="28" height="20"/>
+                                                    <rect key="frame" x="20" y="12" width="28" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -458,7 +459,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BkD-9t-JSV" firstAttribute="centerY" secondItem="HEl-gq-1Ah" secondAttribute="centerY" id="OUz-lt-EiX"/>
-                                                <constraint firstItem="BkD-9t-JSV" firstAttribute="leading" secondItem="HEl-gq-1Ah" secondAttribute="leading" constant="10" id="XgM-Ml-VPH"/>
+                                                <constraint firstItem="BkD-9t-JSV" firstAttribute="leading" secondItem="HEl-gq-1Ah" secondAttribute="leading" constant="20" id="XgM-Ml-VPH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -504,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="42"/>
+                                        <rect key="frame" x="0.0" y="50" width="353" height="42.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="42.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="19.999999999999996" y="11" width="41.666666666666657" height="20"/>
+                                                    <rect key="frame" x="19.999999999999996" y="10.999999999999998" width="41.666666666666657" height="20.333333333333329"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -714,6 +715,9 @@
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="123"/>
+        <namedColor name="CellSelectedColor">
+            <color red="0.27500000596046448" green="0.27099999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="ModalColor">
             <color red="0.1289999932050705" green="0.12200000137090683" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
