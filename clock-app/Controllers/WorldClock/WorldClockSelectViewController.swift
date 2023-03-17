@@ -28,10 +28,14 @@ class WorldClockSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupUI()
         setupNavigationBar()
         setupController()
         
+    }
+    func setupUI(){
+        tableView.sectionIndexColor = .systemOrange
     }
     
     func setClockDataSection(){
@@ -92,7 +96,12 @@ class WorldClockSelectViewController: UIViewController {
 }
 
 extension WorldClockSelectViewController: UITableViewDataSource{
-    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = .lightGray
+            headerView.contentView.backgroundColor = UIColor(named: "")
+         }
+    }
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sectionTitles
     }
@@ -136,8 +145,6 @@ extension WorldClockSelectViewController: UITableViewDataSource{
 
 extension WorldClockSelectViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    
         worldClockManager.saveWorldClockData(newRegion: clockData[indexPath.row].0, newTimezone: clockData[indexPath.row].1) {
             self.dismiss(animated: true)
         }
