@@ -15,6 +15,7 @@ class AlarmGenerateViewController: UIViewController {
     let alarmManager = AlarmManager.shared
     var alarmData: AlarmData?
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
