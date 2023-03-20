@@ -19,7 +19,7 @@ class StopWatchViewController: UIViewController {
     
     var isStarted: Bool = false
     
-    var labArray: [String] = ["00:00.87"]
+    var labArray: [String] = []
     
     var elapsedMiliSecond = 0
     var elapsedSecond = 0
@@ -35,6 +35,9 @@ class StopWatchViewController: UIViewController {
     func setupUI(){
         resetButton.layer.cornerRadius = 40
         startButton.layer.cornerRadius = 40
+        resetButton.setTitle("랩", for: .disabled)
+        resetButton.setTitle("랩", for: .normal)
+        resetButton.isEnabled = false
         
     }
     
@@ -44,20 +47,32 @@ class StopWatchViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        timer.invalidate()
+        if(labArray.count == 0){
+            labArray.append("")
+        }
         
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        createTimer()
         
         isStarted = !isStarted
         if(isStarted){
+            resetButton.isEnabled = true
+            resetButton.setTitle("랩", for: .normal)
             startButton.setTitle("중단", for: .normal)
             startButton.backgroundColor = UIColor(named: "stopColor")
             startButton.setTitleColor(UIColor(named: "stopTextColor"), for: .normal)
         }else{
+            timer.invalidate()
+            resetButton.isEnabled = true
+            resetButton.setTitle("재설정", for: .normal)
             startButton.setTitle("시작", for: .normal)
             startButton.setTitleColor( #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 0.76), for: .normal)
             startButton.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.8196078431, blue: 0.3450980392, alpha: 0.3461299669)
         }
+    }
+    func createTimer(){
+        timer.invalidate()
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     @objc func updateTime(){
@@ -73,16 +88,34 @@ class StopWatchViewController: UIViewController {
             elapsedSecond = 0
         }
         
+        timeLabel.text = createTimeString()
+        tableView.reloadData()
+    }
+    
+    func createTimeString() -> String{
         let miliSecondString = elapsedMiliSecond / 10 < 1 ? "0\(elapsedMiliSecond)" : "\(elapsedMiliSecond)"
         let secondString = elapsedSecond / 10 < 1 ? "0\(elapsedSecond)" : "\(elapsedSecond)"
         let minuteString = elapsedMinute / 10 < 1 ? "0\(elapsedMinute)" : "\(elapsedMinute)"
         
-        
-        timeLabel.text = "\(minuteString):\(secondString).\(miliSecondString)"
+        return "\(minuteString):\(secondString).\(miliSecondString)"
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
-        timer.invalidate()
+        if(!isStarted){
+            labArray.removeAll()
+            elapsedMinute = 0
+            elapsedSecond = 0
+            elapsedMiliSecond = 0
+            timeLabel.text = "00:00.00"
+            tableView.reloadData()
+            return
+        }
+        if(labArray.first! == ""){
+            let _ = labArray.popLast()
+            labArray.append(createTimeString())
+        }else{
+            labArray.append(createTimeString())
+        }
         
     }
     
@@ -101,7 +134,12 @@ extension StopWatchViewController: UITableViewDataSource{
         }
         
         cell.lapLabel.text = "랩 \(indexPath.row + 1)"
-        cell.timeLabel.text = "\(labArray[indexPath.row])"
+        if(indexPath.row == labArray.count - 1){
+            cell.timeLabel.text = timeLabel.text
+        }else{
+            cell.timeLabel.text = "\(labArray[indexPath.row])"
+        }
+        
         
         return cell
     }
