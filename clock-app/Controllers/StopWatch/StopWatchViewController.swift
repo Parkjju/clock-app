@@ -15,6 +15,10 @@ class StopWatchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var updatingCellIndexPath: IndexPath?
+    
     var timer = Timer()
     
     var isStarted: Bool = false
@@ -49,6 +53,7 @@ class StopWatchViewController: UIViewController {
     @IBAction func startButtonTapped(_ sender: UIButton) {
         if(labArray.count == 0){
             labArray.append("")
+            tableView.reloadData()
         }
         
         createTimer()
@@ -73,6 +78,7 @@ class StopWatchViewController: UIViewController {
         timer.invalidate()
         
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: .common)
     }
     
     @objc func updateTime(){
@@ -82,14 +88,20 @@ class StopWatchViewController: UIViewController {
             elapsedSecond += 1
             elapsedMiliSecond = 0
         }
-        
+
         if(elapsedSecond >= 60){
             elapsedMinute += 1
             elapsedSecond = 0
         }
+        DispatchQueue.global(qos:.background).async {[weak self] in
+            let text = self?.createTimeString()
+            let indexPath = self?.updatingCellIndexPath
+            DispatchQueue.main.async { [weak self] in
+                self?.timeLabel.text = text
+                self?.tableView.reloadRows(at: [indexPath!], with: .none)
+            }
+        }
         
-        timeLabel.text = createTimeString()
-        tableView.reloadData()
     }
     
     func createTimeString() -> String{
@@ -137,11 +149,12 @@ extension StopWatchViewController: UITableViewDataSource{
         
         cell.lapLabel.text = "랩 \(indexPath.row + 1)"
         if(indexPath.row == labArray.count - 1){
+            updatingCellIndexPath = indexPath
             cell.timeLabel.text = timeLabel.text
         }else{
             cell.timeLabel.text = "\(labArray[indexPath.row])"
         }
-        
+
         
         return cell
     }
