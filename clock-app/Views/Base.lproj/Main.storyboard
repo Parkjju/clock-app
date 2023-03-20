@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="42"/>
+                                        <rect key="frame" x="0.0" y="50" width="353" height="41.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="41.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="19.999999999999996" y="11" width="41.666666666666657" height="20"/>
+                                                    <rect key="frame" x="19.999999999999996" y="11.000000000000002" width="41.666666666666657" height="19.666666666666671"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -688,6 +688,7 @@
                     <tabBarItem key="tabBarItem" title="스톱워치" image="stopwatch.fill" catalog="system" id="xn9-ug-Az4"/>
                     <connections>
                         <outlet property="resetButton" destination="doD-QG-KHD" id="r3k-s5-1lZ"/>
+                        <outlet property="scrollView" destination="ATA-Ws-sHU" id="3J5-2V-vgg"/>
                         <outlet property="startButton" destination="cji-Os-BEG" id="E9Q-S0-BFi"/>
                         <outlet property="tableView" destination="0xY-Ks-yvG" id="2At-TW-mdf"/>
                         <outlet property="timeLabel" destination="Ioq-3d-cpp" id="auS-Ga-NuL"/>
