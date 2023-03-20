@@ -113,10 +113,12 @@ class StopWatchViewController: UIViewController {
         if(labArray.first! == ""){
             let _ = labArray.popLast()
             labArray.append(createTimeString())
+            labArray.append("")
         }else{
+            let _ = labArray.popLast()
             labArray.append(createTimeString())
+            labArray.append("")
         }
-        
     }
     
     // labArray count가 6 이상일때 컨텐츠뷰 heightAnchor 동적 조정 로직 필요
