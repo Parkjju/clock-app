@@ -21,6 +21,10 @@ class StopWatchViewController: UIViewController {
     
     var labArray: [String] = ["00:00.87"]
     
+    var elapsedMiliSecond = 0
+    var elapsedSecond = 0
+    var elapsedMinute = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,7 +46,7 @@ class StopWatchViewController: UIViewController {
     @IBAction func startButtonTapped(_ sender: UIButton) {
         timer.invalidate()
         
-        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         
         isStarted = !isStarted
         if(isStarted){
@@ -57,12 +61,24 @@ class StopWatchViewController: UIViewController {
     }
     
     @objc func updateTime(){
-        let currentDate = Date()
+        elapsedMiliSecond += 1
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "SS"
-        let millisecondString = dateFormatter.string(from: currentDate)
-        timeLabel.text = "00:00.\(millisecondString)"
+        if(elapsedMiliSecond >= 100){
+            elapsedSecond += 1
+            elapsedMiliSecond = 0
+        }
+        
+        if(elapsedSecond >= 60){
+            elapsedMinute += 1
+            elapsedSecond = 0
+        }
+        
+        let miliSecondString = elapsedMiliSecond / 10 < 1 ? "0\(elapsedMiliSecond)" : "\(elapsedMiliSecond)"
+        let secondString = elapsedSecond / 10 < 1 ? "0\(elapsedSecond)" : "\(elapsedSecond)"
+        let minuteString = elapsedMinute / 10 < 1 ? "0\(elapsedMinute)" : "\(elapsedMinute)"
+        
+        
+        timeLabel.text = "\(minuteString):\(secondString).\(miliSecondString)"
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
