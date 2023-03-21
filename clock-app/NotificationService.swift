@@ -35,7 +35,14 @@ class NotificationService: NSObject{
 extension NotificationService: UNUserNotificationCenterDelegate{
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("didReceive response")
+        switch response.actionIdentifier{
+        case UNNotificationDismissActionIdentifier:
+            print("dismiss")
+        case UNNotificationDefaultActionIdentifier:
+            print("default")
+        default:
+            break
+        }
         
         completionHandler()
     }
