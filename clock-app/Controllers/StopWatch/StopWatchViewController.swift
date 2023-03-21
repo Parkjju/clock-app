@@ -48,6 +48,7 @@ class StopWatchViewController: UIViewController {
     func setupController(){
         tableView.dataSource = self
         tableView.delegate = self
+        scrollView.delegate = self
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
@@ -77,12 +78,12 @@ class StopWatchViewController: UIViewController {
     func createTimer(){
         timer.invalidate()
         
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: .common)
     }
     
     @objc func updateTime(){
-        elapsedMiliSecond += 1
+        elapsedMiliSecond += 3
         
         if(elapsedMiliSecond >= 100){
             elapsedSecond += 1
@@ -93,15 +94,9 @@ class StopWatchViewController: UIViewController {
             elapsedMinute += 1
             elapsedSecond = 0
         }
-        DispatchQueue.global(qos:.background).async {[weak self] in
-            let text = self?.createTimeString()
-            let indexPath = self?.updatingCellIndexPath
-            DispatchQueue.main.async { [weak self] in
-                self?.timeLabel.text = text
-                self?.tableView.reloadRows(at: [indexPath!], with: .none)
-            }
-        }
         
+        timeLabel.text = createTimeString()
+        tableView.reloadData()
     }
     
     func createTimeString() -> String{
@@ -163,5 +158,13 @@ extension StopWatchViewController: UITableViewDataSource{
 extension StopWatchViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+}
+
+extension StopWatchViewController: UIScrollViewDelegate{
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate{
+            scrollView.setContentOffset(scrollView.contentOffset, animated: true)
+        }
     }
 }
