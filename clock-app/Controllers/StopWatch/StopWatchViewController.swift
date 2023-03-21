@@ -75,15 +75,17 @@ class StopWatchViewController: UIViewController {
             startButton.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.8196078431, blue: 0.3450980392, alpha: 0.3461299669)
         }
     }
+    
+    // 밀리세컨드 업데이트 로직 - 0.04초로 타협
     func createTimer(){
         timer.invalidate()
         
-        timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: .common)
     }
     
     @objc func updateTime(){
-        elapsedMiliSecond += 3
+        elapsedMiliSecond += 4
         
         if(elapsedMiliSecond >= 100){
             elapsedSecond += 1
