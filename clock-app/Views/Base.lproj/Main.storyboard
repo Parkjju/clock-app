@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jpw-Gh-vVY">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,41 +14,41 @@
             <objects>
                 <viewController storyboardIdentifier="AlarmViewController" id="HB4-xG-ow3" customClass="AlarmViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ANf-S8-xPV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hn1-cw-RAp">
-                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlarmTableViewCell" rowHeight="130" id="Bna-Qk-JP5" customClass="AlarmTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="130"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bna-Qk-JP5" id="2vy-Aq-6r7">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Cp-xcw">
-                                                    <rect key="frame" x="20.000000000000004" y="43.666666666666657" width="62.333333333333343" height="43"/>
+                                                    <rect key="frame" x="20" y="43.5" width="62.5" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4a-TD-Amr">
-                                                    <rect key="frame" x="20" y="91.666666666666671" width="353" height="21"/>
+                                                    <rect key="frame" x="20" y="92" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oFD-P6-aqN">
-                                                    <rect key="frame" x="324" y="41.333333333333336" width="51" height="31.000000000000007"/>
+                                                    <rect key="frame" x="345" y="41.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchButtonTapped:" destination="Bna-Qk-JP5" eventType="valueChanged" id="gud-eM-wqG"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3:08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="748-uX-5Cb">
-                                                    <rect key="frame" x="82.333333333333329" y="21" width="241.66666666666669" height="71.666666666666671"/>
+                                                    <rect key="frame" x="82.5" y="21" width="262.5" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -104,42 +104,42 @@
             <objects>
                 <viewController id="0yg-DD-5Nd" customClass="WorldClockViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ih8-n9-ygn">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
-                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockCell" rowHeight="102" id="Phh-Zj-Zug" customClass="WorldClockTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="102"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Phh-Zj-Zug" id="EcW-lz-C0D">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="102"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="오후" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe6-s1-VCX">
-                                                    <rect key="frame" x="197.33333333333334" y="38" width="62.000000000000028" height="43"/>
+                                                    <rect key="frame" x="218.5" y="37.5" width="62" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" text="3:31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3B-o9-hcm">
-                                                    <rect key="frame" x="259.33333333333331" y="15.333333333333336" width="103.66666666666669" height="71.666666666666657"/>
+                                                    <rect key="frame" x="280.5" y="15" width="103.5" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rce-PT-P5m">
-                                                    <rect key="frame" x="20" y="42" width="177.33333333333334" height="39"/>
+                                                    <rect key="frame" x="20" y="41.5" width="198.5" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘, +0시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vch-sZ-8VC">
-                                                    <rect key="frame" x="20" y="22.666666666666671" width="84" height="19.333333333333329"/>
+                                                    <rect key="frame" x="20" y="22" width="84" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -196,15 +196,15 @@
             <objects>
                 <viewController storyboardIdentifier="AlarmGenerateViewController" id="cbj-Uz-Yy6" customClass="AlarmGenerateViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NMf-xc-SA4">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="3NV-K4-o3L">
-                                <rect key="frame" x="0.0" y="56" width="393" height="216"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="216"/>
                                 <locale key="locale" localeIdentifier="ko_KR"/>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vkU-cO-4L4">
-                                <rect key="frame" x="20" y="272" width="353" height="200"/>
+                                <rect key="frame" x="20" y="272" width="374" height="200"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -213,21 +213,21 @@
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlarmSettingRepeatTableViewCell" textLabel="UjP-3S-by7" detailTextLabel="fmt-xu-rhP" style="IBUITableViewCellStyleValue1" id="hvC-qT-ZfH" customClass="AlarmSettingRepeatTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hvC-qT-ZfH" id="jUk-sr-K6Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="322.66666666666669" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="반복" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UjP-3S-by7">
-                                                    <rect key="frame" x="20" y="12.999999999999998" width="28" height="19.333333333333332"/>
+                                                    <rect key="frame" x="20" y="12" width="28" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="안 함" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fmt-xu-rhP">
-                                                    <rect key="frame" x="282.66666666666669" y="12.999999999999998" width="32" height="19.333333333333332"/>
+                                                    <rect key="frame" x="303.5" y="12" width="32" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,10 +245,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AlarmSettingLabelTableViewCell" id="TK0-8e-kNo" customClass="AlarmSettingLabelTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93.666667938232422" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="93.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TK0-8e-kNo" id="9Sk-i1-sB4">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-K5-Wk5">
@@ -258,7 +258,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="알람" textAlignment="right" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HBN-7I-w61">
-                                                    <rect key="frame" x="62" y="5" width="271" height="34"/>
+                                                    <rect key="frame" x="62" y="5" width="292" height="34"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -283,21 +283,21 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlarmSettingSoundTableViewCell" textLabel="eAn-Yr-AT0" detailTextLabel="gjW-kc-YGt" style="IBUITableViewCellStyleValue1" id="qat-oV-lHG" customClass="AlarmSettingSoundTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="137.33333587646484" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="137" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qat-oV-lHG" id="RoY-fX-XDr">
-                                            <rect key="frame" x="0.0" y="0.0" width="322.66666666666669" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="사운드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eAn-Yr-AT0">
-                                                    <rect key="frame" x="19.999999999999996" y="12.999999999999998" width="41.666666666666664" height="19.333333333333332"/>
+                                                    <rect key="frame" x="20" y="12" width="42" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="공상음" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gjW-kc-YGt">
-                                                    <rect key="frame" x="273" y="12.999999999999998" width="41.666666666666664" height="19.333333333333332"/>
+                                                    <rect key="frame" x="293.5" y="12" width="42" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -315,20 +315,20 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AlarmSettingAgainTableViewCell" id="jXO-dw-T19" customClass="AlarmSettingAgainTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="181.00000381469727" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="180.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jXO-dw-T19" id="k2X-dv-SCQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다시 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzS-Xu-9zT">
-                                                    <rect key="frame" x="19.999999999999996" y="12.333333333333334" width="59.666666666666657" height="19.333333333333329"/>
+                                                    <rect key="frame" x="20" y="12" width="60" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YoH-u3-8Gm">
-                                                    <rect key="frame" x="284" y="6.3333333333333321" width="51" height="30.999999999999996"/>
+                                                    <rect key="frame" x="305" y="6.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -375,21 +375,21 @@
             <objects>
                 <viewController storyboardIdentifier="AlarmRepeatDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VU9-At-vUD" customClass="AlarmRepeatDetailViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rC0-Wc-Qne">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RNm-0F-iLG">
-                                <rect key="frame" x="20" y="106" width="353" height="350"/>
+                                <rect key="frame" x="20" y="106" width="374" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="YRu-Yy-YSo"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmRepeatDetailTableViewCell" id="4zM-0z-HWz" customClass="AlarmRepeatDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4zM-0z-HWz" id="igT-Jq-96x">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월요일마다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-6W-XbR">
@@ -435,19 +435,19 @@
             <objects>
                 <viewController storyboardIdentifier="WorldClockSelectViewController" id="mug-5J-n6m" customClass="WorldClockSelectViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3V2-OU-clU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-Vf-8lP">
-                                <rect key="frame" x="0.0" y="56" width="393" height="727"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="782"/>
                                 <color key="backgroundColor" red="0.1294117719" green="0.1215686351" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" name="CellSelectedColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorldClockSelectCell" id="xgu-Eo-Ch3" customClass="WorldClockSelectTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xgu-Eo-Ch3" id="HEl-gq-1Ah">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkD-9t-JSV">
@@ -494,25 +494,25 @@
             <objects>
                 <viewController id="sVA-hM-cRv" customClass="AlarmSoundDetailViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HYH-hB-PRK">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-Y8-Thk">
-                                <rect key="frame" x="20" y="116" width="353" height="200"/>
+                                <rect key="frame" x="20" y="116" width="374" height="200"/>
                                 <color key="backgroundColor" name="ModalSettingTableViewColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="yRS-jT-9xc"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="42.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="42.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="19.999999999999996" y="10.999999999999998" width="41.666666666666657" height="20.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="20.5"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -556,17 +556,17 @@
             <objects>
                 <viewController id="y8s-EI-zhr" customClass="StopWatchViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X7O-7r-3FM">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="00:00.00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioq-3d-cpp">
-                                <rect key="frame" x="20" y="159" width="353" height="107.66666666666669"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="00:00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioq-3d-cpp">
+                                <rect key="frame" x="20" y="148" width="374" height="107.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="90"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doD-QG-KHD">
-                                <rect key="frame" x="20" y="346.66666666666669" width="80" height="80"/>
+                                <rect key="frame" x="20" y="335.5" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="L0X-rb-cxo"/>
@@ -582,7 +582,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cji-Os-BEG">
-                                <rect key="frame" x="293" y="346.66666666666669" width="80" height="80"/>
+                                <rect key="frame" x="314" y="335.5" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.18823529411764706" green="0.81960784313725488" blue="0.34509803921568627" alpha="0.34612996688741721" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="DJG-cd-1SD"/>
@@ -598,31 +598,31 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATA-Ws-sHU">
-                                <rect key="frame" x="0.0" y="446.66666666666674" width="393" height="322.33333333333326"/>
+                                <rect key="frame" x="0.0" y="435.5" width="414" height="377.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ro-jX-ZGv">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0xY-Ks-yvG">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StopWatchTableViewCell" id="dud-c9-AOV" customClass="StopWatchTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dud-c9-AOV" id="IXJ-wf-0ez">
-                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="랩 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abm-if-UOh">
-                                                                    <rect key="frame" x="20" y="12.333333333333334" width="25.333333333333329" height="19.333333333333329"/>
+                                                                    <rect key="frame" x="20" y="12" width="25.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.87" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoZ-Qb-xho">
-                                                                    <rect key="frame" x="303" y="12.333333333333334" width="70" height="19.333333333333329"/>
+                                                                    <rect key="frame" x="324" y="12" width="70" height="19.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="70" id="jAm-Kd-OqR"/>
                                                                     </constraints>
@@ -674,13 +674,13 @@
                         <constraints>
                             <constraint firstItem="QNR-i0-p3K" firstAttribute="trailing" secondItem="ATA-Ws-sHU" secondAttribute="trailing" id="7be-sQ-0oq"/>
                             <constraint firstItem="doD-QG-KHD" firstAttribute="leading" secondItem="Ioq-3d-cpp" secondAttribute="leading" id="9MX-ga-Fkf"/>
+                            <constraint firstItem="Ioq-3d-cpp" firstAttribute="leading" secondItem="QNR-i0-p3K" secondAttribute="leading" constant="20" id="BiP-Dl-rdI"/>
                             <constraint firstItem="QNR-i0-p3K" firstAttribute="trailing" secondItem="cji-Os-BEG" secondAttribute="trailing" constant="20" id="JFk-Mw-PBi"/>
+                            <constraint firstItem="QNR-i0-p3K" firstAttribute="trailing" secondItem="Ioq-3d-cpp" secondAttribute="trailing" constant="20" id="K6t-Lg-xf2"/>
                             <constraint firstItem="ATA-Ws-sHU" firstAttribute="top" secondItem="doD-QG-KHD" secondAttribute="bottom" constant="20" id="LeV-zH-SV8"/>
                             <constraint firstItem="QNR-i0-p3K" firstAttribute="bottom" secondItem="ATA-Ws-sHU" secondAttribute="bottom" id="Lu6-6R-nm6"/>
-                            <constraint firstItem="QNR-i0-p3K" firstAttribute="trailing" secondItem="Ioq-3d-cpp" secondAttribute="trailing" constant="20" id="PZ0-qA-Zaa"/>
                             <constraint firstItem="Ioq-3d-cpp" firstAttribute="top" secondItem="QNR-i0-p3K" secondAttribute="top" constant="100" id="QZr-UI-6hF"/>
                             <constraint firstItem="doD-QG-KHD" firstAttribute="top" secondItem="Ioq-3d-cpp" secondAttribute="bottom" constant="80" id="aKe-bP-Bcx"/>
-                            <constraint firstItem="Ioq-3d-cpp" firstAttribute="leading" secondItem="QNR-i0-p3K" secondAttribute="leading" constant="20" id="edA-rm-DFI"/>
                             <constraint firstItem="ATA-Ws-sHU" firstAttribute="leading" secondItem="QNR-i0-p3K" secondAttribute="leading" id="sUq-Kt-xeQ"/>
                             <constraint firstItem="cji-Os-BEG" firstAttribute="top" secondItem="Ioq-3d-cpp" secondAttribute="bottom" constant="80" id="tdu-W6-aDi"/>
                         </constraints>
@@ -703,7 +703,7 @@
             <objects>
                 <viewController id="e3u-Wk-iwx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eZT-uN-BNB">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="mzd-dc-vWx"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -743,7 +743,7 @@
                     <tabBarItem key="tabBarItem" title="알람" image="alarm.fill" catalog="system" id="9fr-Tn-Z18"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7Rq-LC-nbH">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -768,7 +768,7 @@
                     <tabBarItem key="tabBarItem" title="세계 시계" image="globe" catalog="system" id="e8A-J7-e5o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="PmT-Iq-Zad">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -793,7 +793,7 @@
                 <navigationController storyboardIdentifier="WorldClockSelectNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="I9n-Xu-s9k" customClass="WorldClockSelectNavigationViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p5D-ID-KfL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -823,7 +823,7 @@
                 <navigationController storyboardIdentifier="AlarmGenerateNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="19U-WV-22z" customClass="AlarmGenerateNavigationController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="khS-xV-iyq">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
