@@ -134,12 +134,12 @@ class AlarmGenerateViewController: UIViewController {
         
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
         
-        guard let path = Bundle.main.path(forResource: sound, ofType:"wav") else {
-                print("bundle error")
-                return
-        }
+//        guard let path = Bundle.main.path(forResource: sound, ofType:"wav") else {
+//                print("bundle error")
+//                return
+//        }
         
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: path))
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound).wav"))
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: repeatedly)
         
