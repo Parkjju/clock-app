@@ -47,6 +47,7 @@
 		C94A6D5F29B988C600CF8720 /* ParsingJaeum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6D5E29B988C600CF8720 /* ParsingJaeum.swift */; };
 		C94A6DA429C5642300CF8720 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6DA329C5642300CF8720 /* StopWatchViewController.swift */; };
 		C94A6DA629C5693400CF8720 /* StopWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6DA529C5693400CF8720 /* StopWatchTableViewCell.swift */; };
+		C94A6DA929CBC6B400CF8720 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A6DA829CBC6B400CF8720 /* TimerViewController.swift */; };
 		C95B474A299A101B002656CA /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B4749299A101B002656CA /* WorldClockTableViewCell.swift */; };
 		C95B474C299A17F4002656CA /* WorldClockSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B474B299A17F4002656CA /* WorldClockSelectTableViewCell.swift */; };
 		C95B4750299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B474F299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift */; };
@@ -101,6 +102,7 @@
 		C94A6D5E29B988C600CF8720 /* ParsingJaeum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingJaeum.swift; sourceTree = "<group>"; };
 		C94A6DA329C5642300CF8720 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
 		C94A6DA529C5693400CF8720 /* StopWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTableViewCell.swift; sourceTree = "<group>"; };
+		C94A6DA829CBC6B400CF8720 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		C95B4749299A101B002656CA /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
 		C95B474B299A17F4002656CA /* WorldClockSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectTableViewCell.swift; sourceTree = "<group>"; };
 		C95B474F299A1FB4002656CA /* WorldClockSelectNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSelectNavigationViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		C932AB41299392BE006B3FFB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C94A6DA729CBC6A900CF8720 /* Timer */,
 				C94A6DA129C5640C00CF8720 /* StopWatch */,
 				C92CBDBA29A49A690000BF73 /* Alarm */,
 				8807FBE22994661500D20220 /* WorldClock */,
@@ -284,6 +287,14 @@
 				C94A6DA529C5693400CF8720 /* StopWatchTableViewCell.swift */,
 			);
 			path = StopWatch;
+			sourceTree = "<group>";
+		};
+		C94A6DA729CBC6A900CF8720 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				C94A6DA829CBC6B400CF8720 /* TimerViewController.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		C95B4753299B441A002656CA /* WorldClock */ = {
@@ -402,6 +413,7 @@
 				C95B475C299B453C002656CA /* WorldClockManager.swift in Sources */,
 				C932AB3529939285006B3FFB /* clock_app.xcdatamodeld in Sources */,
 				C92CBDBE29A4A3C70000BF73 /* AlarmTableViewCell.swift in Sources */,
+				C94A6DA929CBC6B400CF8720 /* TimerViewController.swift in Sources */,
 				C94A6D5829B0690500CF8720 /* AlarmData+CoreDataClass.swift in Sources */,
 				C9C4E58E29A6FD71002E99B0 /* AlarmSettingSoundTableViewCell.swift in Sources */,
 				C92CBDC329A4A5AA0000BF73 /* AlarmManager.swift in Sources */,

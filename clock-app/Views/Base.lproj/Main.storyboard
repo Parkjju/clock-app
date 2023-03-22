@@ -701,14 +701,27 @@
         <!--타이머-->
         <scene sceneID="QBk-NI-LoH">
             <objects>
-                <viewController id="e3u-Wk-iwx" sceneMemberID="viewController">
+                <viewController id="e3u-Wk-iwx" customClass="TimerViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eZT-uN-BNB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gZ-dO-8Bh">
+                                <rect key="frame" x="0.0" y="48" width="414" height="216"/>
+                            </datePicker>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="mzd-dc-vWx"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1gZ-dO-8Bh" secondAttribute="trailing" id="HFN-WW-SFa"/>
+                            <constraint firstItem="1gZ-dO-8Bh" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" id="Tdf-h7-ymv"/>
+                            <constraint firstItem="1gZ-dO-8Bh" firstAttribute="leading" secondItem="eZT-uN-BNB" secondAttribute="leading" id="sZM-C2-IU3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="타이머" image="timer" catalog="system" id="Aqd-Ov-RcU"/>
+                    <connections>
+                        <outlet property="timePicker" destination="1gZ-dO-8Bh" id="0J3-E5-11d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo2-PU-vlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
