@@ -19,7 +19,8 @@ class TimerViewController: UIViewController {
     }
     
     func setupUI(){
-        timePicker.tintColor = .white
+        timePicker.setValue(UIColor.white, forKey: "textColor")
+        timePicker.locale = Locale(identifier: "ko_KR")
     }
     
 

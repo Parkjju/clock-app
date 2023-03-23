@@ -708,6 +708,7 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gZ-dO-8Bh">
                                 <rect key="frame" x="0.0" y="48" width="414" height="216"/>
+                                <locale key="locale" localeIdentifier="ko"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mzd-dc-vWx"/>
