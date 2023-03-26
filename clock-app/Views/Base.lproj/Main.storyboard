@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="20" y="11" width="42" height="20.5"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="20"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -706,22 +706,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gZ-dO-8Bh">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-cu-mXz">
                                 <rect key="frame" x="0.0" y="48" width="414" height="216"/>
-                                <locale key="locale" localeIdentifier="ko"/>
-                            </datePicker>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mzd-dc-vWx"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1gZ-dO-8Bh" secondAttribute="trailing" id="HFN-WW-SFa"/>
-                            <constraint firstItem="1gZ-dO-8Bh" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" id="Tdf-h7-ymv"/>
-                            <constraint firstItem="1gZ-dO-8Bh" firstAttribute="leading" secondItem="eZT-uN-BNB" secondAttribute="leading" id="sZM-C2-IU3"/>
+                            <constraint firstItem="A4x-cu-mXz" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" id="GeI-ol-wIw"/>
+                            <constraint firstItem="A4x-cu-mXz" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" id="dMI-Kb-fEF"/>
+                            <constraint firstAttribute="trailing" secondItem="A4x-cu-mXz" secondAttribute="trailing" id="mLa-p9-12T"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="타이머" image="timer" catalog="system" id="Aqd-Ov-RcU"/>
                     <connections>
-                        <outlet property="timePicker" destination="1gZ-dO-8Bh" id="0J3-E5-11d"/>
+                        <outlet property="timePicker" destination="A4x-cu-mXz" id="QcJ-pJ-Mjh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo2-PU-vlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
