@@ -8,6 +8,27 @@
 import UIKit
 
 class TimerViewController: UIViewController {
+    
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
+    
+    var isOn: Bool = false{
+        didSet{
+            if(isOn){
+                cancelButton.setTitleColor(.white, for: .normal)
+                startButton.setTitle("일시 정지", for: .normal)
+                startButton.setTitleColor(UIColor(named: "pauseTextColor"), for: .normal)
+                startButton.backgroundColor = UIColor(named:"pauseColor")
+
+            }else{
+                cancelButton.setTitleColor(.gray, for: .normal)
+            }
+        }
+    }
+    
+    var paused: Bool?
+    
     var time: [[Int]]{
         get{
             return setTime()
@@ -43,6 +64,13 @@ class TimerViewController: UIViewController {
     
     func setupUI(){
         timePicker.setValue(UIColor.white, forKey: "textColor")
+        
+        cancelButton.layer.cornerRadius = 40
+        startButton.layer.cornerRadius = 40
+        
+        cancelButton.setTitle("취소", for: .normal)
+        cancelButton.backgroundColor = UIColor(named: "ModalColor")
+        cancelButton.setTitleColor(.gray, for: .normal)
     }
     
     func setupPickerLabel(){
@@ -63,6 +91,34 @@ class TimerViewController: UIViewController {
         timePicker.delegate = self
         timePicker.dataSource = self
     }
+    
+    
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        isOn = false
+    }
+    
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        isOn = true
+        
+        guard let paused = paused else {
+            self.paused = true
+            return
+        }
+        
+        self.paused = !paused
+        
+        if(paused){
+            startButton.backgroundColor = UIColor(named:"startColor")
+            startButton.setTitleColor(UIColor(named:"startTextColor"), for: .normal)
+            startButton.setTitle("재개", for: .normal)
+        }else{
+            startButton.backgroundColor = UIColor(named:"pauseColor")
+            startButton.setTitleColor(UIColor(named:"pauseTextColor"), for: .normal)
+            startButton.setTitle("일시 정지", for: .normal)
+        }
+        
+    }
+    
 }
 
 extension TimerViewController: UIPickerViewDelegate{
@@ -96,10 +152,12 @@ extension UIPickerView{
         
         let fontSize:CGFloat = 20
         let labelWidth:CGFloat = containedView.bounds.width / CGFloat(self.numberOfComponents)
+        
         let x:CGFloat = self.frame.origin.x
         let y:CGFloat = (self.frame.size.height / 2) - (fontSize / 2)
+        
         for i in 0...self.numberOfComponents {
-            
+            // 0.1 0.2 0.3 .... -> 픽셀 아님!!
             if let label = labels[i] {
                 if(label.text!.count == 2){
                     label.frame = CGRect(x: x + labelWidth * CGFloat(i) + 36, y: y, width: labelWidth, height: fontSize)

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hn1-cw-RAp">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="42"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="20" y="11" width="42" height="20"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -709,17 +709,57 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-cu-mXz">
                                 <rect key="frame" x="0.0" y="48" width="414" height="216"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzu-Ff-oWz">
+                                <rect key="frame" x="20" y="344" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="JTr-Fg-0Zh"/>
+                                    <constraint firstAttribute="height" constant="80" id="yMN-ff-JcR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="재설정">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="e3u-Wk-iwx" eventType="touchUpInside" id="GZF-zJ-tFB"/>
+                                    <action selector="stopButtonTapped:" destination="y8s-EI-zhr" eventType="touchUpInside" id="bvM-zc-xEA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07z-uU-EnP">
+                                <rect key="frame" x="314" y="344" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.81960784310000001" blue="0.34509803919999998" alpha="0.34612996689999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="64X-D8-5kl"/>
+                                    <constraint firstAttribute="height" constant="80" id="zzC-m8-uWg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="시작">
+                                    <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="0.76000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="e3u-Wk-iwx" eventType="touchUpInside" id="R1Z-B7-uUd"/>
+                                    <action selector="startButtonTapped:" destination="y8s-EI-zhr" eventType="touchUpInside" id="Yv2-1p-NIr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mzd-dc-vWx"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="07z-uU-EnP" firstAttribute="top" secondItem="A4x-cu-mXz" secondAttribute="bottom" constant="80" id="ACn-hk-PKw"/>
                             <constraint firstItem="A4x-cu-mXz" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" id="GeI-ol-wIw"/>
+                            <constraint firstItem="mzd-dc-vWx" firstAttribute="trailing" secondItem="07z-uU-EnP" secondAttribute="trailing" constant="20" id="Kts-hp-u3U"/>
+                            <constraint firstItem="Vzu-Ff-oWz" firstAttribute="top" secondItem="A4x-cu-mXz" secondAttribute="bottom" constant="80" id="Mwk-xg-HEY"/>
                             <constraint firstItem="A4x-cu-mXz" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" id="dMI-Kb-fEF"/>
                             <constraint firstAttribute="trailing" secondItem="A4x-cu-mXz" secondAttribute="trailing" id="mLa-p9-12T"/>
+                            <constraint firstItem="Vzu-Ff-oWz" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" constant="20" id="v49-7a-Tpy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="타이머" image="timer" catalog="system" id="Aqd-Ov-RcU"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Vzu-Ff-oWz" id="iFh-pw-3eN"/>
+                        <outlet property="startButton" destination="07z-uU-EnP" id="D3g-zK-w35"/>
                         <outlet property="timePicker" destination="A4x-cu-mXz" id="QcJ-pJ-Mjh"/>
                     </connections>
                 </viewController>
