@@ -20,7 +20,7 @@ class TimerViewController: UIViewController {
                 startButton.setTitle("일시 정지", for: .normal)
                 startButton.setTitleColor(UIColor(named: "pauseTextColor"), for: .normal)
                 startButton.backgroundColor = UIColor(named:"pauseColor")
-
+                setupTimerUI()
             }else{
                 cancelButton.setTitleColor(.gray, for: .normal)
             }
@@ -117,6 +117,14 @@ class TimerViewController: UIViewController {
             startButton.setTitle("일시 정지", for: .normal)
         }
         
+    }
+    
+    func setupTimerUI(){
+        let timerView = UIView()
+        
+        view.addSubview(timerView)
+        timerView.leadingAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutXAxisAnchor>#>)
+        timerView.backgroundColor = .white
     }
     
 }
