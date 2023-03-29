@@ -12,6 +12,8 @@ class TimerViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var timerView: UIView!
+    @IBOutlet weak var timerInnerView: UIView!
     
     var isOn: Bool = false{
         didSet{
@@ -20,6 +22,9 @@ class TimerViewController: UIViewController {
                 startButton.setTitle("일시 정지", for: .normal)
                 startButton.setTitleColor(UIColor(named: "pauseTextColor"), for: .normal)
                 startButton.backgroundColor = UIColor(named:"pauseColor")
+                timePicker.isHidden = true
+                timerView.isHidden = false
+                
                 setupTimerUI()
             }else{
                 cancelButton.setTitleColor(.gray, for: .normal)
@@ -63,6 +68,7 @@ class TimerViewController: UIViewController {
     }
     
     func setupUI(){
+        timerView.isHidden = true
         timePicker.setValue(UIColor.white, forKey: "textColor")
         
         cancelButton.layer.cornerRadius = 40
@@ -120,11 +126,21 @@ class TimerViewController: UIViewController {
     }
     
     func setupTimerUI(){
-        let timerView = UIView()
+        timerView.backgroundColor = .systemOrange
+        timerView.clipsToBounds = true
+        timerView.layer.cornerRadius = timerView.layer.bounds.width / 2
         
-        view.addSubview(timerView)
-        timerView.leadingAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutXAxisAnchor>#>)
-        timerView.backgroundColor = .white
+        timerInnerView.backgroundColor = .black
+        timerInnerView.clipsToBounds = true
+        timerInnerView.layer.cornerRadius =  timerInnerView.layer.bounds.width / 2
+        
+        timePicker.alpha = 1
+        timerView.alpha = 0
+        
+        UIView.animate(withDuration: 0.6) {[weak self] in
+            self?.timePicker.alpha = 0
+            self?.timerView.alpha = 1
+        }
     }
     
 }
