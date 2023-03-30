@@ -51,7 +51,7 @@ class StopWatchViewController: UIViewController {
             timeLabel.font = UIFont.systemFont(ofSize: 45, weight: .thin)
             timeLabel.preferredMaxLayoutWidth = 280
         case 375: // iPhone 6, 6s, 7, 8, X, XS, 11 Pro, 12 Mini
-            timeLabel.font = UIFont.systemFont(ofSize: 90, weight: .thin)
+            timeLabel.font = UIFont.systemFont(ofSize: 86, weight: .thin)
             
         case 414: // iPhone 6 Plus, 6s Plus, 7 Plus, 8 Plus, XR, XS Max, 11, 11 Pro Max, 12, 12 Pro
             timeLabel.font = UIFont.systemFont(ofSize: 90, weight: .thin)

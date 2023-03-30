@@ -8,7 +8,7 @@
 import UIKit
 
 class AlarmSettingRepeatTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var choiceLabel: UILabel!
     
@@ -18,10 +18,10 @@ class AlarmSettingRepeatTableViewCell: UITableViewCell {
         // Initialization code
         setupUI()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -30,7 +30,7 @@ class AlarmSettingRepeatTableViewCell: UITableViewCell {
         self.choiceLabel.text = "안 함"
         self.createCustomCellDisclosureIndicator(chevronColor: .lightGray)
     }
-
+    
 }
 
 extension AlarmSettingRepeatTableViewCell {
