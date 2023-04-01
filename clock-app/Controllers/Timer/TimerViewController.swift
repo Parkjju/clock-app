@@ -15,6 +15,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerView: UIView!
     @IBOutlet weak var timerInnerView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var ringtoneSelectView: UIView!
     
     var timer = Timer()
     
@@ -92,6 +93,10 @@ class TimerViewController: UIViewController {
         cancelButton.setTitle("취소", for: .normal)
         cancelButton.backgroundColor = UIColor(named: "ModalColor")
         cancelButton.setTitleColor(.gray, for: .normal)
+        
+        ringtoneSelectView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
+        ringtoneSelectView.clipsToBounds = true
+        ringtoneSelectView.layer.cornerRadius = 10
     }
     
     func setupPickerLabel(){
