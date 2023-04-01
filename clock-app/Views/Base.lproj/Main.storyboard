@@ -810,6 +810,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="Vzu-Ff-oWz" id="iFh-pw-3eN"/>
                         <outlet property="startButton" destination="07z-uU-EnP" id="D3g-zK-w35"/>
+                        <outlet property="timeLabel" destination="AZe-ZO-jQ1" id="zMc-It-szH"/>
                         <outlet property="timePicker" destination="A4x-cu-mXz" id="QcJ-pJ-Mjh"/>
                         <outlet property="timerInnerView" destination="jOa-l6-LAh" id="H4s-c6-SWV"/>
                         <outlet property="timerView" destination="Hax-2y-7yc" id="1zd-qH-FQy"/>
