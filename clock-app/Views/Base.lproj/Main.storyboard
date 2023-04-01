@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="42"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="20" y="11" width="42" height="20"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -710,7 +710,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzu-Ff-oWz">
-                                <rect key="frame" x="20" y="464" width="80" height="80"/>
+                                <rect key="frame" x="20" y="434" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="JTr-Fg-0Zh"/>
@@ -727,7 +727,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07z-uU-EnP">
-                                <rect key="frame" x="314" y="464" width="80" height="80"/>
+                                <rect key="frame" x="314" y="434" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.81960784310000001" blue="0.34509803919999998" alpha="0.34612996689999997" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="64X-D8-5kl"/>
@@ -744,7 +744,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hax-2y-7yc">
-                                <rect key="frame" x="29" y="108" width="356" height="356"/>
+                                <rect key="frame" x="29" y="78" width="356" height="356"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOa-l6-LAh">
                                         <rect key="frame" x="10" y="10" width="336" height="336"/>
@@ -791,10 +791,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DL0-BL-xom">
-                                <rect key="frame" x="20" y="604" width="374" height="50"/>
+                                <rect key="frame" x="20" y="574" width="374" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머 종료 시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTK-Ka-l61">
-                                        <rect key="frame" x="20" y="15.5" width="91.5" height="19.5"/>
+                                        <rect key="frame" x="20" y="15.499999999999998" width="91.5" height="18.999999999999993"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -830,12 +830,12 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mzd-dc-vWx" firstAttribute="trailing" secondItem="DL0-BL-xom" secondAttribute="trailing" constant="20" id="DQU-Zs-EkL"/>
+                            <constraint firstItem="07z-uU-EnP" firstAttribute="top" secondItem="Vzu-Ff-oWz" secondAttribute="top" id="DhN-rb-DE4"/>
                             <constraint firstItem="Vzu-Ff-oWz" firstAttribute="top" secondItem="Hax-2y-7yc" secondAttribute="bottom" id="EE1-pw-zqc"/>
                             <constraint firstItem="A4x-cu-mXz" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" constant="60" id="GeI-ol-wIw"/>
                             <constraint firstItem="mzd-dc-vWx" firstAttribute="trailing" secondItem="07z-uU-EnP" secondAttribute="trailing" constant="20" id="Kts-hp-u3U"/>
-                            <constraint firstItem="Hax-2y-7yc" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" constant="60" id="LHk-Xw-71K"/>
-                            <constraint firstItem="Vzu-Ff-oWz" firstAttribute="top" secondItem="A4x-cu-mXz" secondAttribute="bottom" constant="140" id="Mwk-xg-HEY"/>
-                            <constraint firstItem="07z-uU-EnP" firstAttribute="top" secondItem="A4x-cu-mXz" secondAttribute="bottom" constant="140" id="VcQ-Sg-gx4"/>
+                            <constraint firstItem="Hax-2y-7yc" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" constant="30" id="LHk-Xw-71K"/>
+                            <constraint firstItem="Vzu-Ff-oWz" firstAttribute="top" secondItem="A4x-cu-mXz" secondAttribute="bottom" constant="110" id="Mwk-xg-HEY"/>
                             <constraint firstItem="Hax-2y-7yc" firstAttribute="centerX" secondItem="eZT-uN-BNB" secondAttribute="centerX" id="b61-2v-xiz"/>
                             <constraint firstItem="A4x-cu-mXz" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" id="dMI-Kb-fEF"/>
                             <constraint firstItem="DL0-BL-xom" firstAttribute="top" secondItem="Vzu-Ff-oWz" secondAttribute="bottom" constant="60" id="jid-KA-EZh"/>
