@@ -32,7 +32,19 @@ class TimerViewController: UIViewController {
         }
     }
     
-    var paused: Bool?
+    var paused: Bool?{
+        didSet{
+            if let paused = paused, paused{
+                startButton.backgroundColor = UIColor(named:"startColor")
+                startButton.setTitleColor(UIColor(named:"startTextColor"), for: .normal)
+                startButton.setTitle("재개", for: .normal)
+            }else{
+                startButton.backgroundColor = UIColor(named:"pauseColor")
+                startButton.setTitleColor(UIColor(named:"pauseTextColor"), for: .normal)
+                startButton.setTitle("일시 정지", for: .normal)
+            }
+        }
+    }
     
     var time: [[Int]]{
         get{
@@ -101,10 +113,16 @@ class TimerViewController: UIViewController {
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         isOn = false
+        paused = true
+        
+        resetTimerUI()
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        isOn = true
+        guard isOn == true else {
+            isOn = true
+            return
+        }
         
         guard let paused = paused else {
             self.paused = true
@@ -112,17 +130,6 @@ class TimerViewController: UIViewController {
         }
         
         self.paused = !paused
-        
-        if(paused){
-            startButton.backgroundColor = UIColor(named:"startColor")
-            startButton.setTitleColor(UIColor(named:"startTextColor"), for: .normal)
-            startButton.setTitle("재개", for: .normal)
-        }else{
-            startButton.backgroundColor = UIColor(named:"pauseColor")
-            startButton.setTitleColor(UIColor(named:"pauseTextColor"), for: .normal)
-            startButton.setTitle("일시 정지", for: .normal)
-        }
-        
     }
     
     func setupTimerUI(){
@@ -140,6 +147,17 @@ class TimerViewController: UIViewController {
         UIView.animate(withDuration: 0.6) {[weak self] in
             self?.timePicker.alpha = 0
             self?.timerView.alpha = 1
+        }
+    }
+    
+    func resetTimerUI(){
+        
+        timePicker.isHidden = false
+        timerView.isHidden = true
+        UIView.animate(withDuration: 0.6) { [weak self] in
+            self?.timerView.alpha = 0
+            self?.timePicker.alpha = 1
+            
         }
     }
     
