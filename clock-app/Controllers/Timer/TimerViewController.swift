@@ -14,6 +14,9 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timerView: UIView!
     @IBOutlet weak var timerInnerView: UIView!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    var timer = Timer()
     
     var isOn: Bool = false{
         didSet{
@@ -32,9 +35,9 @@ class TimerViewController: UIViewController {
         }
     }
     
-    var paused: Bool?{
+    var paused: Bool = false{
         didSet{
-            if let paused = paused, paused{
+            if(paused){
                 startButton.backgroundColor = UIColor(named:"startColor")
                 startButton.setTitleColor(UIColor(named:"startTextColor"), for: .normal)
                 startButton.setTitle("재개", for: .normal)
@@ -115,21 +118,33 @@ class TimerViewController: UIViewController {
         isOn = false
         paused = true
         
-        resetTimerUI()
+        resetTimer()
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        guard isOn == true else {
-            isOn = true
-            return
-        }
-        
-        guard let paused = paused else {
-            self.paused = true
-            return
-        }
         
         self.paused = !paused
+        
+        guard isOn == true else {
+            self.paused = false
+            isOn = true
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+            return
+        }
+        
+        if(paused){
+            timer.invalidate()
+        }else{
+            timer.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func updateTimeLabel(){
+        let hour = timePicker.selectedRow(inComponent: 0) / 10 < 1 ? "0\(timePicker.selectedRow(inComponent: 0))" : "\(timePicker.selectedRow(inComponent: 0))"
+        let minute = timePicker.selectedRow(inComponent: 1) / 10 < 1 ? "0\(timePicker.selectedRow(inComponent: 1))" : "\(timePicker.selectedRow(inComponent: 1))"
+        let second = timePicker.selectedRow(inComponent: 2) / 10 < 1 ? "0\(timePicker.selectedRow(inComponent: 2))" : "\(timePicker.selectedRow(inComponent: 2))"
+        
     }
     
     func setupTimerUI(){
@@ -150,14 +165,13 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func resetTimerUI(){
-        
+    func resetTimer(){
+        timer.invalidate()
         timePicker.isHidden = false
         timerView.isHidden = true
         UIView.animate(withDuration: 0.6) { [weak self] in
             self?.timerView.alpha = 0
             self?.timePicker.alpha = 1
-            
         }
     }
     
