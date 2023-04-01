@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="20"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -750,19 +750,19 @@
                                         <rect key="frame" x="10" y="10" width="336" height="336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37:58" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZe-ZO-jQ1">
-                                                <rect key="frame" x="61" y="104.5" width="214.5" height="107.5"/>
+                                                <rect key="frame" x="60.5" y="104.5" width="215" height="107"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="90"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 8:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLp-lL-WrP">
-                                                <rect key="frame" x="128" y="232" width="80" height="24"/>
+                                                <rect key="frame" x="128" y="231.5" width="80" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="q9H-38-d7r">
-                                                <rect key="frame" x="104" y="232.5" width="24" height="23.5"/>
+                                                <rect key="frame" x="104" y="232" width="24" height="23.5"/>
                                                 <color key="tintColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="1L5-IF-waJ"/>
@@ -790,10 +790,46 @@
                                     <constraint firstAttribute="width" secondItem="Hax-2y-7yc" secondAttribute="height" id="w8Q-5y-niL"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DL0-BL-xom">
+                                <rect key="frame" x="20" y="604" width="374" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머 종료 시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTK-Ka-l61">
+                                        <rect key="frame" x="20" y="15.5" width="91.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3n7-x6-fvT">
+                                        <rect key="frame" x="334" y="17" width="20" height="16.5"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="4Ei-5f-DME"/>
+                                            <constraint firstAttribute="width" constant="20" id="voK-wT-0ER"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="실행 중단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7Q-x9-aa6">
+                                        <rect key="frame" x="264" y="15" width="60" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="3n7-x6-fvT" firstAttribute="centerY" secondItem="DL0-BL-xom" secondAttribute="centerY" id="4Sp-pd-N1I"/>
+                                    <constraint firstItem="DTK-Ka-l61" firstAttribute="leading" secondItem="DL0-BL-xom" secondAttribute="leading" constant="20" id="CBS-4P-xpM"/>
+                                    <constraint firstItem="DTK-Ka-l61" firstAttribute="centerY" secondItem="DL0-BL-xom" secondAttribute="centerY" id="Sxp-qV-nam"/>
+                                    <constraint firstAttribute="trailing" secondItem="3n7-x6-fvT" secondAttribute="trailing" constant="20" id="URp-fl-cfH"/>
+                                    <constraint firstItem="D7Q-x9-aa6" firstAttribute="centerY" secondItem="DL0-BL-xom" secondAttribute="centerY" id="VMr-Gu-s6b"/>
+                                    <constraint firstAttribute="height" constant="50" id="W6I-73-TcL"/>
+                                    <constraint firstItem="3n7-x6-fvT" firstAttribute="leading" secondItem="D7Q-x9-aa6" secondAttribute="trailing" constant="10" id="nvv-bE-fFl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mzd-dc-vWx"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mzd-dc-vWx" firstAttribute="trailing" secondItem="DL0-BL-xom" secondAttribute="trailing" constant="20" id="DQU-Zs-EkL"/>
                             <constraint firstItem="Vzu-Ff-oWz" firstAttribute="top" secondItem="Hax-2y-7yc" secondAttribute="bottom" id="EE1-pw-zqc"/>
                             <constraint firstItem="A4x-cu-mXz" firstAttribute="top" secondItem="mzd-dc-vWx" secondAttribute="top" constant="60" id="GeI-ol-wIw"/>
                             <constraint firstItem="mzd-dc-vWx" firstAttribute="trailing" secondItem="07z-uU-EnP" secondAttribute="trailing" constant="20" id="Kts-hp-u3U"/>
@@ -802,13 +838,16 @@
                             <constraint firstItem="07z-uU-EnP" firstAttribute="top" secondItem="A4x-cu-mXz" secondAttribute="bottom" constant="140" id="VcQ-Sg-gx4"/>
                             <constraint firstItem="Hax-2y-7yc" firstAttribute="centerX" secondItem="eZT-uN-BNB" secondAttribute="centerX" id="b61-2v-xiz"/>
                             <constraint firstItem="A4x-cu-mXz" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" id="dMI-Kb-fEF"/>
+                            <constraint firstItem="DL0-BL-xom" firstAttribute="top" secondItem="Vzu-Ff-oWz" secondAttribute="bottom" constant="60" id="jid-KA-EZh"/>
                             <constraint firstAttribute="trailing" secondItem="A4x-cu-mXz" secondAttribute="trailing" id="mLa-p9-12T"/>
                             <constraint firstItem="Vzu-Ff-oWz" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" constant="20" id="v49-7a-Tpy"/>
+                            <constraint firstItem="DL0-BL-xom" firstAttribute="leading" secondItem="mzd-dc-vWx" secondAttribute="leading" constant="20" id="voS-Zb-y0x"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="타이머" image="timer" catalog="system" id="Aqd-Ov-RcU"/>
                     <connections>
                         <outlet property="cancelButton" destination="Vzu-Ff-oWz" id="iFh-pw-3eN"/>
+                        <outlet property="ringtoneSelectView" destination="DL0-BL-xom" id="2ax-jG-FKx"/>
                         <outlet property="startButton" destination="07z-uU-EnP" id="D3g-zK-w35"/>
                         <outlet property="timeLabel" destination="AZe-ZO-jQ1" id="zMc-It-szH"/>
                         <outlet property="timePicker" destination="A4x-cu-mXz" id="QcJ-pJ-Mjh"/>
@@ -948,6 +987,7 @@
     <resources>
         <image name="alarm.fill" catalog="system" width="123" height="128"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="123"/>
