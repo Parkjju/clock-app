@@ -151,21 +151,6 @@ class AlarmGenerateViewController: UIViewController {
         NotificationService.sharedInstance.UNCurrentCenter.add(request)
     }
     
-    func translateSoundName(text: String) -> String{
-        switch text{
-        case "공상음":
-            return "daydream"
-        case "녹차":
-            return "green"
-        case "놀이 시간":
-            return "playTime"
-        case "물결":
-            return "sea"
-        default:
-            return ""
-        }
-    }
-    
     func getRepeatDays() -> String{
         let repeatCell = tableView.visibleCells[0] as! AlarmSettingRepeatTableViewCell
         
