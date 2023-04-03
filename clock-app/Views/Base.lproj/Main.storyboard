@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hn1-cw-RAp">
-                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-i3-0md">
-                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="20.5"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -794,7 +794,7 @@
                                 <rect key="frame" x="20" y="574" width="374" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머 종료 시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTK-Ka-l61">
-                                        <rect key="frame" x="20" y="15.499999999999998" width="91.5" height="18.999999999999993"/>
+                                        <rect key="frame" x="20" y="15.5" width="91.5" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -848,16 +848,84 @@
                     <connections>
                         <outlet property="cancelButton" destination="Vzu-Ff-oWz" id="iFh-pw-3eN"/>
                         <outlet property="ringtoneSelectView" destination="DL0-BL-xom" id="2ax-jG-FKx"/>
+                        <outlet property="rintoneSelectView" destination="DL0-BL-xom" id="NHJ-Wc-hxR"/>
                         <outlet property="startButton" destination="07z-uU-EnP" id="D3g-zK-w35"/>
                         <outlet property="timeLabel" destination="AZe-ZO-jQ1" id="zMc-It-szH"/>
                         <outlet property="timePicker" destination="A4x-cu-mXz" id="QcJ-pJ-Mjh"/>
                         <outlet property="timerInnerView" destination="jOa-l6-LAh" id="H4s-c6-SWV"/>
                         <outlet property="timerView" destination="Hax-2y-7yc" id="1zd-qH-FQy"/>
+                        <segue destination="cd8-Hn-hTT" kind="presentation" identifier="TimerRingtoneSelectView" id="uPg-og-NMS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo2-PU-vlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1675.3623188405797" y="1386.8303571428571"/>
+        </scene>
+        <!--타이머 종료 시-->
+        <scene sceneID="Txm-Io-Gkl">
+            <objects>
+                <viewController id="h3e-jH-MeP" customClass="TimerRingtoneSelectViewController" customModule="clock_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="thA-Ac-C8K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VJU-zU-pg8">
+                                <rect key="frame" x="20" y="56" width="374" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerRingtoneSelectTableViewCell" id="iQQ-fE-Kzh" customClass="TimerRingtoneSelectTableViewCell" customModule="clock_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iQQ-fE-Kzh" id="a5T-0p-AfO">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Y-xq-UrT">
+                                                    <rect key="frame" x="50" y="12" width="39.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HDA-3V-VSK">
+                                                    <rect key="frame" x="20" y="14" width="20" height="16.5"/>
+                                                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="8WM-iQ-3sn"/>
+                                                        <constraint firstAttribute="height" constant="20" id="abc-PO-av3"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HDA-3V-VSK" firstAttribute="leading" secondItem="a5T-0p-AfO" secondAttribute="leading" constant="20" id="UTt-0k-jLL"/>
+                                                <constraint firstItem="Z1Y-xq-UrT" firstAttribute="leading" secondItem="HDA-3V-VSK" secondAttribute="trailing" constant="10" id="d4K-W8-C2b"/>
+                                                <constraint firstItem="HDA-3V-VSK" firstAttribute="centerY" secondItem="a5T-0p-AfO" secondAttribute="centerY" id="i8b-f8-FM1"/>
+                                                <constraint firstItem="Z1Y-xq-UrT" firstAttribute="centerY" secondItem="a5T-0p-AfO" secondAttribute="centerY" id="wPu-eF-zDb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="soundLabel" destination="Z1Y-xq-UrT" id="xeR-9s-F8S"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eYn-Un-4bv"/>
+                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <constraints>
+                            <constraint firstItem="eYn-Un-4bv" firstAttribute="trailing" secondItem="VJU-zU-pg8" secondAttribute="trailing" constant="20" id="5ch-hU-akV"/>
+                            <constraint firstItem="VJU-zU-pg8" firstAttribute="top" secondItem="eYn-Un-4bv" secondAttribute="top" id="EKF-Bx-aQw"/>
+                            <constraint firstItem="VJU-zU-pg8" firstAttribute="leading" secondItem="eYn-Un-4bv" secondAttribute="leading" constant="20" id="xZL-eS-BAb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="타이머 종료 시" id="Kwg-Em-nRK"/>
+                    <connections>
+                        <outlet property="tableView" destination="VJU-zU-pg8" id="wn9-7y-Hea"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cy2-lL-PEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3516" y="1387"/>
         </scene>
         <!--World Clock Tab Bar View Controller-->
         <scene sceneID="tKN-Et-qMg">
@@ -983,10 +1051,33 @@
             </objects>
             <point key="canvasLocation" x="3407" y="-671"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oBU-Jo-LaX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cd8-Hn-hTT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bWt-Lx-G0l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h3e-jH-MeP" kind="relationship" relationship="rootViewController" id="agx-ZS-33X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BWx-tJ-0hX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="1387"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alarm.fill" catalog="system" width="123" height="128"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
