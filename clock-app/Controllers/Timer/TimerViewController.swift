@@ -16,6 +16,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerInnerView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var ringtoneSelectView: UIView!
+    @IBOutlet weak var rintoneSelectView: UIView!
     
     var timer = Timer()
     
@@ -97,6 +98,18 @@ class TimerViewController: UIViewController {
         ringtoneSelectView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         ringtoneSelectView.clipsToBounds = true
         ringtoneSelectView.layer.cornerRadius = 10
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ringtoneSelectViewTapped))
+        ringtoneSelectView.addGestureRecognizer(tap)
+        ringtoneSelectView.isUserInteractionEnabled = true
+    }
+    
+    @objc func ringtoneSelectViewTapped(){
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.ringtoneSelectView.layer.opacity = 0.6
+            self?.ringtoneSelectView.layer.opacity = 1
+        }
+        performSegue(withIdentifier: "TimerRingtoneSelectView", sender: self)
     }
     
     func setupPickerLabel(){
