@@ -505,14 +505,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AlarmSoundDetailTableViewCell" id="dgP-sm-axl" customClass="AlarmSoundDetailTableViewCell" customModule="clock_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgP-sm-axl" id="SgW-xF-veb">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공상음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-tv-ehs">
-                                                    <rect key="frame" x="20" y="11" width="42" height="20.5"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="20"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -852,6 +852,7 @@
                         <outlet property="startButton" destination="07z-uU-EnP" id="D3g-zK-w35"/>
                         <outlet property="timeLabel" destination="AZe-ZO-jQ1" id="zMc-It-szH"/>
                         <outlet property="timePicker" destination="A4x-cu-mXz" id="QcJ-pJ-Mjh"/>
+                        <outlet property="timeSubLabel" destination="jLp-lL-WrP" id="IRe-ht-XpG"/>
                         <outlet property="timerInnerView" destination="jOa-l6-LAh" id="H4s-c6-SWV"/>
                         <outlet property="timerView" destination="Hax-2y-7yc" id="1zd-qH-FQy"/>
                         <segue destination="cd8-Hn-hTT" kind="presentation" identifier="TimerRingtoneSelectView" id="uPg-og-NMS"/>
