@@ -141,12 +141,17 @@ class TimerViewController: UIViewController {
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
         
+        if(timePicker.selectedRow(inComponent: 0) == 0 && timePicker.selectedRow(inComponent: 1) == 0 && timePicker.selectedRow(inComponent: 2) == 0){
+            return
+        }
+        
         self.paused = !paused
         
         guard isOn == true else {
             self.paused = false
             isOn = true
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+            timer.fire()
             return
         }
         
@@ -159,10 +164,36 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimeLabel(){
+        if(timePicker.selectedRow(inComponent: 0) == 0 && timePicker.selectedRow(inComponent: 1) == 0 && timePicker.selectedRow(inComponent: 2) == 0){
+            isOn = false
+            paused = true
+            resetTimer()
+            return
+        }
         let hour = timePicker.selectedRow(inComponent: 0) / 10 < 1 ? "0\(timePicker.selectedRow(inComponent: 0))" : "\(timePicker.selectedRow(inComponent: 0))"
         let minute = timePicker.selectedRow(inComponent: 1) / 10 < 1 ? "0\(timePicker.selectedRow(inComponent: 1))" : "\(timePicker.selectedRow(inComponent: 1))"
         let second = timePicker.selectedRow(inComponent: 2) / 10 < 1 ? "0\(timePicker.selectedRow(inComponent: 2))" : "\(timePicker.selectedRow(inComponent: 2))"
         
+        // 시간에 대한 picker가 0값이면
+        if(timePicker.selectedRow(inComponent: 0) == 0){
+            timeLabel.text = "\(minute):\(second)"
+        }
+        
+        if(timePicker.selectedRow(inComponent: 2) > 0){
+            let selected = timePicker.selectedRow(inComponent: 2)
+            timePicker.selectRow(selected - 1, inComponent: 2, animated: false)
+        }else if(timePicker.selectedRow(inComponent: 1) > 0){
+            let selected = timePicker.selectedRow(inComponent: 1)
+            timePicker.selectRow(selected - 1, inComponent: 1, animated: false)
+            timePicker.selectRow(59, inComponent: 2, animated: false)
+        }else if(timePicker.selectedRow(inComponent: 0) > 0){
+            let selected = timePicker.selectedRow(inComponent: 0)
+            timePicker.selectRow(selected - 1, inComponent: 0, animated: false)
+            timePicker.selectRow(59, inComponent: 1, animated: false)
+            timePicker.selectRow(59, inComponent: 2, animated: false)
+        }else{
+            return
+        }
     }
     
     func setupTimerUI(){
