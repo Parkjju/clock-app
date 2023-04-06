@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import AVFoundation
-var audioPlayer:AVAudioPlayer!
 
 class AlarmSoundDetailViewController: UIViewController {
     
@@ -41,31 +39,7 @@ class AlarmSoundDetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
-    func playSound(fileName: String) {
-        guard let path = Bundle.main.path(forResource: fileName, ofType:"mp3") else {
-                print("bundle error")
-                return
-            
-        }
-            let url = URL(fileURLWithPath: path)
-        
-        do{
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            
-            guard let player = audioPlayer else {
-                print("player load error")
-                return
-            }
-            
-            // play atTime 
-            player.prepareToPlay()
-            player.play()
-        }catch{
-            print("audio load error")
-            print(error.localizedDescription)
-        }
-    }
+
     deinit {
         // 플레이어가 실행중이지 않으면 stop 메서드가 nil이다.
         audioPlayer?.stop()
