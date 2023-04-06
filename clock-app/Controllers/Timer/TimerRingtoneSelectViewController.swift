@@ -58,6 +58,8 @@ extension TimerRingtoneSelectViewController: UITableViewDataSource{
         }
         let soundName = translateSoundNameToKorean(text: sounds[indexPath.row])
         cell.soundLabel.text = soundName
+        cell.accessoryType = .none
+        cell.tintColor = .systemOrange
         
         return cell
     }
@@ -65,6 +67,13 @@ extension TimerRingtoneSelectViewController: UITableViewDataSource{
 
 extension TimerRingtoneSelectViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let _ = tableView.visibleCells.map { cell in
+            if(cell.accessoryType == .checkmark){
+                cell.accessoryType = .none
+                return
+            }
+        }
+        tableView.visibleCells[indexPath.row].accessoryType = .checkmark
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
