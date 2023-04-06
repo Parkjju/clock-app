@@ -26,5 +26,4 @@ class TimerRingtoneSelectTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         soundLabel.textColor = .white
     }
-
 }
