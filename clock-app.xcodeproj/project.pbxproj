@@ -18,6 +18,7 @@
 		88BBB95829DA3CBF00B63D98 /* TimerRingtoneSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBB95729DA3CBF00B63D98 /* TimerRingtoneSelectViewController.swift */; };
 		88BBB95A29DA45F100B63D98 /* TimerRingtoneSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBB95929DA45F100B63D98 /* TimerRingtoneSelectTableViewCell.swift */; };
 		88BBB95C29DA4B0F00B63D98 /* translateSoundName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBB95B29DA4B0F00B63D98 /* translateSoundName.swift */; };
+		88BBB95F29DF90B300B63D98 /* playSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BBB95E29DF90B300B63D98 /* playSound.swift */; };
 		88BC72F429A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */; };
 		88BC72F629A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC72F529A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift */; };
 		C92CBDB7299E02710000BF73 /* WorldClockTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */; };
@@ -77,6 +78,7 @@
 		88BBB95729DA3CBF00B63D98 /* TimerRingtoneSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRingtoneSelectViewController.swift; sourceTree = "<group>"; };
 		88BBB95929DA45F100B63D98 /* TimerRingtoneSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRingtoneSelectTableViewCell.swift; sourceTree = "<group>"; };
 		88BBB95B29DA4B0F00B63D98 /* translateSoundName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = translateSoundName.swift; sourceTree = "<group>"; };
+		88BBB95E29DF90B300B63D98 /* playSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playSound.swift; sourceTree = "<group>"; };
 		88BC72F329A8258600F6ADD2 /* AlarmRepeatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepeatDetailViewController.swift; sourceTree = "<group>"; };
 		88BC72F529A829B100F6ADD2 /* AlarmRepeatDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepeatDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C92CBDB6299E02710000BF73 /* WorldClockTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTabBarViewController.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				C94A6D5E29B988C600CF8720 /* ParsingJaeum.swift */,
 				88BBB95B29DA4B0F00B63D98 /* translateSoundName.swift */,
+				88BBB95E29DF90B300B63D98 /* playSound.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				C94A6D5829B0690500CF8720 /* AlarmData+CoreDataClass.swift in Sources */,
 				C9C4E58E29A6FD71002E99B0 /* AlarmSettingSoundTableViewCell.swift in Sources */,
 				C92CBDC329A4A5AA0000BF73 /* AlarmManager.swift in Sources */,
+				88BBB95F29DF90B300B63D98 /* playSound.swift in Sources */,
 				C932AB2D29939285006B3FFB /* SceneDelegate.swift in Sources */,
 				C94A6D4B29B03AC000CF8720 /* WorldClockData+CoreDataProperties.swift in Sources */,
 				C95B474C299A17F4002656CA /* WorldClockSelectTableViewCell.swift in Sources */,
