@@ -45,7 +45,10 @@ class TimerRingtoneSelectViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
+    deinit{
+        audioPlayer.stop()
+    }
 }
 
 extension TimerRingtoneSelectViewController: UITableViewDataSource{
@@ -67,6 +70,11 @@ extension TimerRingtoneSelectViewController: UITableViewDataSource{
 
 extension TimerRingtoneSelectViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let label = tableView.visibleCells[indexPath.row] as? TimerRingtoneSelectTableViewCell else {
+            return
+        }
+        
         let _ = tableView.visibleCells.map { cell in
             if(cell.accessoryType == .checkmark){
                 cell.accessoryType = .none
@@ -74,6 +82,9 @@ extension TimerRingtoneSelectViewController: UITableViewDelegate{
             }
         }
         tableView.visibleCells[indexPath.row].accessoryType = .checkmark
+        
+        playSound(fileName: translateSoundName(text: label.soundLabel.text!))
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
