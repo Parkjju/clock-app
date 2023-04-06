@@ -17,8 +17,17 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var ringtoneSelectView: UIView!
     @IBOutlet weak var rintoneSelectView: UIView!
+    @IBOutlet weak var timeSubLabel: UILabel!
     
     var timer = Timer()
+    
+    let date: DateFormatter = {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ko_KR")
+        df.timeZone = TimeZone(abbreviation: "KST")
+        df.dateFormat = "a HH:mm"
+        return df
+    }()
     
     var isOn: Bool = false{
         didSet{
@@ -152,15 +161,29 @@ class TimerViewController: UIViewController {
             isOn = true
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
             timer.fire()
+            
+            // 알람 시간 리턴함수
+            timeSubLabel.text = date.string(from: Date(timeIntervalSinceNow:getAlertTimeWithTimeInterval()))
+            
             return
         }
         
         if(paused){
             timer.invalidate()
+            timeSubLabel.textColor = .darkGray
         }else{
+            timeSubLabel.textColor = .white
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         }
+    }
+    
+    func getAlertTimeWithTimeInterval() -> TimeInterval{
+        let hour = timePicker.selectedRow(inComponent: 0)
+        let minute = timePicker.selectedRow(inComponent: 1)
+        let second = timePicker.selectedRow(inComponent: 2)
+        
+        return TimeInterval(hour * 3600 + minute * 60 + second)
     }
     
     @objc func updateTimeLabel(){
@@ -177,8 +200,14 @@ class TimerViewController: UIViewController {
         // 시간에 대한 picker가 0값이면
         if(timePicker.selectedRow(inComponent: 0) == 0){
             timeLabel.text = "\(minute):\(second)"
+            timeLabel.font = timeLabel.font.withSize(82)
+        }else{
+            timeLabel.text = "\(hour):\(minute):\(second)"
+            timeLabel.font = timeLabel.font.withSize(78)
         }
         
+        // 초가 0초면 -> 분을 1개 줄이고 초는 59초
+        // 분이 0분이면 -> 시를 1시간 줄이고 분은 59분, 초도 59초
         if(timePicker.selectedRow(inComponent: 2) > 0){
             let selected = timePicker.selectedRow(inComponent: 2)
             timePicker.selectRow(selected - 1, inComponent: 2, animated: false)
@@ -222,6 +251,9 @@ class TimerViewController: UIViewController {
             self?.timerView.alpha = 0
             self?.timePicker.alpha = 1
         }
+        timePicker.selectRow(0, inComponent: 0, animated: false)
+        timePicker.selectRow(0, inComponent: 1, animated: false)
+        timePicker.selectRow(0, inComponent: 2, animated: false)
     }
     
 }
