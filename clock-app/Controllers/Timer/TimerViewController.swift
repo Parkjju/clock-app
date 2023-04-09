@@ -9,7 +9,6 @@ import UIKit
 
 class TimerViewController: UIViewController {
     
-    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timerView: UIView!
@@ -18,6 +17,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var ringtoneSelectView: UIView!
     @IBOutlet weak var rintoneSelectView: UIView!
     @IBOutlet weak var timeSubLabel: UILabel!
+    @IBOutlet weak var ringtoneLabel: UILabel!
     
     var timer = Timer()
     
@@ -165,6 +165,8 @@ class TimerViewController: UIViewController {
             // 알람 시간 리턴함수
             timeSubLabel.text = date.string(from: Date(timeIntervalSinceNow:getAlertTimeWithTimeInterval()))
             
+            // 푸시알람 설정
+            // notification id는 timeinterval로 설정
             return
         }
         
@@ -256,6 +258,23 @@ class TimerViewController: UIViewController {
         timePicker.selectRow(0, inComponent: 2, animated: false)
     }
     
+    // 커스텀델리게이트 패턴 적용을 위해 preparesegue 호출
+    // segue가 naviagation으로 연결되므로 guard let 바인딩 한번 더 진행
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "TimerRingtoneSelectView"){
+            guard let destinationNavigationVC = segue.destination as? UINavigationController else {
+                return
+            }
+            
+            guard let destination = destinationNavigationVC.viewControllers[0] as? TimerRingtoneSelectViewController else {
+                print("ㅠ")
+                return
+            }
+            
+            destination.delegate = self
+        }
+    }
+    
 }
 
 extension TimerViewController: UIPickerViewDelegate{
@@ -312,6 +331,23 @@ extension UIPickerView{
                 label.textColor = .white
                 self.addSubview(label)
             }
+        }
+    }
+}
+
+extension TimerViewController: AlarmSoundDelegate{
+    func soundUpdate(index: Int) {
+        switch(index){
+        case 0:
+            ringtoneLabel.text = "공상음"
+        case 1:
+            ringtoneLabel.text = "녹차"
+        case 2:
+            ringtoneLabel.text = "놀이 시간"
+        case 3:
+            ringtoneLabel.text = "물결"
+        default:
+            break
         }
     }
 }
