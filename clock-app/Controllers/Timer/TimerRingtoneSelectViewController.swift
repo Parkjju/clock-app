@@ -14,6 +14,7 @@ class TimerRingtoneSelectViewController: UIViewController {
     var delegate: AlarmSoundDelegate?
     
     let sounds: [String] = ["daydream", "green", "playTime", "sea"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class TimerRingtoneSelectViewController: UIViewController {
     }
     
     deinit{
-        audioPlayer.stop()
+        audioPlayer?.stop()
     }
 }
 

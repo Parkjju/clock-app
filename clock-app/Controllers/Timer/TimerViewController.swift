@@ -261,6 +261,7 @@ class TimerViewController: UIViewController {
     
     // 커스텀델리게이트 패턴 적용을 위해 preparesegue 호출
     // segue가 naviagation으로 연결되므로 guard let 바인딩 한번 더 진행
+    // 도착지 뷰 컨트롤러가 현재 레이블 기준으로 알람음 선택이 되어 있어야 함.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "TimerRingtoneSelectView"){
             guard let destinationNavigationVC = segue.destination as? UINavigationController else {
@@ -268,9 +269,29 @@ class TimerViewController: UIViewController {
             }
             
             guard let destination = destinationNavigationVC.viewControllers[0] as? TimerRingtoneSelectViewController else {
-                print("ㅠ")
                 return
             }
+            
+            guard let ringtoneLabel = ringtoneLabel.text else {
+                return
+            }
+            
+//            destination.loadViewIfNeeded()
+//            
+//            switch(ringtoneLabel){
+//            case "실행 중단":
+//                break
+//            case "공상음":
+//                destination.tableView.visibleCells[0].accessoryType = .checkmark
+//            case "녹차":
+//                destination.tableView.visibleCells[1].accessoryType = .checkmark
+//            case "놀이 시간":
+//                destination.tableView.visibleCells[2].accessoryType = .checkmark
+//            case "물결":
+//                destination.tableView.visibleCells[3].accessoryType = .checkmark
+//            default:
+//                break
+//            }
             
             destination.delegate = self
         }
