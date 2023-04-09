@@ -167,6 +167,7 @@ class TimerViewController: UIViewController {
             
             // 푸시알람 설정
             // notification id는 timeinterval로 설정
+            requestAlarmNotification(withInterval: getAlertTimeWithTimeInterval(), notificationId: "\(getAlertTimeWithTimeInterval())", soundName: translateSoundName(text: ringtoneLabel.text!))
             return
         }
         
