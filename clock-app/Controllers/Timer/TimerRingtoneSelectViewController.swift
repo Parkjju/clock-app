@@ -11,6 +11,8 @@ class TimerRingtoneSelectViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: AlarmSoundDelegate?
+    
     let sounds: [String] = ["daydream", "green", "playTime", "sea"]
     
     override func viewDidLoad() {
@@ -70,6 +72,8 @@ extension TimerRingtoneSelectViewController: UITableViewDataSource{
 
 extension TimerRingtoneSelectViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        delegate?.soundUpdate(index: indexPath.row)
         
         guard let label = tableView.visibleCells[indexPath.row] as? TimerRingtoneSelectTableViewCell else {
             return
