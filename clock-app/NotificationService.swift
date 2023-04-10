@@ -41,7 +41,7 @@ class NotificationService: NSObject{
         
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound).wav"))
         
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger)
+        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger)
         
         // remove All peding notification requests
         // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
@@ -64,7 +64,7 @@ extension NotificationService: UNUserNotificationCenterDelegate{
         if(currentDateComponents.day! > dateComponents.day!){
             dateComponents.day! += 1
         }
-
+        
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
     }
     
