@@ -107,7 +107,7 @@ class AlarmGenerateViewController: UIViewController {
         }
         
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
-    
+        
         NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: datePicker.date.timeIntervalSinceNow, notificationId: "\(datePicker.date)")
     }
     
