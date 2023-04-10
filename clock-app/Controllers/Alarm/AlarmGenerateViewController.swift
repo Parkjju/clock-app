@@ -71,8 +71,7 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     @objc func leftBarButtonTapped(){
-        datePicker.timeZone = TimeZone.init(identifier: "KST")
-        print(datePicker.date)
+        
         self.dismiss(animated: true)
     }
     
@@ -110,7 +109,7 @@ class AlarmGenerateViewController: UIViewController {
         
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
         
-        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: datePicker.date.timeIntervalSinceNow, notificationId: "\(datePicker.date)")
+        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: "\(datePicker.date)")
     }
     
     func getRepeatDays() -> String{
@@ -206,7 +205,6 @@ class AlarmGenerateViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-
 }
 
 extension AlarmGenerateViewController: UITableViewDataSource{
