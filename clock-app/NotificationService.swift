@@ -30,9 +30,43 @@ class NotificationService: NSObject{
             self.UNCurrentCenter.delegate = self
         }
     }
+    
+    func requestAlarmNotification(_ date: Date?, type:String,title: String, subtitle: String, sound: String, repeatedly:Bool = false, withInterval interval: TimeInterval, notificationId: String){
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.subtitle = subtitle
+        
+        let sound = sound
+        
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound).wav"))
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger)
+        
+        // remove All peding notification requests
+        // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
+        NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
+        
+        NotificationService.sharedInstance.UNCurrentCenter.add(request)
+    }
 }
 
 extension NotificationService: UNUserNotificationCenterDelegate{
+    func getTrigger(type: String, _ date: Date?) -> UNNotificationTrigger{
+        let date = date!
+
+        var dateComponents = Calendar.current.dateComponents(in: .current, from: date)
+        
+        let currentDateComponents = Calendar.current.dateComponents(in: .current, from: Date.now)
+        
+        // 알람을 맞췄는데 해당 시간이 현재 시간보다 이전에 맞춰졌다면
+        // 다음날에 대한 알람이므로 - 캘린더 트리거를 하루 뒤로 미뤄야함
+        if(currentDateComponents.day! > dateComponents.day!){
+            dateComponents.day! += 1
+        }
+
+        return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier{
