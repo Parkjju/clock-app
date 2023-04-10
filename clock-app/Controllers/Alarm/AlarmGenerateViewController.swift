@@ -110,6 +110,7 @@ class AlarmGenerateViewController: UIViewController {
         
         NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: datePicker.date.timeIntervalSinceNow, notificationId: "\(datePicker.date)")
     }
+
     
     func getRepeatDays() -> String{
         let repeatCell = tableView.visibleCells[0] as! AlarmSettingRepeatTableViewCell
