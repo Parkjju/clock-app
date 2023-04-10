@@ -71,6 +71,8 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     @objc func leftBarButtonTapped(){
+        datePicker.timeZone = TimeZone.init(identifier: "KST")
+        print(datePicker.date)
         self.dismiss(animated: true)
     }
     
@@ -140,6 +142,7 @@ class AlarmGenerateViewController: UIViewController {
     
     func setupUI(){
         datePicker.setValue(UIColor.white, forKey: "textColor")
+        datePicker.timeZone = TimeZone.current
         
         tableView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         tableView.layer.cornerRadius = 10
