@@ -41,22 +41,27 @@ class NotificationService: NSObject{
         
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound).wav"))
         
-        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger)
+        let trigger = getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger
+        
+        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
         
         // remove All peding notification requests
         // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
         NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
+        print(trigger)
+        NotificationService.sharedInstance.UNCurrentCenter.getPendingNotificationRequests(completionHandler: { array in
+            print(array)
+        })
         
         NotificationService.sharedInstance.UNCurrentCenter.add(request)
     }
     
     func getTrigger(type: String, _ date: Date?) -> UNNotificationTrigger{
-        let date = getCurrentDateFromSimulator(date: date!)
-        var dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        let date = date!
+        
+        var dateComponents = Calendar.current.dateComponents(in:.current, from: date)
     
         let currentDateComponents = Calendar.current.dateComponents(in: .current, from: Date.now)
-        
-        print(dateComponents)
         
         // 알람을 맞췄는데 해당 시간이 현재 시간보다 이전에 맞춰졌다면
         // 다음날에 대한 알람이므로 - 캘린더 트리거를 하루 뒤로 미뤄야함
