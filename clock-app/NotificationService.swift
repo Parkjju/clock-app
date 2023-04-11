@@ -48,20 +48,20 @@ class NotificationService: NSObject{
         // remove All peding notification requests
         // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
         NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
-        print(trigger)
-        NotificationService.sharedInstance.UNCurrentCenter.getPendingNotificationRequests(completionHandler: { array in
-            print(array)
-        })
         
         NotificationService.sharedInstance.UNCurrentCenter.add(request)
+        
+        
+
     }
     
     func getTrigger(type: String, _ date: Date?) -> UNNotificationTrigger{
         let date = date!
         
-        var dateComponents = Calendar.current.dateComponents(in:.current, from: date)
+        // dateComponents => in: current 파라미터 설정으로 하면 안됨.
+        var dateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: date)
     
-        let currentDateComponents = Calendar.current.dateComponents(in: .current, from: Date.now)
+        let currentDateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: Date.now)
         
         // 알람을 맞췄는데 해당 시간이 현재 시간보다 이전에 맞춰졌다면
         // 다음날에 대한 알람이므로 - 캘린더 트리거를 하루 뒤로 미뤄야함
