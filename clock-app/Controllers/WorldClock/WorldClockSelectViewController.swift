@@ -218,4 +218,8 @@ extension WorldClockSelectViewController: UISearchBarDelegate{
         })
         tableView.reloadData()
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
 }
