@@ -218,6 +218,7 @@
 		C932AB2929939285006B3FFB /* clock-app */ = {
 			isa = PBXGroup;
 			children = (
+				C94A6D5B29B6AEB300CF8720 /* NotificationService.swift */,
 				C94A6D5D29B988AC00CF8720 /* Util */,
 				C94A6D5A29B6A7D100CF8720 /* clock-app.entitlements */,
 				888C0A1329AD8ED900711EA7 /* SoundFiles */,
@@ -231,7 +232,6 @@
 				C932AB3B29939286006B3FFB /* Info.plist */,
 				C932AB3329939285006B3FFB /* clock_app.xcdatamodeld */,
 				C94A6D4329B039C800CF8720 /* alarm.xcdatamodeld */,
-				C94A6D5B29B6AEB300CF8720 /* NotificationService.swift */,
 			);
 			path = "clock-app";
 			sourceTree = "<group>";
