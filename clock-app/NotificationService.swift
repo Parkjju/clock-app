@@ -31,6 +31,8 @@ class NotificationService: NSObject{
         }
     }
     
+    // 전달되는 date는 현재 변경 대상에 대한 날짜값
+    // 이전에 전달된 date를 가지고 pendingNotification을 삭제해야됨
     func requestAlarmNotification(_ date: Date?, type:String,title: String, subtitle: String, sound: String, repeatedly:Bool = false, withInterval interval: TimeInterval?, notificationId: String){
         
         let content = UNMutableNotificationContent()
@@ -44,6 +46,8 @@ class NotificationService: NSObject{
         let trigger = getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger
         
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+        
+        
         
         
         // remove All peding notification requests

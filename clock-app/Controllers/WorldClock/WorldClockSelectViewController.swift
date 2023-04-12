@@ -211,15 +211,14 @@ extension WorldClockSelectViewController: UITableViewDelegate{
 }
 
 extension WorldClockSelectViewController: UISearchBarDelegate{
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = searchText.isEmpty ? clockData : clockData.filter({ tuple -> Bool in
             return tuple.0.range(of: searchText, options:[.caseInsensitive]) != nil
         })
         tableView.reloadData()
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
 }
