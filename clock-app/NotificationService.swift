@@ -47,7 +47,7 @@ class NotificationService: NSObject{
         let trigger = type == "Alarm" ?  getTrigger(type: type, date: date,interval: interval) as! UNCalendarNotificationTrigger : getTrigger(type: type, date: date, interval: interval) as! UNTimeIntervalNotificationTrigger
         
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
-        
+    
         // remove All peding notification requests
         // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
         NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
