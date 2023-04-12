@@ -98,6 +98,8 @@ class AlarmGenerateViewController: UIViewController {
             alarmManager.saveAlarm(isOn: true, time: datePicker.date, label: getLabel(), isAgain: getIsAgain(), repeatDays: getRepeatDays(), sound: getRingTone()) {
                 self.reloadAfterChangeAlarmData()
             }
+            // 노티피케이션 아이디
+            notificationId = "\(datePicker.date)"
         }
         // 벨소리 셀 불러오기
         guard let soundCell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else {
@@ -169,7 +171,6 @@ class AlarmGenerateViewController: UIViewController {
         
         tableView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         tableView.layer.cornerRadius = 10
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -252,7 +253,6 @@ extension AlarmGenerateViewController: UITableViewDataSource{
             cell.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
             return cell
         default:
-            print("?")
             return UITableViewCell()
         }
         
@@ -280,8 +280,6 @@ extension AlarmGenerateViewController: AlarmManagerDelegate{
         guard let repeatTableViewCell = tableView.visibleCells[0] as? AlarmSettingRepeatTableViewCell else {
             return
         }
-        
-        
         
         repeatTableViewCell.choiceLabel.text = ""
         
