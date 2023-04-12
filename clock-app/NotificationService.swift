@@ -42,13 +42,11 @@ class NotificationService: NSObject{
         let sound = sound
         
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound).wav"))
-        
-        let trigger = getTrigger(type: "Alarm", date) as! UNCalendarNotificationTrigger
+                
+        // 삼항연산자로 타입캐스팅
+        let trigger = type == "Alarm" ?  getTrigger(type: type, date: date,interval: interval) as! UNCalendarNotificationTrigger : getTrigger(type: type, date: date, interval: interval) as! UNTimeIntervalNotificationTrigger
         
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
-        
-        
-        
         
         // remove All peding notification requests
         // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
@@ -57,21 +55,31 @@ class NotificationService: NSObject{
         NotificationService.sharedInstance.UNCurrentCenter.add(request)
     }
     
-    func getTrigger(type: String, _ date: Date?) -> UNNotificationTrigger{
-        let date = date!
+    func getTrigger(type: String, date: Date?, interval: TimeInterval?) -> UNNotificationTrigger?{
+        switch(type){
+        case "Alarm":
+            let date = date!
+            
+            // dateComponents => in: current 파라미터 설정으로 하면 안됨.
+            var dateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: date)
         
-        // dateComponents => in: current 파라미터 설정으로 하면 안됨.
-        var dateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: date)
-    
-        let currentDateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: Date.now)
-        
-        // 알람을 맞췄는데 해당 시간이 현재 시간보다 이전에 맞춰졌다면
-        // 다음날에 대한 알람이므로 - 캘린더 트리거를 하루 뒤로 미뤄야함
-        if(currentDateComponents.day! > dateComponents.day!){
-            dateComponents.day! += 1
+            let currentDateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: Date.now)
+            
+            // 알람을 맞췄는데 해당 시간이 현재 시간보다 이전에 맞춰졌다면
+            // 다음날에 대한 알람이므로 - 캘린더 트리거를 하루 뒤로 미뤄야함
+            if(currentDateComponents.day! > dateComponents.day!){
+                dateComponents.day! += 1
+            }
+            
+            return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        case "Timer":
+            let interval = interval!
+            
+            return UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        default:
+            return nil
         }
-        
-        return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
     }
 }
 
