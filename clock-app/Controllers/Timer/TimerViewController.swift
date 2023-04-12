@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 뒷단에 숨겨진 타이머를 계속 select하는 방식으로 로직을 처리한다
 class TimerViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -164,10 +165,10 @@ class TimerViewController: UIViewController {
             
             // 알람 시간 리턴함수
             timeSubLabel.text = date.string(from: Date(timeIntervalSinceNow:getAlertTimeWithTimeInterval()))
-            
+
             // 푸시알람 설정
             // notification id는 timeinterval로 설정
-            requestAlarmNotification(withInterval: getAlertTimeWithTimeInterval(), notificationId: "\(getAlertTimeWithTimeInterval())", soundName: translateSoundName(text: ringtoneLabel.text!))
+            NotificationService.sharedInstance.requestAlarmNotification(nil, type: "Timer", title: "시계", subtitle: "타이머", sound: ringtoneLabel.text!, withInterval: getAlertTimeWithTimeInterval() + 1, notificationId: "TimerNotification")
             return
         }
         
@@ -277,7 +278,7 @@ class TimerViewController: UIViewController {
             }
             
 //            destination.loadViewIfNeeded()
-//            
+//
 //            switch(ringtoneLabel){
 //            case "실행 중단":
 //                break
