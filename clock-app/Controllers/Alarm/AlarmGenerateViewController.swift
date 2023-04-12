@@ -106,8 +106,9 @@ class AlarmGenerateViewController: UIViewController {
         
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
         
-        // 알람데이터랑 다를수밖에 없음
-        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: "\(datePicker.date)")
+        // 한국시간을 notificationId로 전달
+        
+        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId)
     }
     
     func reloadAfterChangeAlarmData(){
@@ -158,6 +159,11 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     func setupUI(){
+        // setupUI에서 만들어지는 id정보가 초기 id정보
+        if let alarmData = alarmData{
+            notificationId = "\(getCurrentDateFromSimulator(date: alarmData.time!))"
+        }
+        
         datePicker.setValue(UIColor.white, forKey: "textColor")
         datePicker.timeZone = TimeZone.current
         
