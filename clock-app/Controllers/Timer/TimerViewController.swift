@@ -22,6 +22,8 @@ class TimerViewController: UIViewController {
     
     var timer = Timer()
     
+    var notificationId: String = ""
+    
     let date: DateFormatter = {
         let df = DateFormatter()
         df.locale = Locale(identifier: "ko_KR")
@@ -146,6 +148,8 @@ class TimerViewController: UIViewController {
         isOn = false
         paused = true
         
+        NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
+        
         resetTimer()
     }
     
@@ -163,22 +167,29 @@ class TimerViewController: UIViewController {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
             timer.fire()
             
+            // 노티피케이션 아이디 지정
+            notificationId = "\(getAlertTimeWithTimeInterval())"
+            
             // 알람 시간 리턴함수
             timeSubLabel.text = date.string(from: Date(timeIntervalSinceNow:getAlertTimeWithTimeInterval()))
 
             // 푸시알람 설정
             // notification id는 timeinterval로 설정
-            NotificationService.sharedInstance.requestAlarmNotification(nil, type: "Timer", title: "시계", subtitle: "타이머", sound: translateSoundName(text: ringtoneLabel.text!), withInterval: getAlertTimeWithTimeInterval() + 1, notificationId: "TimerNotification")
+            NotificationService.sharedInstance.requestAlarmNotification(nil, type: "Timer", title: "시계", subtitle: "타이머", sound: translateSoundName(text: ringtoneLabel.text!), withInterval: getAlertTimeWithTimeInterval() + 1, notificationId: notificationId)
             return
         }
         
         if(paused){
             timer.invalidate()
             timeSubLabel.textColor = .darkGray
+            NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
         }else{
             timeSubLabel.textColor = .white
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+            
+            notificationId = "\(getAlertTimeWithTimeInterval())"
+            NotificationService.sharedInstance.requestAlarmNotification(nil, type: "Timer", title: "시계", subtitle: "타이머", sound: translateSoundName(text: ringtoneLabel.text!), withInterval: getAlertTimeWithTimeInterval() + 1, notificationId: notificationId)
         }
     }
     
