@@ -168,7 +168,7 @@ class TimerViewController: UIViewController {
 
             // 푸시알람 설정
             // notification id는 timeinterval로 설정
-            NotificationService.sharedInstance.requestAlarmNotification(nil, type: "Timer", title: "시계", subtitle: "타이머", sound: ringtoneLabel.text!, withInterval: getAlertTimeWithTimeInterval() + 1, notificationId: "TimerNotification")
+            NotificationService.sharedInstance.requestAlarmNotification(nil, type: "Timer", title: "시계", subtitle: "타이머", sound: translateSoundName(text: ringtoneLabel.text!), withInterval: getAlertTimeWithTimeInterval() + 1, notificationId: "TimerNotification")
             return
         }
         
