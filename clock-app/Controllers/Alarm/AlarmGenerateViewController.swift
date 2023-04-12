@@ -14,7 +14,7 @@ class AlarmGenerateViewController: UIViewController {
 
     let alarmManager = AlarmManager.shared
     var alarmData: AlarmData?
-    
+    var notificationId: String = ""
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -79,28 +79,26 @@ class AlarmGenerateViewController: UIViewController {
     @objc func rightBarButtonTapped(){
         // 최종 저장 시 newAlarmData time difference 계산 및 저장
         
-        alarmManager.saveAlarm(isOn: true, time: datePicker.date, label: getLabel(), isAgain: getIsAgain(), repeatDays: getRepeatDays(), sound: getRingTone()) {
-            guard let tabVC = self.presentingViewController as? UITabBarController else{
-                return
+        // isOn 요소 뽑아오기
+        if(alarmData != nil){
+            let newData = alarmData
+            newData?.isOn = true
+            newData?.time = datePicker.date
+            newData?.label = getLabel()
+            newData?.isAgain = getIsAgain()
+            newData?.repeatDays = getRepeatDays()
+            newData?.sound = getRingTone()
+            
+            alarmManager.updateAlarm(targetId:alarmData!.time!, newData: newData!) {
+                self.reloadAfterChangeAlarmData()
             }
-
-
-            guard let firstNavigationVC = tabVC.viewControllers![1] as? AlarmNavigationViewController else {
-                return
+            
+            // 기존 등록된 푸시알람데이터 삭제
+        }else{
+            alarmManager.saveAlarm(isOn: true, time: datePicker.date, label: getLabel(), isAgain: getIsAgain(), repeatDays: getRepeatDays(), sound: getRingTone()) {
+                self.reloadAfterChangeAlarmData()
             }
-
-            guard let firstVC = firstNavigationVC.viewControllers.first as? AlarmViewController else {
-                return
-            }
-            firstVC.tableView.reloadData()
-
-            self.dismiss(animated: true)
         }
-        
-        // 타이머 설정
-        // 워크 아이템에 사운드 플레이어 객체 실행
-        // 메모리 누수 체크 필요
-        
         // 벨소리 셀 불러오기
         guard let soundCell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else {
             return
@@ -108,8 +106,29 @@ class AlarmGenerateViewController: UIViewController {
         
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
         
+        // 알람데이터랑 다를수밖에 없음
         NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: "\(datePicker.date)")
     }
+    
+    func reloadAfterChangeAlarmData(){
+        guard let tabVC = self.presentingViewController as? UITabBarController else{
+            return
+        }
+
+
+        guard let firstNavigationVC = tabVC.viewControllers![1] as? AlarmNavigationViewController else {
+            return
+        }
+
+        guard let firstVC = firstNavigationVC.viewControllers.first as? AlarmViewController else {
+            return
+        }
+        firstVC.tableView.reloadData()
+
+        self.dismiss(animated: true)
+    }
+    
+    
     
     func getRepeatDays() -> String{
         let repeatCell = tableView.visibleCells[0] as! AlarmSettingRepeatTableViewCell
@@ -144,8 +163,6 @@ class AlarmGenerateViewController: UIViewController {
         
         tableView.backgroundColor = UIColor(named: "ModalSettingTableViewColor")
         tableView.layer.cornerRadius = 10
-        
-  
         
     }
     
