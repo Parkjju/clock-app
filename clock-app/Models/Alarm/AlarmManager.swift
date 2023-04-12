@@ -83,6 +83,7 @@ class AlarmManager{
         
     }
     
+    // 3. 코어데이터의 알람정보 삭제하기
     func removeAlarm(deleteTarget: AlarmData, completion: @escaping () -> Void){
         guard let context = context else {
             print("removeAlarm: context load error")
@@ -124,9 +125,50 @@ class AlarmManager{
             print("removeAlarm: some error")
         }
         
-        
     }
     
+    // 4. 코어데이터에 저장된 알람데이터 수정하기
+    func updateAlarm(targetId:Date,  newData: AlarmData, completion: @escaping () -> Void){
+        guard let context = context else {
+            print("updateAlarm: context load error")
+            completion()
+            return
+        }
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+        request
+            .predicate = NSPredicate(format: "time = %@", targetId as CVarArg)
+        
+        do{
+            guard let fetchedAlarms = try context.fetch(request) as? [AlarmData] else {
+                print("updateAlarm: fetch error")
+                completion()
+                return
+            }
+            
+            guard var targetAlarm = fetchedAlarms.first else {
+                print("updateAlarm: fetchedData indexing error")
+                completion()
+                return
+            }
+            
+            targetAlarm = newData
+            
+            if(context.hasChanges){
+                do{
+                    try context.save()
+                }catch{
+                    print("updateAlarm: context save error")
+                }
+            }
+            
+            completion()
+        } catch{
+            print("updateAlarm: some error occured")
+            completion()
+            return
+        }
+    }
 }
 
 // 커스텀 델리게이트 패턴 정의
