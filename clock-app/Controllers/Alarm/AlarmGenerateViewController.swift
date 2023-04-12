@@ -71,7 +71,6 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     @objc func leftBarButtonTapped(){
-        
         self.dismiss(animated: true)
     }
     

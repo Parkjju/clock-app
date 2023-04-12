@@ -45,14 +45,12 @@ class NotificationService: NSObject{
         
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
         
+        
         // remove All peding notification requests
         // 타이머를 작동시키는 상황에서 알람 돌리면 기존 노티 삭제됨?
         NotificationService.sharedInstance.UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
         
         NotificationService.sharedInstance.UNCurrentCenter.add(request)
-        
-        
-
     }
     
     func getTrigger(type: String, _ date: Date?) -> UNNotificationTrigger{
@@ -75,6 +73,7 @@ class NotificationService: NSObject{
 
 extension NotificationService: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print(response.actionIdentifier)
         switch response.actionIdentifier{
         case UNNotificationDismissActionIdentifier:
             print("dismiss")
@@ -83,7 +82,6 @@ extension NotificationService: UNUserNotificationCenterDelegate{
         default:
             break
         }
-        
         completionHandler()
     }
     
