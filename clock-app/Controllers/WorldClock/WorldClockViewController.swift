@@ -50,6 +50,8 @@ class WorldClockViewController: UIViewController {
         
         selectNavigationVC.clockData = clockDataManager.getWorldClockData()
         
+        setEditing(false, animated: false)
+        
         self.performSegue(withIdentifier: "WorldClockViewController", sender: self)
     }
     
