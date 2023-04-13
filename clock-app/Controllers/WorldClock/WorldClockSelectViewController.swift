@@ -28,6 +28,7 @@ class WorldClockSelectViewController: UIViewController {
     }
     
     lazy var clockDataWithSection: [String: [String]] = [:]
+    lazy var timezoneDataWithSection: [String: [TimeZone]] = [:]
     
     let worldClockManager = WorldClockManager.shared
     
@@ -68,7 +69,7 @@ class WorldClockSelectViewController: UIViewController {
     }
     
     func setClockDataSection(){
-        let _ = clockData.map { (region, _) in
+        let _ = clockData.map { (region, timezone) in
             
             // 초성 얻어내기
             guard var initialConsonant = getInitialConsonant(text: region) else {
@@ -83,7 +84,16 @@ class WorldClockSelectViewController: UIViewController {
             }else{
                 clockDataWithSection[initialConsonant] = []
             }
+            
+            if let _ = timezoneDataWithSection[initialConsonant]{
+//                print("OK")
+            }else{
+                timezoneDataWithSection[initialConsonant] = []
+            }
+            
             clockDataWithSection[initialConsonant]?.append(region)
+            timezoneDataWithSection[initialConsonant]?.append(timezone)
+            
         }
     }
     
@@ -109,9 +119,7 @@ class WorldClockSelectViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @objc func rightBarButtonTapped(){
-        print(filteredData)
-        self.dismiss(animated: true)
+    @objc func rightBarButtonTapped(){        self.dismiss(animated: true)
     }
     
     func setupController(){
@@ -204,13 +212,12 @@ extension WorldClockSelectViewController: UITableViewDelegate{
                 self.dismiss(animated: true)
             }
         }else{
-            
-            print(clockData)
             // indexPath.row가 섹션마다 0으로 초기화됨
             // 타임존 명은 clockDataWithSection에서 불러올 수 있는데
             // 타임존 객체를 불러오는 방법은?
+            // flat을 시켜야되는게 아니라 section과 row의 조합으로 인덱싱할 수 있어야됨
             
-            worldClockManager.saveWorldClockData(newRegion: clockDataWithSection[sectionTitles[indexPath.section]]![indexPath.row], newTimezone: clockData[indexPath.row].1) {
+            worldClockManager.saveWorldClockData(newRegion: clockDataWithSection[sectionTitles[indexPath.section]]![indexPath.row], newTimezone: timezoneDataWithSection[sectionTitles[indexPath.section]]![indexPath.row]) {
                 self.dismiss(animated: true)
             }
         }
