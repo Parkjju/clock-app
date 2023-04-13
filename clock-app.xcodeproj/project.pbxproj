@@ -87,7 +87,7 @@
 		C92CBDBB29A49AB50000BF73 /* AlarmNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmNavigationViewController.swift; sourceTree = "<group>"; };
 		C92CBDBD29A4A3C70000BF73 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		C92CBDC229A4A5AA0000BF73 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
-		C932AB2729939285006B3FFB /* 시계.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "시계.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C932AB2729939285006B3FFB /* clock-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "clock-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C932AB2A29939285006B3FFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C932AB2C29939285006B3FFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C932AB2E29939285006B3FFB /* WorldClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		C932AB2829939285006B3FFB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C932AB2729939285006B3FFB /* 시계.app */,
+				C932AB2729939285006B3FFB /* clock-app.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,9 +336,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C932AB2629939285006B3FFB /* 시계 */ = {
+		C932AB2629939285006B3FFB /* clock-app */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C932AB3E29939286006B3FFB /* Build configuration list for PBXNativeTarget "시계" */;
+			buildConfigurationList = C932AB3E29939286006B3FFB /* Build configuration list for PBXNativeTarget "clock-app" */;
 			buildPhases = (
 				C932AB2329939285006B3FFB /* Sources */,
 				C932AB2429939285006B3FFB /* Frameworks */,
@@ -348,9 +348,9 @@
 			);
 			dependencies = (
 			);
-			name = "시계";
+			name = "clock-app";
 			productName = "clock-app";
-			productReference = C932AB2729939285006B3FFB /* 시계.app */;
+			productReference = C932AB2729939285006B3FFB /* clock-app.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -381,7 +381,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C932AB2629939285006B3FFB /* 시계 */,
+				C932AB2629939285006B3FFB /* clock-app */,
 			);
 		};
 /* End PBXProject section */
@@ -674,7 +674,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C932AB3E29939286006B3FFB /* Build configuration list for PBXNativeTarget "시계" */ = {
+		C932AB3E29939286006B3FFB /* Build configuration list for PBXNativeTarget "clock-app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C932AB3F29939286006B3FFB /* Debug */,
