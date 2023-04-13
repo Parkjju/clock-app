@@ -16,6 +16,16 @@ class NotificationService: NSObject{
     
     let UNCurrentCenter = UNUserNotificationCenter.current()
     
+    // 1. dismissAction 정의
+    // 2. 노티피케이션 카테고리 정의
+    let dismissAction = UNNotificationAction(identifier: "dismissAction", title: "닫기", options: [])
+    
+    lazy var category = UNNotificationCategory(identifier: "myNotificationCategory", actions: [dismissAction], intentIdentifiers: [], options: []){
+        didSet{
+            UNCurrentCenter.setNotificationCategories([category])
+        }
+    }
+    
     func authorizeNotification(){
         let options: UNAuthorizationOptions = [.alert, .badge, .sound]
         
@@ -38,6 +48,7 @@ class NotificationService: NSObject{
         let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle
+        content.categoryIdentifier = notificationId
         
         let sound = sound
         
@@ -94,6 +105,7 @@ extension NotificationService: UNUserNotificationCenterDelegate{
         default:
             break
         }
+        
         completionHandler()
     }
     
