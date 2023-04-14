@@ -109,8 +109,8 @@ class AlarmGenerateViewController: UIViewController {
         let sound = translateSoundName(text: soundCell.chosenLabel.text ?? "")
         
         // 한국시간을 notificationId로 전달
-        
-        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId)
+        // 데이터가 추가되는 곳의 인덱스를 전달하여 추후 willPresent에서 삭제 대상의 인덱스를 notification의 userInfo에 저장한다
+        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId, alarmManager.getSavedAlarm().count )
     }
     
     func reloadAfterChangeAlarmData(){
