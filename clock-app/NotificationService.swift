@@ -42,7 +42,7 @@ class NotificationService: NSObject{
     
     // 전달되는 date는 현재 변경 대상에 대한 날짜값
     // 이전에 전달된 date를 가지고 pendingNotification을 삭제해야됨
-    func requestAlarmNotification(_ date: Date?, type:String,title: String, subtitle: String, sound: String, repeatedly:Bool = false, withInterval interval: TimeInterval?, notificationId: String, _ dataIndex: Int?, needToReloadTableView: UITableView?){
+    func requestAlarmNotification(_ date: Date?, type:String,title: String, subtitle: String, sound: String, repeatedly:Bool = false, withInterval interval: TimeInterval?, notificationId: String, _ dataIndex: Int?, needToReloadTableView: UITableView?, updateTarget: Date?){
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -59,9 +59,9 @@ class NotificationService: NSObject{
         // 데이터 인덱스가 Alarm 뷰컨에서 전달되었으면 그대로 언래핑 후 사용
         // 데이터 인덱스가 Timer 뷰컨에서 전달되었으면 디폴트값 0 전달
         content.userInfo = ["updateTarget": dataIndex ?? -1]
-                
+            
         // 삼항연산자로 타입캐스팅
-        let trigger = type == "Alarm" ?  getTrigger(type: type, date: date,interval: interval) as! UNCalendarNotificationTrigger : getTrigger(type: type, date: date, interval: interval) as! UNTimeIntervalNotificationTrigger
+        let trigger = type == "Alarm" ?  getTrigger(type: type, date: date,interval: interval, notificationId: notificationId, dataIndex, updateTarget: updateTarget) as! UNCalendarNotificationTrigger : getTrigger(type: type, date: date, interval: interval, notificationId: notificationId, dataIndex, updateTarget: updateTarget) as! UNTimeIntervalNotificationTrigger
         
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
         
@@ -73,12 +73,15 @@ class NotificationService: NSObject{
         
         NotificationService.sharedInstance.UNCurrentCenter.add(request)
         
+        UNCurrentCenter.getPendingNotificationRequests { reqs in
+            print(reqs.count)
+        }
     }
     
-    func getTrigger(type: String, date: Date?, interval: TimeInterval?) -> UNNotificationTrigger?{
+    func getTrigger(type: String, date: Date?, interval: TimeInterval?, notificationId: String, _ dataIndex: Int?, updateTarget: Date?) -> UNNotificationTrigger?{
         switch(type){
         case "Alarm":
-            let date = date!
+            var date = date!
             
             // dateComponents => in: current 파라미터 설정으로 하면 안됨.
             var dateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: date)
@@ -87,9 +90,30 @@ class NotificationService: NSObject{
             
             // 알람을 맞췄는데 해당 시간이 현재 시간보다 이전에 맞춰졌다면
             // 다음날에 대한 알람이므로 - 캘린더 트리거를 하루 뒤로 미뤄야함
-            if(currentDateComponents.day! > dateComponents.day!){
-                dateComponents.day! += 1
+            // 1. 날짜가 아예 24시간 기준으로 전날로 알람이 맞춰지는 경우
+            // 2. 날짜는 동일하면서 현재시각이 알람시각보다 앞설때 -> 알람을 하루 미룬다
+            // 3. 시간까지 동일하고 분단위가 알람시각보다 현재시각이 앞설때 -> 하루 미룬다
+            if(currentDateComponents.day! > dateComponents.day! || currentDateComponents.hour! > dateComponents.hour! || (currentDateComponents.hour! == dateComponents.hour && currentDateComponents.minute! > dateComponents.minute!)){
+                
+                date = Calendar.current.date(byAdding: .hour,value: 24, to: date)!
+                
+                dateComponents = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute], from: getCurrentDateFromSimulator(date: date))
+                
+                
+                let _ = alarmManager.getSavedAlarm().map { data in
+                    var newData = data
+                    
+                    if(updateTarget == data.time){
+                        newData.time = date
+                        alarmManager.updateAlarm(targetId: updateTarget!, newData: newData) {
+                            print("time updated!")
+                        }
+                    }
+                }
+                
+                UNCurrentCenter.removePendingNotificationRequests(withIdentifiers: [notificationId])
             }
+            // 푸시알람을 하루 유예시킨 뒤에 alarmData 배열의 값도 코어데이터에 업데이트 시켜야됨
             
             return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         case "Timer":
@@ -142,8 +166,6 @@ extension NotificationService: UNUserNotificationCenterDelegate{
         if let reloadTable{
             reloadTable.reloadData()
         }
-        
-        
         
         let options: UNNotificationPresentationOptions = [.banner, .sound]
         completionHandler(options)
