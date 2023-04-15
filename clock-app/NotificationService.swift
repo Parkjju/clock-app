@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import UIKit
 
 class NotificationService: NSObject{
     
@@ -20,6 +21,9 @@ class NotificationService: NSObject{
     
     // AlarmData 모델 매니저에서 현재 보유중인 알람데이터들 불러오기
     let alarmManager = AlarmManager.shared
+    
+    // 리로드가 필요한 테이블뷰
+    var reloadTable: UITableView?
     
     func authorizeNotification(){
         let options: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -38,7 +42,7 @@ class NotificationService: NSObject{
     
     // 전달되는 date는 현재 변경 대상에 대한 날짜값
     // 이전에 전달된 date를 가지고 pendingNotification을 삭제해야됨
-    func requestAlarmNotification(_ date: Date?, type:String,title: String, subtitle: String, sound: String, repeatedly:Bool = false, withInterval interval: TimeInterval?, notificationId: String, _ dataIndex: Int?){
+    func requestAlarmNotification(_ date: Date?, type:String,title: String, subtitle: String, sound: String, repeatedly:Bool = false, withInterval interval: TimeInterval?, notificationId: String, _ dataIndex: Int?, needToReloadTableView: UITableView?){
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -47,6 +51,10 @@ class NotificationService: NSObject{
         
         let sound = sound
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound).wav"))
+        
+        if let needToReloadTableView{
+            reloadTable = needToReloadTableView
+        }
         
         // 데이터 인덱스가 Alarm 뷰컨에서 전달되었으면 그대로 언래핑 후 사용
         // 데이터 인덱스가 Timer 뷰컨에서 전달되었으면 디폴트값 0 전달
@@ -122,9 +130,17 @@ extension NotificationService: UNUserNotificationCenterDelegate{
     // willPresent에서 isOn속성 제거
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
+        // 알람 탭에서 시작된 푸시알람이라면
+        // isOn 속성 변경
         if(notification.request.content.userInfo["updateTarget"] as! Int != -1){
             let alarmDataList = alarmManager.getSavedAlarm()
             alarmDataList[notification.request.content.userInfo["updateTarget"] as! Int - 1].isOn = false
+        }
+        
+        // 알람 탭의 테이블뷰가 저장속성에 로드되었다면
+        // 알람 울림과 동시에 테이블뷰 리로딩
+        if let reloadTable{
+            reloadTable.reloadData()
         }
         
         
