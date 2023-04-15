@@ -110,7 +110,10 @@ class AlarmGenerateViewController: UIViewController {
         
         // 한국시간을 notificationId로 전달
         // 데이터가 추가되는 곳의 인덱스를 전달하여 추후 willPresent에서 삭제 대상의 인덱스를 notification의 userInfo에 저장한다
-        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId, alarmManager.getSavedAlarm().count )
+        // presenting VC의 테이블뷰를 가져와야됨
+        
+        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId, alarmManager.getSavedAlarm().count == 0 ? nil : alarmManager.getSavedAlarm().count, needToReloadTableView: getPresentingVCTableView()
+        )
     }
     
     func reloadAfterChangeAlarmData(){
@@ -129,6 +132,14 @@ class AlarmGenerateViewController: UIViewController {
         firstVC.tableView.reloadData()
 
         self.dismiss(animated: true)
+    }
+    
+    func getPresentingVCTableView() -> UITableView{
+        let tabBarVC = self.presentingViewController as! WorldClockTabBarViewController
+        let alarmNavigationVC = tabBarVC.viewControllers?[1] as! AlarmNavigationViewController
+        let alarmVC = alarmNavigationVC.viewControllers[0] as! AlarmViewController
+        
+        return alarmVC.tableView
     }
     
     
