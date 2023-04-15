@@ -112,7 +112,7 @@ class AlarmGenerateViewController: UIViewController {
         // 데이터가 추가되는 곳의 인덱스를 전달하여 추후 willPresent에서 삭제 대상의 인덱스를 notification의 userInfo에 저장한다
         // presenting VC의 테이블뷰를 가져와야됨
         
-        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId, alarmManager.getSavedAlarm().count == 0 ? nil : alarmManager.getSavedAlarm().count, needToReloadTableView: getPresentingVCTableView()
+        NotificationService.sharedInstance.requestAlarmNotification(datePicker.date, type: "Alarm",title: "시계", subtitle: "알람", sound: sound, withInterval: nil, notificationId: notificationId, alarmManager.getSavedAlarm().count == 0 ? nil : alarmManager.getSavedAlarm().count, needToReloadTableView: getPresentingVCTableView(), updateTarget: alarmData?.time
         )
     }
     
@@ -172,6 +172,7 @@ class AlarmGenerateViewController: UIViewController {
     }
     
     func setupUI(){
+        NotificationService.sharedInstance.UNCurrentCenter.removeAllPendingNotificationRequests()
         // setupUI에서 만들어지는 id정보가 초기 id정보
         if let alarmData = alarmData{
             notificationId = "\(getCurrentDateFromSimulator(date: alarmData.time!))"
