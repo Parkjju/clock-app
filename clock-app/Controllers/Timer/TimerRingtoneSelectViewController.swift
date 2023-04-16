@@ -14,7 +14,8 @@ class TimerRingtoneSelectViewController: UIViewController {
     var delegate: AlarmSoundDelegate?
     
     let sounds: [String] = ["daydream", "green", "playTime", "sea"]
-
+    
+    var selectedSoundFromTimerViewController: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,10 @@ extension TimerRingtoneSelectViewController: UITableViewDataSource{
         cell.soundLabel.text = soundName
         cell.accessoryType = .none
         cell.tintColor = .systemOrange
+        
+        if(soundName == selectedSoundFromTimerViewController!){
+            cell.accessoryType = .checkmark
+        }
         
         return cell
     }
