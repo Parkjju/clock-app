@@ -25,6 +25,9 @@ class WorldClockViewController: UIViewController {
         setupController()
         
         NotificationService.sharedInstance.authorizeNotification()
+        NotificationService.sharedInstance.UNCurrentCenter.getNotificationSettings { settings in
+            print(settings.alertStyle.rawValue)
+        }
     }
     
     func setupNavigationBar(){
