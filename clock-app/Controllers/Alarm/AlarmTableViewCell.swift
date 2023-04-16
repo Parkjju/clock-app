@@ -77,7 +77,11 @@ class AlarmTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "HH:mm"
         
         // timeString 반환 로직
-        let timeString = dateFormatter.string(from: time)
+        var timeString = dateFormatter.string(from: time)
+        
+        if(timeString.first == "0"){
+            timeString.remove(at: timeString.startIndex)
+        }
         
         var timeArray = timeString.split(separator: ":").map { str in
             String(str)
