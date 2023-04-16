@@ -284,10 +284,7 @@ class TimerViewController: UIViewController {
                 return
             }
             
-            guard let ringtoneLabel = ringtoneLabel.text else {
-                return
-            }
-            
+            destination.selectedSoundFromTimerViewController = ringtoneLabel.text
 //            destination.loadViewIfNeeded()
 //
 //            switch(ringtoneLabel){
