@@ -14,7 +14,7 @@ class AlarmViewController: UIViewController {
     let alarmManager = AlarmManager.shared
     var alarmData: [AlarmData]{
         get {
-            return alarmManager.getSavedAlarm()
+            return sortAlarmData()
         }
     }
     
@@ -60,6 +60,42 @@ class AlarmViewController: UIViewController {
     
     func setupUI(){
         tableView.backgroundColor = .black
+    }
+    
+    func sortAlarmData() -> [AlarmData]{
+        let sortedArray = alarmManager.getSavedAlarm().sorted { (prev, next) -> Bool in
+            var prevTime = "\(prev.time!)"
+            var nextTime = "\(next.time!)"
+            
+            let prevTimeArray = prevTime.split(separator: " ")
+            let nextTimeArray = nextTime.split(separator: " ")
+            
+            prevTime = "\(prevTimeArray[1])"
+            nextTime = "\(nextTimeArray[1])"
+            
+            let prevTimeHourAndMinute = prevTime.split(separator: ":")
+            let nextTimeHourAndMinute = nextTime.split(separator: ":")
+            
+            let prevTimeInt = prevTimeHourAndMinute.map { str in
+                return Int(str)!
+            }
+            
+            let nextTimeInt = nextTimeHourAndMinute.map { str in
+                return Int(str)!
+            }
+            
+            if(prevTimeInt[0] < nextTimeInt[0]){
+                return true
+            }else if(prevTimeInt[0] > nextTimeInt[0]){
+                return false
+            }else if(prevTimeInt[0] == nextTimeInt[0] && prevTimeInt[1] < nextTimeInt[1]){
+                return true
+            }else{
+                return false
+            }
+        }
+        
+        return sortedArray
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
