@@ -325,8 +325,6 @@ extension AlarmGenerateViewController: AlarmManagerDelegate{
     
 extension AlarmGenerateViewController: AlarmSoundDelegate{
     func soundUpdate(index: Int) {
-        
-        self.checkedIndex = index
         guard let cell = tableView.visibleCells[2] as? AlarmSettingSoundTableViewCell else{
             return
         }
