@@ -53,6 +53,7 @@ extension AlarmSoundDetailViewController: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmSoundDetailTableViewCell", for: indexPath) as? AlarmSoundDetailTableViewCell else {
             return UITableViewCell()
         }
+        
         switch sounds[indexPath.row]{
         case sounds[0]:
             cell.text = "공상음"
@@ -66,6 +67,14 @@ extension AlarmSoundDetailViewController: UITableViewDataSource{
             break
         }
         cell.accessoryType = .none
+        
+        let alarmGenerateNavigationVC = self.parent as! AlarmGenerateNavigationController
+        let alarmGenerateVC = alarmGenerateNavigationVC.viewControllers[0] as! AlarmGenerateViewController
+        let alarmSoundCell = alarmGenerateVC.tableView.visibleCells[2] as! AlarmSettingSoundTableViewCell
+        
+        if(alarmSoundCell.chosenLabel.text! == cell.text!){
+            cell.accessoryType = .checkmark
+        }
         
         return cell
         
