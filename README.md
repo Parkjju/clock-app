@@ -40,6 +40,24 @@ https://user-images.githubusercontent.com/75518683/227817058-07d886c0-2fbb-47cf-
 
 ## 알람
 
+https://user-images.githubusercontent.com/75518683/232666942-1a219255-50eb-475c-9814-e3aef0892eef.mov
+
+https://user-images.githubusercontent.com/75518683/232667225-b67acf8d-5731-4501-b8d2-0360775f25b8.mov
+
+알람 기능입니다. `UNUserNotificationCenter.current()` 인스턴스를 저장속성으로 갖는 커스텀 클래스를 생성하여 싱글톤 패턴으로 푸시 알람을 관리하였습니다. 
+`requestAlarmNotification` 함수를 정의하여 알람 요청을 받도록 구현하였습니다. [소스코드 링크](https://github.com/Parkjju/clock-app/blob/7bf521149639861051e0df8d82b3e0be7787d53e/clock-app/NotificationService.swift#L45-L79)
+
+### 트리거 
+[소스코드 링크](https://github.com/Parkjju/clock-app/blob/7bf521149639861051e0df8d82b3e0be7787d53e/clock-app/NotificationService.swift#L81-L126)
+푸시알람 발동을 위한 트리거는 `getTrigger()` 함수를 통해 관리하였습니다. 알람의 경우 특정 시간에 맞춰 푸시알람이 동작해야하고, 타이머의 경우 설정해둔 시간이 흐른 뒤에 동작해야 합니다.
+
+함수 리턴타입은 `UNNotificationTrigger`로 하여 `UNCalendarNotificationTrigger` 또는 `UNTimeIntervalNotificationTrigger` 두 타입을 리턴 후 활용하는 뷰 컨트롤러에 따라 타입캐스팅 하여 구현하였습니다. 알람 뷰컨트롤러에서는 `UNCalendarNotificationTrigger`, 타이머 뷰컨트롤러에서는 `UNTimeIntervalNotificationTrigger`로 타입캐스팅 하였습니다.
+
+
+
+
+
+
 
 ## 스톱워치
 
