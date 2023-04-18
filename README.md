@@ -85,6 +85,10 @@ https://user-images.githubusercontent.com/75518683/232667225-b67acf8d-5731-4501-
 
 알람사운드 전체 재생을 위해서는 5초가량의 짧은 시간동안만 알람이 노출되면 안되고, 음원이 모두 재생되기까지 알람이 유지되어야 합니다.
 
+<img width="354" alt="스크린샷 2023-04-19 오전 8 07 41" src="https://user-images.githubusercontent.com/75518683/232923907-1bdef106-6912-436b-a511-ef8534270245.png">
+
+
+
 ## 스톱워치
 
 ## 타이머
