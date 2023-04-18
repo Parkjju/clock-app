@@ -49,9 +49,18 @@ https://user-images.githubusercontent.com/75518683/232667225-b67acf8d-5731-4501-
 
 ### 트리거 
 [소스코드 링크](https://github.com/Parkjju/clock-app/blob/7bf521149639861051e0df8d82b3e0be7787d53e/clock-app/NotificationService.swift#L81-L126)
+
 푸시알람 발동을 위한 트리거는 `getTrigger()` 함수를 통해 관리하였습니다. 알람의 경우 특정 시간에 맞춰 푸시알람이 동작해야하고, 타이머의 경우 설정해둔 시간이 흐른 뒤에 동작해야 합니다.
 
 함수 리턴타입은 `UNNotificationTrigger`로 하여 `UNCalendarNotificationTrigger` 또는 `UNTimeIntervalNotificationTrigger` 두 타입을 리턴 후 활용하는 뷰 컨트롤러에 따라 타입캐스팅 하여 구현하였습니다. 알람 뷰컨트롤러에서는 `UNCalendarNotificationTrigger`, 타이머 뷰컨트롤러에서는 `UNTimeIntervalNotificationTrigger`로 타입캐스팅 하였습니다.
+
+설정한 시간이 현시각 기준으로 더 앞시간이라면 다음날에 대한 알람을 맞춘 것이므로, `getTrigger` 함수 내에서 코어데이터에 저장된 데이터를 불러와 AlarmData 인스턴스의 time속성을 수정해야 합니다. 기존에 설정되어 있던 알람은 삭제해줘야 하므로 `getTrigger` 함수에 전달되었던 `notificationId` 값을 타겟으로 하여 `UNCurrentCenter.removePendingNotificaitonRequest` 함수 호출과 함께 알람을 삭제해줍니다.
+
+`getTrigger`에서 현 시각 기준으로 앞선 알람데이터에 대해 하루를 더하는 로직이 실행되었다면 알람 탭의 루트 뷰 컨트롤러에서 테이블뷰 셀의 정렬이 원하는 형태로 이루어지지 않습니다. [코어데이터 Alarm 모델을 관리하는 로직 코드를 보면](https://github.com/Parkjju/clock-app/blob/92a217b371df040ff62f502f76d20aa210b0cdd1/clock-app/Models/Alarm/AlarmManager.swift#L24-L49) `sortDescriptor`가 time의 오름차순으로 되어 있는데, Date객체는 시-분-초의 값들로만 오름차순 정렬을 하는 것이 아닌 월-일을 가지고도 오름차순 정렬을 하게 됩니다.
+
+알람 탭의 테이블뷰 셀에는 월-일에 대한 날짜정보를 표기하고 있지 않기 때문에 **3:30분**이라고 표기되어 있는 시간이 **2:30분**보다 먼저 표기됩니다. 이에 따라 `cellForRowAt` 테이블뷰에 알람 리스트를 전달하기 전 재정렬을 해주는 메서드를 정의해야 합니다. 이는 [다음 소스코드에](https://github.com/Parkjju/clock-app/blob/92a217b371df040ff62f502f76d20aa210b0cdd1/clock-app/Controllers/Alarm/AlarmViewController.swift#L65-L99) 정의해두었습니다.
+
+
 
 
 
