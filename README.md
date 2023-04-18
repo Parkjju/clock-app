@@ -99,11 +99,26 @@ https://user-images.githubusercontent.com/75518683/232667225-b67acf8d-5731-4501-
 
 https://user-images.githubusercontent.com/75518683/232926576-d180b823-cc90-4af0-bfba-b7e8f7a9067c.mov
 
+기본 시계 앱의 스톱워치와 완전히 동일한 로직은 아니지만, 테이블 뷰 셀의 동적 추가와 컴포넌트간 통신, 테이블뷰 셀과 특정 UI를 연결하여 타이머와 함께 동작시키는 방법 등에 대해 공부할 수 있었습니다.
 
+### 3-1. UI 통신
 
+버튼의 동작 로직은 `isStarted`라는 저장속성에 의해 관리됩니다. 시작버튼이 클릭된 경우와 그렇지 못한 경우를 나누어 분기처리를 했습니다. [(소스코드 링크)](https://github.com/Parkjju/clock-app/blob/2e3156a50f2fcf17fceaa589970645d276583ae2/clock-app/Controllers/StopWatch/StopWatchViewController.swift#L69-L92)
 
+스톱워치 뷰 컨트롤러에서 관리되는 `Timer` 객체를 저장속성에 저장해두고 위와 같은 로직이 호출될때마다 `timer.invalidate()` 메서드를 호출해주었습니다.
 
+### 3-2. 테이블뷰 셀 시간초 연동
 
+실시간으로 진행시간이 변화되는 모습을 `UILabel`과 테이블뷰 셀에 담기 위해 [다음 소스코드 링크와 같이](https://github.com/Parkjju/clock-app/blob/2e3156a50f2fcf17fceaa589970645d276583ae2/clock-app/Controllers/StopWatch/StopWatchViewController.swift#L102-L118) 로직을 구현했습니다.
 
+시작버튼 클릭시 [createTimer](https://github.com/Parkjju/clock-app/blob/2e3156a50f2fcf17fceaa589970645d276583ae2/clock-app/Controllers/StopWatch/StopWatchViewController.swift#L95-L100)함수를 호출하여 타이머 객체를 생성하고 `updateTime`이라는 메서드를 간격에 맞추어 호출하게 됩니다.
+
+스톱워치 뷰 컨트롤러에는 `elapsed~`로 시작하는 저장속성이 세 가지 있습니다. 밀리초, 초, 분 세 가지 저장속성에 대해 `elapsed`라는 접두어를 붙여 관리하게 되는데 이들은 `UILabel` 표현을 위해 사용됩니다.
+
+`updateTime` 메서드가 `elapsedMiliSecond`에 타이머 실행 주기인 `timeInterval`값을 더합니다. 이때 밀리세컨드 총 합이 100을 넘어가게 되면 1초를 더하고, `elapsedSecond`가 60초가 넘어가면 `elapsedMinute`값을 1 증가시켰습니다.
+
+업데이트된 `elapsed`값들을 레이블의 `attributedText` 속성에 저장해주었습니다. `attributedText`를 사용한 이유는 `kern` 속성값을 통해 자간을 설정하기 위해서 입니다. [(소스코드 링크)](https://github.com/Parkjju/clock-app/blob/2e3156a50f2fcf17fceaa589970645d276583ae2/clock-app/Controllers/StopWatch/StopWatchViewController.swift#L116)
+
+타이머 실행 주기에 맞춰 매번 테이블뷰의 `reloadData` 메서드도 호출되기 때문에 `cellForRowAt` 파라미터를 갖는 테이블뷰 델리게이트 메서드에 [(다음 소스코드를 작성해두었습니다)](https://github.com/Parkjju/clock-app/blob/2e3156a50f2fcf17fceaa589970645d276583ae2/clock-app/Controllers/StopWatch/StopWatchViewController.swift#L163-L169) 테이블뷰 리로드때마다 셀 마지막 요소의 텍스트값을 `elapsed` 값들과 연동해주었습니다.
 
 ## 타이머
