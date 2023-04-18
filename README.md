@@ -73,7 +73,7 @@ https://user-images.githubusercontent.com/75518683/232667225-b67acf8d-5731-4501-
 
 또한 리로드가 필요한 알람 탭의 루트뷰 컨트롤러의 `tableView`를 `requestAlarmNotification` 파라미터에 담아 전달한 뒤 `willPresent` 메서드에서 리로드하도록 구현하였습니다.
 
-### 2-4. 알람사운드 커스텀
+### 2-4. 알람사운드 커스텀 및 배너스타일 변경
 
 알람 기능인 만큼 푸시알람이 동작할 경우 기본 사운드가 아닌 커스텀 사운드를 들려주고자 하였습니다. 지인에게 데모 음원을 받아 각각 30초정도의 분량으로 쪼개어 4개의 벨소리를 제작하여 번들 목록에 포함시켰습니다.
 
@@ -87,8 +87,14 @@ https://user-images.githubusercontent.com/75518683/232667225-b67acf8d-5731-4501-
 
 <img width="354" alt="스크린샷 2023-04-19 오전 8 07 41" src="https://user-images.githubusercontent.com/75518683/232923907-1bdef106-6912-436b-a511-ef8534270245.png">
 
+사용자 단에서 이러한 설정을 해줘야하는데, 앱에서 해당 설정의 위치를 안내해주는 것이 좋다고 생각하였습니다. 해당 값은 `UNCurrentCenter` 인스턴스의 푸시알람 설정 관련 값들을 통해 알아낼 수 있습니다.
 
+[소스코드](https://github.com/Parkjju/clock-app/blob/98a9faf7d02a61795c779965e064109c6a30f032/clock-app/Controllers/WorldClock/WorldClockViewController.swift#L22-L31)를 보면 `UNCurrentCenter` 싱글톤 객체에 접근 후 `getNotificationSettings` 클로저를 통해 각 설정값에 접근하는 것을 볼 수 있습니다.
 
-## 스톱워치
+만약 배너 스타일이 일시적 표시라면 `열거형 rawValue값이 1`, 지속적 표시라면 `열거형 rawValue값이 2`가 됩니다. 이에 따른 분기처리를 통해 설정 앱으로 링크를 연결하도록 기능을 추가할 예정입니다.
+
+푸시알람이 지속적 표시로 변경되었다면 푸시알람 생성시 `UNMutableNotificationContent` 인스턴스의 `sound`속성에 접근, `UNNotificationSound` 인스턴스 생성 뒤 저장하면 됩니다. [(소스코드 링크)](https://github.com/Parkjju/clock-app/blob/98a9faf7d02a61795c779965e064109c6a30f032/clock-app/NotificationService.swift#L52-L53)
+
+## 3. 스톱워치
 
 ## 타이머
