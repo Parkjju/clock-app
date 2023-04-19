@@ -125,5 +125,61 @@ https://user-images.githubusercontent.com/75518683/232926576-d180b823-cc90-4af0-
 
 https://user-images.githubusercontent.com/75518683/232950937-236b0381-a6f5-4ff7-84d0-6f1663bfc573.mov
 
+### 4-1. 뷰 구성
 
+뷰 구성에서 중점적으로 고려했던 점은 크게 두가지였습니다.
 
+1. `UIPickerView` 컬럼 커스텀하기
+2. 원 그리기
+
+#### 4-1-1. 컬럼 커스텀
+
+일반적으로 타이머 기능을 구현할때 `UIDatePicker`에서 `.datePickerMode` 속성의 열거형 케이스 중 `.countDownTimer`로 지정하게 되면 카운트다운 전용 피커뷰를 사용할 수 있습니다. 하지만 이는 분-초 단위만 제공을 하기 때문에, 기본 시계앱에서 사용하는 시간-분-초 세 가지 컬럼을 갖도록 구현하기에는 적합하지 않았습니다.
+
+원하는대로 컬럼을 커스텀하기 위해서는 `UIPickerViewDataSource`와 `UIPickerViewDelegate` 프로토콜 메서드를 구현해야합니다.
+
+먼저, 활용할 데이터를 정의합니다. 저는 24시간 - 60분 - 60초를 배열로 갖도록 계산속성을 추가하였습니다.[(소스코드 1)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L66-L70), [(소스코드 2)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L84-L97)
+
+이후 `UIPickerViewDataSource` 프로토콜의 메서드를 구현해줍니다. [(소스코드)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L327-L335)
+
+1. `func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int`: 피커뷰 컴포넌트별 row의 수를 결정
+2. `func numberOfComponents(in pickerView: UIPickerView) -> Int`: 피커뷰 컴포넌트 수를 결정
+
+`UIPickerView`에서 컴포넌트는 쉽게말해 각 컬럼들을 의미하고, row는 컴포넌트별 행 요소를 가리킵니다. 2차원 형태의 배열 데이터를 표현하기 쉽습니다.
+
+이후 `UIPickerViewDelegate` 프로토콜 메서드를 통해 각 row를 조회하며 어떤 데이터를 표현할지 컴포넌트에 따른 데이터 리턴 형태를 정의합니다. [(소스코드)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L311-L325)
+
+위 프로토콜 함수까지 구현하였으면 구현된 상태는 시-분-초 단위 없이 숫자만 표기됩니다. 이때 각 컴포넌트 별 레이블을 삽입하고싶은데, 관련된 메서드를 `UIPickerView`에서는 제공하지 않습니다. 원한다면 `UIPickerViewDelegate` 프로토콜에서 리턴값 뒤에 컴포넌트별로 단위를 직접 삽입하면 되지만, **모든 row에 대해 동일한 컬럼이 중복되어 나타난다는 문제점이 있습니다.**
+
+이에 따라 [medium 참고 문서](https://medium.com/@luisfmachado/uipickerview-fixed-labels-66f947ded0a8)에 따라 `fixed label`을 포지션에 맞추어 구현하였습니다. 기기별 대응에는 한계가 있겠지만 UIPickerView 컴포넌트별 레이블 커스텀이 가능하다는 점을 배울 수 있었습니다. [(setPickerLabels 소스코드)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L337-L367)
+
+직접 정의한 `setPickerLabels` 함수는 다음과 같이 동작합니다.
+
+1. `labels`파라미터: 컴포넌트별 레이블명을 딕셔너리 형태로 지정합니다.(시간, 분, 초)
+2. `containedView`: 화면 프레임사이즈를 얻기 위해 수퍼뷰를 전달합니다.
+
+컴포넌트의 row당 갖는 글자수를 기준으로 레이블을 오른쪽으로 몇 포인트 더 밀어낼지에 대한 로직이 추가적으로 구현되어 있습니다.
+
+#### 4-1-2. 원 그리기
+
+원을 그리는데에는 뷰 두개를 겹쳐놓은 뒤 서브뷰를 검정바탕으로, 수퍼뷰를 `systemOrange` 바탕색으로 해두었습니다. 기본 시계 앱에서는 오렌지색 원의 지름이 시간에 따라 검정색으로 칠해지는 애니메이션도 구현되어 있지만 이 부분은 구현하지 못하였습니다.
+
+`UIView.animate` 클로저에서 원을 감싸는 `timerView`, `timerInnerView`와 `timePicker`사이의 `alpha`값 조절을 통해 두 컴포넌트 사이의 자연스러운 교체 효과를 부여하였습니다. [(소스코드)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L243-L272)
+
+timerView 내에서 서브 레이블을 하나 더 두어 타이머가 실제로 울리게 될 시간도 추가로 표기하였습니다.
+
+### 4-2. 기능
+
+타이머 뷰 컨트롤러에서 사용되는 기능은 타이머 종료에 따른 푸시알람, 오디오 플레이가 있습니다. 큰 틀은 알람 뷰 컨트롤러에서와 동일합니다.
+
+타이머 뷰 컨트롤러의 경우, 한 뷰 컨트롤러에서 여러개의 푸시알람을 동시에 관리해야할 필요가 없기 때문에 푸시알람의 아이디값이 중복되는 경우가 존재하지 않습니다. 따라서 푸시알람 pending 리스트의 관리가 더 수월했습니다. 아이디값은 timeInterval값을 문자열 보간법으로 감싸 활용하였습니다. [(소스코드)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L196-L202)
+
+타이머 인스턴스의 경우 시작과 동시에 타이머의 셀렉터 메서드가 바로 동작해야 하므로 `timer.fire()` 메서드를 호출했습니다.
+
+타이머 동작에 따라 남은 시간을 나타내는 레이블은 `updateTimeLabel`메서드에서 관리하였습니다. [(소스코드)](https://github.com/Parkjju/clock-app/blob/98d8e7fd459a3750ab11223341132b15449cfd9a/clock-app/Controllers/Timer/TimerViewController.swift#L204-L241)
+
+`updateTimeLabel` 메서드에서는 피커뷰의 레이블 로우를 `selectedRow`로 선택하여 남은 시간을 체크하였고, 1초 지날때마다 초에 해당하는 피커뷰 컴포넌트의 row값을 1씩 감소시켜 다시 피커뷰를 `select` 하였습니다. `selectRow`와 `selectedRow`는 로우값을 set하느냐 get하느냐에 따른 차이가 있습니다. 0초에서 -1초가 select되면 분을 감소시키고, 0분 0초에서 -1초가 select되면 시간을 감소시키며 최종적으로 0시간 0분 0초에서 -1초가 select되면 타이머를 종료하고 푸시알람을 동작시키도록 구현하였습니다.
+
+푸시알람의 동작은 `requestAlarmNotification` 메서드에서 구현되었고 `getTrigger` 메서드에서 `UNTimeIntervalNotificationTrigger`를 리턴하도록 하였습니다.
+
+오디오 선택은 알람 뷰 컨트롤러와 동일하게 커스텀 델리게이트 패턴 형태로 타이머 루트 뷰 컨트롤러의 레이블 요소를 업데이트 하도록 하였습니다.
