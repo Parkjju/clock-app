@@ -121,4 +121,4 @@ https://user-images.githubusercontent.com/75518683/232926576-d180b823-cc90-4af0-
 
 타이머 실행 주기에 맞춰 매번 테이블뷰의 `reloadData` 메서드도 호출되기 때문에 `cellForRowAt` 파라미터를 갖는 테이블뷰 델리게이트 메서드에 [(다음 소스코드를 작성해두었습니다)](https://github.com/Parkjju/clock-app/blob/2e3156a50f2fcf17fceaa589970645d276583ae2/clock-app/Controllers/StopWatch/StopWatchViewController.swift#L163-L169) 테이블뷰 리로드때마다 셀 마지막 요소의 텍스트값을 `elapsed` 값들과 연동해주었습니다.
 
-## 타이머
+## 4. 타이머
