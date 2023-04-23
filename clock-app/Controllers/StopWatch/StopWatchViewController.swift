@@ -95,13 +95,13 @@ class StopWatchViewController: UIViewController {
     func createTimer(){
         timer.invalidate()
         
-        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: .common)
     }
     
     @objc func updateTime(){
         // 0.03초가 한계
-        elapsedMiliSecond += 5
+        elapsedMiliSecond += 4
         
         if(elapsedMiliSecond >= 100){
             elapsedSecond += 1
