@@ -42,7 +42,7 @@ class TimerRingtoneSelectViewController: UIViewController {
         self.dismiss(animated: true)
     }
     @objc func settingButtonTapped(){
-        
+        self.dismiss(animated: true)
     }
     
     func setupController(){
