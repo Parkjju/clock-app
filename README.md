@@ -183,3 +183,17 @@ timerView 내에서 서브 레이블을 하나 더 두어 타이머가 실제로
 푸시알람의 동작은 `requestAlarmNotification` 메서드에서 구현되었고 `getTrigger` 메서드에서 `UNTimeIntervalNotificationTrigger`를 리턴하도록 하였습니다.
 
 오디오 선택은 알람 뷰 컨트롤러와 동일하게 커스텀 델리게이트 패턴 형태로 타이머 루트 뷰 컨트롤러의 레이블 요소를 업데이트 하도록 하였습니다.
+
+## 2023/04/23 추가 리팩토링
+
+`NotificationService` 싱글톤 객체의 `requestAlarmNotification`함수를 오버로딩 하여 불필요한 코드의 중복을 제거하였습니다. 타이머 뷰 컨트롤러와 알람 뷰 컨트롤러에서 모두 푸시알람을 생성하도록 디바이스에 요청하는 `requestAlarmNotification` 함수를 호출하는데, 기존 코드에서는 두 뷰 컨트롤러에 대한 모든 정보를 하나의 함수에 `nil`값으로 받아 내부적인 분기처리를 해야 했습니다.
+
+`type`파라미터를 받아 `switch`문을 통해 알람 뷰컨트롤러에서 온 푸시알람 생성 요청인지, 타이머 뷰컨트롤러에서 온 생성요청인지 분기처리를 하다 보니 함수는 하나로 묶일 수 있었지만 불필요하게 `nil`값으로 아규먼트를 전달해야 하는 경우가 있었습니다.
+
+[(소스코드 링크)](https://github.com/Parkjju/clock-app/commit/9a62eb92dcfbdfcaa9ac384de7cc53793dfc3b0e)를 보면 현재 뷰 컨트롤러에 맞지 않는 성격의 파라미터는 굳이 전달하지 않아도 되도록 코드가 훨씬 보기 좋아졌습니다.
+
+[(소스코드 링크)](https://github.com/Parkjju/clock-app/commit/aafe5d7b2b75707bccd8fc9afdbf7afd3434d7cc)는 `NotificationService` 싱글톤 객체 내에 정의된 `requestAlarmNotification` 메서드인데, 함수 오버로딩 적용 이후 이 함수의 파라미터가 눈에 띄게 줄었을 뿐만 아니라 오버로딩에 따라 함수가 하는 일이 명확해짐을 볼 수 있습니다.
+
+예를 들어 타이머 뷰 컨트롤러에서는 불필요한 date값 등을 받을 필요 없이 TimeInterval값만 받으면 되므로, 함수 파라미터 형태만 보고도 타이머 뷰 컨트롤러로부터 요청이 들어온다는 것을 알 수 있기에 기존에 받았던 `type`이라는 파라미터를 통한 switch 분기처리 코드가 삭제될 수 있었습니다.
+
+`requestAlarmNotifcation` 내에서 호출하는 `getTrigger`함수의 리턴 타입 역시 기존에는 어떤 타입이 리턴될지 몰랐기 때문에 삼항연산자로 복잡한 코드가 작성되었지만, 현재는 코드 흐름상 `UNCalendarNotificationTrigger`타입인지 `UNTimeIntervalNotificationTrigger` 타입인지 명확히 구분 가능하게 되어 코드가 짧아질 수 있었습니다.
